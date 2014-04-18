@@ -1,4 +1,4 @@
-quickshare
+QuickShare
 ==========
 
 QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content.
@@ -11,7 +11,7 @@ Services Supported
 * Google Plus (sharing)
 * Email (through native desktop mail client)
 
-Implementation
+How to Use
 --------------
 
 The goal of QuickShare is to have as much of the customisation and mark-up left in the CSS/HTML, free to manipulate without navigating Javascript APIs. It uses simple links to share URLs, with different levels of customisation available depending on the social media plug-in.
@@ -29,15 +29,20 @@ Then in a <script></script> tag or in your javascript function, include the line
 	});
 
 
+Overarching Implementation
+---------
+
 QuickShare is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
 
 	$(document).quickShare();
 
-If you want to contain quickShare to look for links only in the body of the page, you can instead write
+If you want to contain QuickShare to look for links only in the body of the page, you can instead write
 
 	$('body').quickShare();
 
-QuickShare does not require any parameters, an all settings are configured through the appropriate markup defined in the HTML
+QuickShare does not require any parameters and all settings are configured through the appropriate markup defined in the HTML
+
+
 
 Here's the simplest example
 
@@ -57,6 +62,20 @@ If you want to share a specific url with a large array of different social media
 	</div>
 
 You can use multiple master containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority, and can override any 'master' settings.
+
+For example the following will link to *http://child-url.com*
+
+	<div class='qs-master' data-url='http://master-url.com'>
+		<a class='qs-link' data-service='twitter' http://child-url.com>Twitter</a>
+	</div>
+
+And the following will link to *http://master-url.com*
+
+	<div class='qs-master' data-url='http://super-master-url.com'>
+		<div class='qs-master' data-url='http://master-url.com'>
+			<a class='qs-link' data-service='twitter'>Twitter</a>
+		</div>
+	</div>
 
 Any customisation of the content that gets shared takes the form of data attributes on the link tag. Below is a table showing what customisation options are available for each service and their defaults.
 
