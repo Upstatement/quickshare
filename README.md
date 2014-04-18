@@ -23,11 +23,11 @@ To use QuickShare, simply download the script and include it with your script ta
 
 Then in a `<script>` tag or in a separate Javascript file include the lines
 
-
+	```javascript
 	$(document).ready(function() {
 		 $(document).quickShare();
 	});
-
+	```
 
 Implementation
 ---------
@@ -60,18 +60,18 @@ Share Containers
 -----------------
 
 If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container
-
+	```html
 	<div class='qs-container' data-url='http://specific-url.com'>
-		<a class='qs-link' data-service='twitter' >Twitter</a>
+		<a class='qs-link' data-service='twitter'>Twitter</a>
 		<a class='qs-link' data-service='facebook-share'>Facebook</a>
 	</div>
-
+	```
 You can use multiple share containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority and can override any 'master' settings.
 
-For example the following will share the link `http://link-url.com`
+For example the following will share the link `http://share-url.com`
 
 	<div class='qs-container' data-url='http://container-url.com'>
-		<a class='qs-link' data-service='twitter' http://link-url.com>Twitter</a>
+		<a class='qs-link' data-service='twitter' http://share-url.com>Twitter</a>
 	</div>
 
 And the following will share the link `http://container-url.com`
@@ -90,3 +90,8 @@ Service Customisation Reference
 Any customisation of the content that gets shared takes the form of data attributes on the link tag. Below is a table showing what customisation options are available for each service and their defaults.
 
 
+| Attribute | Service | Default | Container? | Additional Notes |
+| data-url=`url` | All | window.location.href | yes | highly recommmended|
+| data-title=`title` | All* | "Sharing: " | yes | * might not actually be used |
+| data-tweet-body=`message` | twitter | data-title | no | the message body of the tweet|
+| -via-username=`username` | twitter | *none* | no | appends `@username` to the end of the tweet|
