@@ -1,0 +1,22 @@
+{
+  "name": "quickshare",
+  "version": "0.0.0",
+  "description": "A quick and simple way to implement social plugins",
+  "main": "test_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Upstatement/quickshare.git"
+  },
+  "author": "George Nishimura",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Upstatement/quickshare/issues"
+  },
+  "homepage": "https://github.com/Upstatement/quickshare",
+  "devDependencies": {
+    "express": "^4.0.0"
+  }
+}
