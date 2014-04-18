@@ -61,12 +61,13 @@ Share Containers
 
 If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container
 
-	```html
-	<div class='qs-container' data-url='http://specific-url.com'>
-		<a class='qs-link' data-service='twitter'>Twitter</a>
-		<a class='qs-link' data-service='facebook-share'>Facebook</a>
-	</div>
-	```
+```html
+<div class='qs-container' data-url='http://specific-url.com'>
+	<a class='qs-link' data-service='twitter'>Twitter</a>
+	<a class='qs-link' data-service='facebook-share'>Facebook</a>
+</div>
+```
+
 You can use multiple share containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority and can override any 'master' settings.
 
 For example the following will share the link `http://share-url.com`
