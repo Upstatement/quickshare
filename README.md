@@ -21,7 +21,7 @@ To use QuickShare, simply download the script and include it with your script ta
 	<script src="jquery.js"></script>
 	<script src="jquery.quickshare.js"></script>
 
-Then in a <script></script> tag or in your javascript function, include the lines
+Then in a `<script>` tag or in a separate Javascript file include the lines
 
 
 	$(document).ready(function() {
@@ -29,7 +29,7 @@ Then in a <script></script> tag or in your javascript function, include the line
 	});
 
 
-Overarching Implementation
+Implementation
 ---------
 
 QuickShare is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
@@ -40,28 +40,29 @@ If you want to contain QuickShare to look for links only in the body of the page
 
 	$('body').quickShare();
 
-QuickShare does not require any parameters and all settings are configured through the appropriate markup defined in the HTML
-
+The jQuery QuickShare function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
 
 
 Here's the simplest example
 
 	<a class='qs-link' data-service='twitter'>Twitter</a>
 
-This will create a link to post the current url on the page to Twitter, with the message 'Sharing: *http://current-url-of-the-page.com*'
+Boom. This will create a link to post the current url on the page to Twitter with the message
+
+	Sharing: *http://current-url-of-the-page.com*
 
 If you want to share a specific url, you can define the `data-url` attribute
 
 	<a class='qs-link' data-service='twitter' data-url='http://specific-url.com'>Twitter</a>
 
-If you want to share a specific url with a large array of different social media, you can also use a 'master' container
+If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a 'master' container
 
 	<div class='qs-master' data-url='http://specific-url.com'>
 		<a class='qs-link' data-service='twitter' >Twitter</a>
 		<a class='qs-link' data-service='facebook-share'>Facebook</a>
 	</div>
 
-You can use multiple master containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority, and can override any 'master' settings.
+You can use multiple master containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority and can override any 'master' settings.
 
 For example the following will link to *http://child-url.com*
 
