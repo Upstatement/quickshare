@@ -60,9 +60,18 @@
             icon: 'google-plus'
         },
         'email' : {
-        	extractParams: _defaultParams,
+        	extractParams: function($share_link) {
+                var params = _defaultParams($share_link),
+                	mail_body = $share_link.data('mail-body'),
+                	subject = $share_link.data('subject');
+
+                params.mail_body = _setNonEscapedDefault(mail_body, params.src_url);
+                params.subject = _setNonEscapedDefault(subject, params.title);
+
+                return params;
+            },
         	makeUrl: function(params) {
-            	var href_url = "mailto:?body=" + params.src_url + _mightInclude("&subject=",params.title);
+            	var href_url = "mailto:?body=" + params.mail_body + _mightInclude("&subject=",params.subject);
             	return href_url;
             },
             icon: 'envelope-o'
