@@ -98,12 +98,12 @@ And the following will share the link `http://container-url.com`
 
 Share containers currently only have two attributes: `data-url` and `data-title`
 
-Service Customisation Reference
+Attributes Reference
 -------------------------------
 
 Any customisation of the content that gets shared takes the form of data attributes on the link tag.
 
-###Common attributes
+###Common
 
 The following attributes are used for all social media
 
@@ -113,5 +113,16 @@ The url to share. The default is `window.location.href` the current window locat
 
 `data-title`=`'title'`
 
-The title of the content to share.
+The title of the content to share. This field is not always used by every service but it is recommended.
+
+###Twitter
+
+
+###Facebook (sharing)
+
+###Google Plus (sharing)
+
+###E-Mail
+
+
 
