@@ -60,6 +60,7 @@ Share Containers
 -----------------
 
 If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container
+
 	```html
 	<div class='qs-container' data-url='http://specific-url.com'>
 		<a class='qs-link' data-service='twitter'>Twitter</a>
@@ -87,11 +88,17 @@ Share containers currently only have two attributes: `data-url` and `data-title`
 Service Customisation Reference
 -------------------------------
 
-Any customisation of the content that gets shared takes the form of data attributes on the link tag. Below is a table showing what customisation options are available for each service and their defaults.
+Any customisation of the content that gets shared takes the form of data attributes on the link tag.
 
+Common attributes
 
-| Attribute | Service | Default | Container? | Additional Notes |
-| data-url=`url` | All | window.location.href | yes | highly recommmended|
-| data-title=`title` | All* | "Sharing: " | yes | * might not actually be used |
-| data-tweet-body=`message` | twitter | data-title | no | the message body of the tweet|
-| -via-username=`username` | twitter | *none* | no | appends `@username` to the end of the tweet|
+The following attributes are used for all social media
+
+`data-url`=`'url'`
+
+The url to share. The default is `window.location.href` the current window location, although it is highly recommended to override this value as it is better to have descriptive, permanent urls used when sharing on social media.
+
+`data-title`=`'title'`
+
+The title of the content to share.
+
