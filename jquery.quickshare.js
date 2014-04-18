@@ -22,10 +22,11 @@
         'twitter': {
             extractParams: function($share_link) {
                 var params = defaultParams($share_link),
-                	tweet_body = $share_link.data('tweet-body');
+                	tweet_body = $share_link.data('tweet-body'),
+                	via_username = $share_link.data('via_username');
 
                 params.tweet_body = tweet_body? escape(tweet_body) : params.title ;
-                params.via_username = escape($share_link.data('via-username'));
+                params.via_username = via_username? escape(via_username): null;
 
                 return params;
             },
