@@ -1,19 +1,25 @@
 (function($) {
 
-    var might_include = function(name, value) {
-        if (value)
-            return name + value
+    var _mightInclude = function(_name, _value) {
+        if (_value)
+            return _name + _value
         return '';
     };
 
-    var defaultParams = function($share_link) {
-    	var params = {},
-	    	$master = $share_link.parents('.qs-master'),
-	        master_url = $master.data('url'),
-	        master_title = $master.data('title');
+    var _setNonEscapedDefault = function(_value,_default) {
+    	if(_value)
+    		return escape(_value);
+    	return _default;
+    }
 
-    	params.src_url = escape($share_link.data('url') || master_url || window.location.href);
-        params.title = escape($share_link.data('title') || master_title || 'Sharing: ');
+    var _defaultParams = function($share_link) {
+    	var params = {},
+	    	$container = $share_link.parents('.qs-container'),
+	        container_url = $container.data('url'),
+	        container_title = $container.data('title');
+
+    	params.src_url = escape($share_link.data('url') || container_url || window.location.href);
+        params.title = escape($share_link.data('title') || container_title || 'Sharing: ');
 
         return params;
     };
@@ -21,24 +27,24 @@
     var services_lib = {
         'twitter': {
             extractParams: function($share_link) {
-                var params = defaultParams($share_link),
+                var params = _defaultParams($share_link),
                 	tweet_body = $share_link.data('tweet-body'),
                 	via_username = $share_link.data('via_username');
 
-                params.tweet_body = tweet_body? escape(tweet_body) : params.title ;
-                params.via_username = via_username? escape(via_username): null;
+                params.tweet_body = _setNonEscapedDefault(tweet_body, params.title);
+                params.via_username = _setNonEscapedDefault(via_username, null);
 
                 return params;
             },
             makeUrl: function(params) {
-                var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + might_include("&text=", params.tweet_body) + might_include('&via=', params.via_username);
+                var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude("&text=", params.tweet_body) + _mightInclude('&via=', params.via_username);
                 console.log(params.tweet_body);
                 return href_url;
             },
             icon: 'twitter'
         },
         'facebook-share': {
-            extractParams: defaultParams, //facebook scrapes info for sharing
+            extractParams: _defaultParams, //facebook scrapes info for sharing
             makeUrl: function(params) {
                 var href_url = "https://www.facebook.com/sharer/sharer.php?u=" + params.src_url;
                 return href_url;
@@ -46,7 +52,7 @@
             icon: 'facebook'
         },
         'google-plus': {
-            extractParams: defaultParams,
+            extractParams: _defaultParams,
             makeUrl: function(params) {
             	var href_url = "https://plus.google.com/share?url=" + params.src_url;
             	return href_url;
@@ -54,15 +60,15 @@
             icon: 'google-plus'
         },
         'email' : {
-        	extractParams: defaultParams,
+        	extractParams: _defaultParams,
         	makeUrl: function(params) {
-            	var href_url = "mailto:?body=" + params.src_url + might_include("&subject=",params.title);
+            	var href_url = "mailto:?body=" + params.src_url + _mightInclude("&subject=",params.title);
             	return href_url;
             },
             icon: 'envelope-o'
         },
         'default': {
-            extractParams: defaultParams,
+            extractParams: _defaultParams,
             makeUrl: function(params) {
                 console.log('did not provide service to share to');
                 return null;

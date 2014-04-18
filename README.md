@@ -56,33 +56,33 @@ If you want to share a specific url, you can define the `data-url` attribute on 
 	<a class='qs-link' data-service='twitter' data-url='http://specific-url.com'>Twitter</a>
 
 
-'Master' containers
+Share Containers
 -----------------
 
-If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a 'master' container
+If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container
 
-	<div class='qs-master' data-url='http://specific-url.com'>
+	<div class='qs-container' data-url='http://specific-url.com'>
 		<a class='qs-link' data-service='twitter' >Twitter</a>
 		<a class='qs-link' data-service='facebook-share'>Facebook</a>
 	</div>
 
-You can use multiple master containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority and can override any 'master' settings.
+You can use multiple share containers on the same page, but the chain of command is closest to the link has preference. The link tag has ultimate authority and can override any 'master' settings.
 
-For example the following will link to *http://child-url.com*
+For example the following will share the link `http://link-url.com`
 
-	<div class='qs-master' data-url='http://master-url.com'>
-		<a class='qs-link' data-service='twitter' http://child-url.com>Twitter</a>
+	<div class='qs-container' data-url='http://container-url.com'>
+		<a class='qs-link' data-service='twitter' http://link-url.com>Twitter</a>
 	</div>
 
-And the following will link to *http://master-url.com*
+And the following will share the link `http://container-url.com`
 
-	<div class='qs-master' data-url='http://another-master-url.com'>
-		<div class='qs-master' data-url='http://master-url.com'>
+	<div class='qs-container' data-url='http://another-container-url.com'>
+		<div class='qs-container' data-url='http://container-url.com'>
 			<a class='qs-link' data-service='twitter'>Twitter</a>
 		</div>
 	</div>
 
-master containers currently only have two attributes: `data-url` and `data-title`
+Share containers currently only have two attributes: `data-url` and `data-title`
 
 Service Customisation Reference
 -------------------------------
