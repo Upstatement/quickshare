@@ -109,15 +109,15 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 The following attributes are used for all social media
 
-`data-url=`"*url*"
+`data-url="url"`
 
 The url to share. The default is `window.location.href` the current window location, although it is highly recommended to override this value as it is better to have descriptive, permanent urls used when sharing on social media.
 
-`data-title=`"*title*"
+`data-title="title"`
 
 The title of the content to share. This field is not always used by every service but it is recommended that it is defined.
 
-`target=`"*value*"
+`target="value"`
 
 This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/att_a_target.asp) and defines how the link will be opened by the browser (eg in a new window/tab). The possible relevant values for the attribute are:
 
@@ -130,11 +130,11 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*
 
-`data-tweet-body=`"*message*"
+`data-tweet-body="message"`
 
 The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to 'Sharing: '
 
-`data-via-username=`"*username*"
+`data-via-username="username"`
 
 The twitter username for the origin of the message. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore the default is not to be included in the message.
 
@@ -148,7 +148,7 @@ The twitter username for the origin of the message. Will append "via @*username*
 
 ###E-Mail
 
-`data-mail-body=`"*message*"
+`data-mail-body="message"`
 
-`data-subject=`"*subject*"
+`data-subject="subject"`
 
