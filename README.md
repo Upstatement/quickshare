@@ -107,9 +107,7 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 ###Common
 
-The following attributes are used for all social media
-
----
+*The following attributes are used for all social media*
 
 `data-url="http://url"`
 
@@ -142,8 +140,6 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 #####Attributes
 
----
-
 `data-tweet-body="message"`
 
 The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, will default to 'Sharing: '.
@@ -166,6 +162,8 @@ To share content on Facebook, **QuickShare** links to the Facebook share endpoin
 
 *no additional attributes*
 
+---
+
 ###Google Plus (sharing)
 
 `data-service="google-plus-share"`
@@ -175,6 +173,8 @@ To share content on Google Plus, **QuickShare** links to the Google Plus Share e
 #####Attributes
 
 *no additional attributes*
+
+---
 
 ###E-Mail
 
@@ -186,8 +186,6 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 <a href="mailto:receiver@emailclient.com?subject=subject&body=message">
 ```
 #####Attributes
-
----
 
 `data-mail-body="message"`
 
