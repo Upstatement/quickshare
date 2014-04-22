@@ -109,6 +109,8 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 The following attributes are used for all social media
 
+---
+
 `data-url="http://url"`
 
 The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
@@ -126,7 +128,9 @@ The title of the content to share. This field is not always used by every servic
 This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/att_a_target.asp) and defines how the link will be opened by the browser (eg in a new window/tab). The possible relevant values for the attribute are:
 
 * `_blank` - open link in new window or tab
-* `_self` - open link in same window (default)
+* `_self` - open link in same window (default)-
+
+---
 
 ###Twitter
 
@@ -138,6 +142,8 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 #####Attributes
 
+---
+
 `data-tweet-body="message"`
 
 The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, will default to 'Sharing: '.
@@ -147,6 +153,8 @@ The message you want to send. If not defined, it defaults to the value of the `d
 `data-via-username="username"`
 
 The Twitter username intended as the username of the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
+
+---
 
 ###Facebook (sharing)
 
@@ -179,6 +187,8 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 ```
 #####Attributes
 
+---
+
 `data-mail-body="message"`
 
 The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then will default to the value of the `data-url` attribute.
@@ -196,3 +206,5 @@ The subject header of the email.
 The email address of the acount to share to. To add multiple addresses, simply have them comma separated, such as in the example below.
 
 `data-send-to="one@example.com,two@example.com"`
+
+---
