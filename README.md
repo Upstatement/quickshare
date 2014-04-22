@@ -142,11 +142,15 @@ The Twitter username intended as the username of the account who linked the cont
 
 ###Facebook (sharing)
 
+To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
+
 #####Attributes
 
 *no additional attributes*
 
 ###Google Plus (sharing)
+
+To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
 #####Attributes
 
@@ -154,7 +158,9 @@ The Twitter username intended as the username of the account who linked the cont
 
 ###E-Mail
 
-To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. Quickshare uses the URI scheme `mailto`.
+To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means the href value looks like:
+
+``
 
 #####Attributes
 
