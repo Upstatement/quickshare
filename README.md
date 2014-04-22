@@ -14,7 +14,7 @@ Services Supported
 How to Use
 --------------
 
-The goal of **QuickShare** is to have as much of the customisation and mark-up left in the CSS/HTML, free to manipulate without navigating Javascript APIs. It shares content using simple link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of **QuickShare** is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple link tags, with different levels of customisation available depending on the social media plug-in.
 
 To use **QuickShare**, simply download the script and include it with your script tag after including jQuery
 ```html
@@ -41,14 +41,13 @@ Implementation
 $(document).quickShare();
 ```
 
-If you want to contain **QuickShare** to look for links only in the body of the page, you can instead write
+If you want to contain **QuickShare** to look for links only in a specific part of the HTML document, such as the body of the page, you can instead write
 
 ```javascript
 $('body').quickShare();
 ```
 
 The jQuery **QuickShare** function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
-
 
 Here's the simplest example
 
@@ -103,7 +102,7 @@ Share containers currently only have two attributes: `data-url` and `data-title`
 Attributes Reference
 -------------------------------
 
-Any customisation of the content that gets shared takes the form of data attributes on the link tag. The values of the attributes do not have to be fully escaped, but they have to be parseable in HTML as string values.
+Any customisation of the content that gets shared takes the form of data attributes on the link tag. The values of the attributes do not have to be percent-escaped.
 
 ###Common
 
@@ -134,21 +133,19 @@ This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/a
 
 `data-service="twitter"`
 
-To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged in account. The endpoint URL looks like:
-
-`https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*`
+To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account.
 
 #####Attributes
 
 `data-tweet-body="message"`
 
-The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, will default to 'Sharing: '.
+The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, it will default to 'Sharing: '.
 
 ---
 
 `data-via-username="username"`
 
-The Twitter username intended as the username of the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
+The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
 
 ---
 
@@ -180,7 +177,7 @@ To share content on Google Plus, **QuickShare** links to the Google Plus Share e
 
 `data-service="email"`
 
-To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means link tag will look like:
+To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means the  tag will look like:
 
 ```html
 <a href="mailto:receiver@emailclient.com?subject=subject&body=message">
@@ -189,7 +186,7 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 
 `data-mail-body="message"`
 
-The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then will default to the value of the `data-url` attribute.
+The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then it will default to the value of the `data-url` attribute.
 
 ---
 
@@ -201,7 +198,7 @@ The subject header of the email.
 
 `data-send-to="receiver@emailclient.com"`
 
-The email address of the acount to share to. To add multiple addresses, simply have them comma separated, such as in the example below.
+The email address of the account to share to. To add multiple addresses, simply have each address comma separated, such as in the example below.
 
 `data-send-to="one@example.com,two@example.com"`
 
