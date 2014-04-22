@@ -103,15 +103,15 @@ Share containers currently only have two attributes: `data-url` and `data-title`
 Attributes Reference
 -------------------------------
 
-Any customisation of the content that gets shared takes the form of data attributes on the link tag.
+Any customisation of the content that gets shared takes the form of data attributes on the link tag. The values of the attributes do not have to be fully escaped, but they have to be parseable in HTML as string values.
 
 ###Common
 
 The following attributes are used for all social media
 
-`data-url="url"`
+`data-url="http://url"`
 
-The url to share. The default is `window.location.href` the current window location, although it is highly recommended to override this value as it is better to have descriptive, permanent urls used when sharing on social media.
+The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
 
 `data-title="title"`
 
@@ -128,27 +128,44 @@ This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/a
 
 To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged in account. The endpoint URL looks like:
 
-https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*
+`https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*`
+
+#####Attributes
 
 `data-tweet-body="message"`
 
-The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to 'Sharing: '
+The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to 'Sharing: '.
 
 `data-via-username="username"`
 
-The twitter username for the origin of the message. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore the default is not to be included in the message.
+The Twitter username intended as the username of the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
 
 ###Facebook (sharing)
+
+#####Attributes
 
 *no additional attributes*
 
 ###Google Plus (sharing)
 
+#####Attributes
+
 *no additional attributes*
 
 ###E-Mail
 
+To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. Quickshare uses the URI scheme `mailto`.
+
+#####Attributes
+
 `data-mail-body="message"`
+
+The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then will default to the value of the `data-url` attribute.
 
 `data-subject="subject"`
 
+The subject header of the email.
+
+`data-send-to="receiver@emailclient.com"`
+
+The email address of the acount to share to.

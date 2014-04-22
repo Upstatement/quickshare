@@ -72,7 +72,7 @@
                 	mail_body = $share_link.data('mail-body'),
                 	subject = $share_link.data('subject');
 
-                params.mail_body = _setNonEscapedDefault(mail_body, params.src_url);
+                params.mail_body = _setNonEscapedDefault(mail_body, params.title + params.src_url);
                 params.subject = _setNonEscapedDefault(subject, params.title);
 
                 return params;
