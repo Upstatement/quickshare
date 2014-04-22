@@ -1,8 +1,10 @@
 (function($) {
 
+	'use strict';
+
     var _mightInclude = function(_name, _value) {
         if (_value)
-            return _name + _value
+            return _name + _value;
         return '';
     };
 
@@ -10,13 +12,19 @@
     	if(_value)
     		return escape(_value);
     	return _default;
-    }
+    };
+
 
     var _defaultParams = function($share_link) {
     	var params = {},
 	    	$container = $share_link.parents('.qs-container'),
-	        container_url = $container.data('url'),
+	        container_url,
+	        container_title;
+
+	    if($container) {
+	    	container_url = $container.data('url');
 	        container_title = $container.data('title');
+	    }
 
     	params.src_url = escape($share_link.data('url') || container_url || window.location.href);
         params.title = escape($share_link.data('title') || container_title || 'Sharing: ');
@@ -37,8 +45,7 @@
                 return params;
             },
             makeUrl: function(params) {
-                var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude("&text=", params.tweet_body) + _mightInclude('&via=', params.via_username);
-                console.log(params.tweet_body);
+                var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude('&text=', params.tweet_body) + _mightInclude('&via=', params.via_username);
                 return href_url;
             },
             icon: 'twitter'
@@ -46,15 +53,15 @@
         'facebook-share': {
             extractParams: _defaultParams, //facebook scrapes info for sharing
             makeUrl: function(params) {
-                var href_url = "https://www.facebook.com/sharer/sharer.php?u=" + params.src_url;
+                var href_url = 'https://www.facebook.com/sharer/sharer.php?u=' + params.src_url;
                 return href_url;
             },
             icon: 'facebook'
         },
-        'google-plus': {
+        'google-plus-share': {
             extractParams: _defaultParams,
             makeUrl: function(params) {
-            	var href_url = "https://plus.google.com/share?url=" + params.src_url;
+            	var href_url = 'https://plus.google.com/share?url=' + params.src_url;
             	return href_url;
             },
             icon: 'google-plus'
@@ -71,7 +78,7 @@
                 return params;
             },
         	makeUrl: function(params) {
-            	var href_url = "mailto:?body=" + params.mail_body + _mightInclude("&subject=",params.subject);
+            	var href_url = 'mailto:?body=' + params.mail_body + _mightInclude('&subject=',params.subject);
             	return href_url;
             },
             icon: 'envelope-o'
@@ -87,7 +94,6 @@
 
     $.fn.quickShare = function(args) {
 
-    	console.log('quickShare() called');
 
         var $scope = $(this),
             $qslinks = $scope.find('.qs-link');
@@ -104,10 +110,9 @@
             if(icon)
             	icon.addClass('fa fa-' + service.icon);
 
-            console.log(service_name);
-            console.log(icon);
-
         });
+
+        return true;
     };
 
 })(jQuery);
