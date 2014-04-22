@@ -21,7 +21,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-qunit": "^0.4.0",
-    // "grunt-browserstack-tunnel": "^0.1.0",
     "grunt-express-server": "^0.4.17"
   }
 }

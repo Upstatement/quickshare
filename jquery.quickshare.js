@@ -37,7 +37,7 @@
             extractParams: function($share_link) {
                 var params = _defaultParams($share_link),
                 	tweet_body = $share_link.data('tweet-body'),
-                	via_username = $share_link.data('via_username');
+                	via_username = $share_link.data('via-username');
 
                 params.tweet_body = _setNonEscapedDefault(tweet_body, params.title);
                 params.via_username = _setNonEscapedDefault(via_username, null);

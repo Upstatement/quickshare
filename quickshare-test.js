@@ -16,7 +16,8 @@
 		title_only_tag = '-t',
 		url_only_tag = '-u',
 		url_and_title_tag = '-ut',
-		no_title_no_url_tag = '-x';
+		no_title_no_url_tag = '-x',
+		default_title = escape('Sharing: ');
 
 	module('facebook-share tests', _test_setup);
 
@@ -78,7 +79,15 @@
 	module('twitter tests', _test_setup);
 
 	var twitter_share_url = 'https://twitter.com/intent/tweet?url=',
-		twitter_class_id = '.test-tw';
+		twitter_class_id = '.test-tw',
+		via_tag = '-v',
+		tweet_body_tag = '-tb',
+		via_param = '&via=',
+		tweet_body_param = '&text=',
+		tweet_body_text = escape('This is my 1st sharing!!! : '),
+		via_username = escape('thetmkay'),
+		twitter_no_container_title = escape('tw no container'),
+		twitter_with_container_title = escape('tw with container');
 
 
 	//without container
@@ -86,69 +95,87 @@
 	test('tw no container with url + title', function() {
 		var $link = $(twitter_class_id + no_container_tag + url_and_title_tag);
 		$link.click();
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_no_container_title);
 	});
 
 	test('tw no container with url + no title', function() {
 		var $link = $(twitter_class_id + no_container_tag + url_only_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + default_title);
 	});
 
 	test('tw no container with url + title + tweet_body', function() {
-		var $link = $(twitter_class_id + no_container_tag + url_and_title_tag);
+		var $link = $(twitter_class_id + no_container_tag + url_and_title_tag + tweet_body_tag);
 		$link.click();
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + tweet_body_text);
 	});
 
 	test('tw no container with url + no title + tweet_body', function() {
-		var $link = $(twitter_class_id + no_container_tag + url_only_tag);
+		var $link = $(twitter_class_id + no_container_tag + url_only_tag + tweet_body_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + tweet_body_text);
 	});
 
 	test('tw no container with url + title + via', function() {
 		var $link = $(twitter_class_id + no_container_tag + url_and_title_tag + via_tag);
 		$link.click();
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_no_container_title + via_param + via_username);
 	});
 
 	test('tw no container with no url + no title', function() {
 		var $link = $(twitter_class_id + no_container_tag + no_title_no_url_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + localhost_url);
+		equal($link.attr('href'), twitter_share_url + localhost_url + tweet_body_param + default_title);
 	});
 
 	test('tw no container with no url + title', function() {
 		var $link = $(twitter_class_id + no_container_tag + title_only_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + localhost_url);
+		equal($link.attr('href'), twitter_share_url + localhost_url + tweet_body_param + twitter_no_container_title);
 	});
 
 	//with container
 
 	test('tw with container with url + title', function() {
 		var $link = $(twitter_class_id + container_tag + url_and_title_tag);
-		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url + 'twitter');
+		$link.click();
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_with_container_title);
 	});
 
-	test('tw with container with url + no title', function() {
+	test('tw with container with url + with title', function() {
 		var $link = $(twitter_class_id + container_tag + url_only_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_with_container_title);
+	});
+
+	test('tw with container with url + title + tweet_body', function() {
+		var $link = $(twitter_class_id + container_tag + url_and_title_tag + tweet_body_tag);
+		$link.click();
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + tweet_body_text);
+	});
+
+	test('tw with container with url + no title + tweet_body', function() {
+		var $link = $(twitter_class_id + container_tag + url_only_tag + tweet_body_tag);
+		$link.trigger('click');
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + tweet_body_text);
+	});
+
+	test('tw with container with url + title + via', function() {
+		var $link = $(twitter_class_id + container_tag + url_and_title_tag + via_tag);
+		$link.click();
+		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_with_container_title + via_param + via_username);
 	});
 
 	test('tw with container with no url + no title', function() {
 		var $link = $(twitter_class_id + container_tag + no_title_no_url_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url + container_param + 'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url + container_param + "twitter" +  tweet_body_param + twitter_with_container_title);
 	});
 
 	test('tw with container with no url + title', function() {
 		var $link = $(twitter_class_id + container_tag + title_only_tag);
 		$link.trigger('click');
-		equal($link.attr('href'), twitter_share_url + test_site_url + container_param + 'twitter');
+		equal($link.attr('href'), twitter_share_url + test_site_url + container_param + "twitter" + tweet_body_param + twitter_with_container_title);
 	});
 
 	module('google-plus-share tests', _test_setup);
