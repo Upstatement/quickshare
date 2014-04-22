@@ -4,6 +4,38 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+      options: {
+        separator: ';\n'
+      },
+      build : {
+        src: ['build/utilities.js','build/services/*.js','build/quickshare.js'],
+        dest: 'build/quickshare_concat.js',
+        nonull: true
+      }
+    },
+    uglify: {
+      build: {
+        files: {
+          'build.jquery.quickshare.js': ['build/quickshare_concat.js']
+        },
+        options: {
+          enclose: {
+            'jQuery' : '$'
+          },
+          beautify: true,
+          compress: false,
+        }
+      },
+      compress: {
+        files: {
+          'build.jquery.quickshare.min.js': ['build.jquery.quickshare.js']
+        },
+        options: {
+          compress: true
+        }
+      }
+    },
     qunit: {
       all: {
         options: {
@@ -26,10 +58,12 @@ module.exports = function(grunt) {
     //   },
     // },
     jshint: {
-      files: ['jquery.quickshare.js', 'quickshare-test.js'],
+      files: ['build/**/*.js','jquery.quickshare.js', 'quickshare-test.js'],
       options: {
         // options here to override JSHint defaults
         nonstandard: true,
+        sub: true,
+        ignores: ['build/quickshare_concat.js'],
         globals: {
           jQuery: true,
           'console': true,
@@ -58,7 +92,7 @@ module.exports = function(grunt) {
     },
     watch: {
       files: ['<%= jshint.files %>'],
-      tasks: ['jshint', 'express:dev'],
+      tasks: ['build','jshint', 'express:dev'],
       options: {
         spawn: false
       }
@@ -70,9 +104,13 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   // grunt.loadNpmTasks('grunt-browserstack-tunnel');
   grunt.loadNpmTasks('grunt-express-server');
+  grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('test', ['jshint', 'express:test', 'qunit', 'watch']);
+  grunt.registerTask('build', ['concat:build', 'uglify:build']);
 
-  grunt.registerTask('default', ['jshint', 'express:dev', 'watch']);
+  grunt.registerTask('test', ['build','jshint', 'express:test', 'qunit', 'watch']);
+
+  grunt.registerTask('default', ['build','jshint', 'express:dev', 'watch']);
 
 };
