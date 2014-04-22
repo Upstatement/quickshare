@@ -126,6 +126,8 @@ This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/a
 
 ###Twitter
 
+`data-service="twitter"`
+
 To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged in account. The endpoint URL looks like:
 
 `https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*`
@@ -134,7 +136,7 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 `data-tweet-body="message"`
 
-The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to 'Sharing: '.
+The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, will default to 'Sharing: '.
 
 `data-via-username="username"`
 
@@ -142,7 +144,9 @@ The Twitter username intended as the username of the account who linked the cont
 
 ###Facebook (sharing)
 
-To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
+`data-service="facebook-share"`
+
+To share content on Facebook, **QuickShare** links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
 #####Attributes
 
@@ -150,7 +154,9 @@ To share content on Facebook, QuickShare links to the Facebook share endpoint, w
 
 ###Google Plus (sharing)
 
-To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
+`data-service="google-plus-share"`
+
+To share content on Google Plus, **QuickShare** links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
 #####Attributes
 
@@ -158,10 +164,13 @@ To share content on Google Plus, QuickShare links to the Google Plus Share endpo
 
 ###E-Mail
 
-To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means the href value looks like:
+`data-service="email"`
 
-``
+To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means link tag will look like:
 
+```html
+<a href="mailto:receiver@emailclient.com?subject=subject&body=message">
+```
 #####Attributes
 
 `data-mail-body="message"`
@@ -174,4 +183,6 @@ The subject header of the email.
 
 `data-send-to="receiver@emailclient.com"`
 
-The email address of the acount to share to.
+The email address of the acount to share to. To add multiple addresses, simply have them comma separated, such as in the example below.
+
+`data-send-to="one@example.com,two@example.com"`
