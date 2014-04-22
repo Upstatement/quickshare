@@ -113,13 +113,13 @@ The following attributes are used for all social media
 
 The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
 
-
+---
 
 `data-title="title"`
 
 The title of the content to share. This field is not always used by every service but it is recommended that it is defined.
 
-
+---
 
 `target="value"`
 
@@ -142,7 +142,7 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, will default to 'Sharing: '.
 
-
+---
 
 `data-via-username="username"`
 
@@ -183,13 +183,13 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 
 The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then will default to the value of the `data-url` attribute.
 
-
+---
 
 `data-subject="subject"`
 
 The subject header of the email.
 
-
+---
 
 `data-send-to="receiver@emailclient.com"`
 
