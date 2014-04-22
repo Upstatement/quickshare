@@ -28,7 +28,7 @@
 
 	test('fb-s no container with url + title', function() {
 		var $link = $(facebook_class_id + no_container_tag + url_and_title_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), facebook_share_url + test_site_url +'facebook');
 	});
 
@@ -94,7 +94,7 @@
 
 	test('tw no container with url + title', function() {
 		var $link = $(twitter_class_id + no_container_tag + url_and_title_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_no_container_title);
 	});
 
@@ -138,7 +138,7 @@
 
 	test('tw with container with url + title', function() {
 		var $link = $(twitter_class_id + container_tag + url_and_title_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_with_container_title);
 	});
 
@@ -150,7 +150,7 @@
 
 	test('tw with container with url + title + tweet_body', function() {
 		var $link = $(twitter_class_id + container_tag + url_and_title_tag + tweet_body_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + tweet_body_text);
 	});
 
@@ -162,7 +162,7 @@
 
 	test('tw with container with url + title + via', function() {
 		var $link = $(twitter_class_id + container_tag + url_and_title_tag + via_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), twitter_share_url + test_site_url +'twitter' + tweet_body_param + twitter_with_container_title + via_param + via_username);
 	});
 
@@ -187,7 +187,7 @@
 
 	test('gp-s no container with url + title', function() {
 		var $link = $(google_plus_class_id + no_container_tag + url_and_title_tag);
-		$link.click();
+		$link.trigger('click');
 		equal($link.attr('href'), google_plus_share_url + test_site_url +'google-plus');
 	});
 
@@ -237,8 +237,6 @@
 
 	module('container tests', _test_setup);
 
-	test( 'hello test', function() {
-	  ok( 1 == '1', 'Passed!' );
-	});
+	console.log("done testing");
 
 })(jQuery);
