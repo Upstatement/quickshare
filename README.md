@@ -1,7 +1,7 @@
 QuickShare
 ==========
 
-QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content.
+**QuickShare** is a simple and quick JS library to share content through social media services with near full control on style and content.
 
 Services Supported
 ------------------
@@ -14,9 +14,9 @@ Services Supported
 How to Use
 --------------
 
-The goal of QuickShare is to have as much of the customisation and mark-up left in the CSS/HTML, free to manipulate without navigating Javascript APIs. It shares content using simple link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of **QuickShare** is to have as much of the customisation and mark-up left in the CSS/HTML, free to manipulate without navigating Javascript APIs. It shares content using simple link tags, with different levels of customisation available depending on the social media plug-in.
 
-To use QuickShare, simply download the script and include it with your script tag after including jQuery
+To use **QuickShare**, simply download the script and include it with your script tag after including jQuery
 ```html
 <script src="jquery.js"></script>
 <script src="jquery.quickshare.js"></script>
@@ -30,22 +30,24 @@ $(document).ready(function() {
 });
 ```
 
+**QuickShare** goes through your HTML and adds or updates the `href` attribute to the correct share endpoint. Technically, the user does not have to write anything outside of a HTML file to use all of **QuickShare's** features, and the above javascript snippet is the only javascript that is used.
+
 Implementation
 ---------
 
-QuickShare is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
+**QuickShare** is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
 
 ```javascript
 $(document).quickShare();
 ```
 
-If you want to contain QuickShare to look for links only in the body of the page, you can instead write
+If you want to contain **QuickShare** to look for links only in the body of the page, you can instead write
 
 ```javascript
 $('body').quickShare();
 ```
 
-The jQuery QuickShare function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
+The jQuery **QuickShare** function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
 
 
 Here's the simplest example
@@ -107,27 +109,27 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 The following attributes are used for all social media
 
-`data-url='*url*'`
+`data-url=`*url*
 
 The url to share. The default is `window.location.href` the current window location, although it is highly recommended to override this value as it is better to have descriptive, permanent urls used when sharing on social media.
 
-`data-title='*title*'`
+`data-title=`*title*
 
 The title of the content to share. This field is not always used by every service but it is recommended.
 
 ###Twitter
 
-To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged in account. The endpoint URL looks like
+To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged in account. The endpoint URL looks like:
 
-`https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*`
+https://twitter.com/intent/tweet?url=*url*&text=*message*&via=*username*
 
-`data-tweet-body='*message*'`
+`data-tweet-body=`'*message*'
 
-The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to `Sharing: `
+The message you want to send. If not defined, it defaults to the value of the `data-title` attribute. If that is also not defined, will default to 'Sharing: '
 
-`data-via-username='*username*'`
+`data-via-username=`*username*'
 
-The twitter username for the origin of the message. Will append `via @*username*` to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore the default is not to be included in the message.
+The twitter username for the origin of the message. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore the default is not to be included in the message.
 
 ###Facebook (sharing)
 
@@ -139,7 +141,7 @@ The twitter username for the origin of the message. Will append `via @*username*
 
 ###E-Mail
 
-`data-mail-body='*message*'`
+`data-mail-body=`*message*
 
-`data-subject='*subject*'`
+`data-subject=`*subject*
 
