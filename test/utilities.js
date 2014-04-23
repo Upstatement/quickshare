@@ -45,7 +45,7 @@ var class_tags = {
 	fb_share: '.test-fbs',
 	gp_share: '.test-gps',
 	twitter: '.test-tw',
-	email: '.test-em'
+	email: '.test-mt'
 };
 
 var _test = function(test_params) {

@@ -18,20 +18,6 @@
         return b;
     };
     var e = {};
-    e["email"] = {
-        extractParams: function(a) {
-            var b = d(a), e = a.data("mail-body"), f = a.data("subject"), g = a.data("send-to");
-            b.mail_body = c(e, b.title + " " + b.src_url);
-            b.subject = c(f, b.title);
-            b.send_to = escape(g);
-            return b;
-        },
-        makeUrl: function(a) {
-            var c = "mailto:" + a.send_to + b("?body=", a.mail_body) + b("&subject=", a.subject);
-            return c;
-        },
-        icon: "envelope-o"
-    };
     e["facebook-share"] = {
         extractParams: d,
         makeUrl: function(a) {
@@ -47,6 +33,20 @@
             return b;
         },
         icon: "google-plus"
+    };
+    e["mailto"] = {
+        extractParams: function(a) {
+            var b = d(a), e = a.data("mail-body"), f = a.data("subject"), g = a.data("send-to");
+            b.mail_body = c(e, b.title + " " + b.src_url);
+            b.subject = c(f, b.title);
+            b.send_to = escape(g);
+            return b;
+        },
+        makeUrl: function(a) {
+            var c = "mailto:" + a.send_to + b("?body=", a.mail_body) + b("&subject=", a.subject);
+            return c;
+        },
+        icon: "envelope-o"
     };
     e["twitter"] = {
         extractParams: function(a) {

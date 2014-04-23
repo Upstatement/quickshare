@@ -30,7 +30,25 @@ var _defaultParams = function($share_link) {
 
 var services_lib = {};
 ;
-services_lib['email'] = {
+services_lib['facebook-share'] = {
+    extractParams: _defaultParams, //facebook scrapes info for sharing
+    makeUrl: function(params) {
+        var href_url = 'https://www.facebook.com/sharer/sharer.php?u=' + params.src_url;
+        return href_url;
+    },
+    icon: 'facebook'
+};
+;
+services_lib['google-plus-share'] = {
+    extractParams: _defaultParams,
+    makeUrl: function(params) {
+    	var href_url = 'https://plus.google.com/share?url=' + params.src_url;
+    	return href_url;
+    },
+    icon: 'google-plus'
+};
+;
+services_lib['mailto'] = {
 	extractParams: function($share_link) {
         var params = _defaultParams($share_link),
         	mail_body = $share_link.data('mail-body'),
@@ -48,24 +66,6 @@ services_lib['email'] = {
     	return href_url;
     },
     icon: 'envelope-o'
-};
-;
-services_lib['facebook-share'] = {
-    extractParams: _defaultParams, //facebook scrapes info for sharing
-    makeUrl: function(params) {
-        var href_url = 'https://www.facebook.com/sharer/sharer.php?u=' + params.src_url;
-        return href_url;
-    },
-    icon: 'facebook'
-};
-;
-services_lib['google-plus-share'] = {
-    extractParams: _defaultParams,
-    makeUrl: function(params) {
-    	var href_url = 'https://plus.google.com/share?url=' + params.src_url;
-    	return href_url;
-    },
-    icon: 'google-plus'
 };
 ;
 services_lib['twitter'] = {

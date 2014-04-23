@@ -1,7 +1,7 @@
 QuickShare
 ==========
 
-QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content with **almost no javascript needing to be written**.
+QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content and **almost no javascript needing to be written**.
 
 Services Supported
 ------------------
@@ -14,7 +14,7 @@ Services Supported
 How to Use
 --------------
 
-The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
 
 To use QuickShare, simply download the script and include it with your script tag **after** including jQuery
 
@@ -23,7 +23,7 @@ To use QuickShare, simply download the script and include it with your script ta
 <script src="jquery.quickshare.js"></script>
 ```
 
-Then in a `<script>` tag or in a separate Javascript file include the lines
+Then in a `<script>` tag or in a separate javascript file include the lines
 
 ```javascript
 $(document).ready(function() {
@@ -50,6 +50,8 @@ $('body').quickShare();
 
 The jQuery QuickShare function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
 
+To define a link as a share link, add the class attribute `qs-link` to the link tag.
+
 Here's the simplest example
 
 ```html
@@ -69,7 +71,9 @@ If you want to share a specific url, you can define the `data-url` attribute on 
 Share Containers
 -----------------
 
-If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container
+If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container, using a parent HTML element with the class attribute `qs-container`.
+
+Here's a simple example
 
 ```html
 <div class="qs-container" data-url="http://specific-url.com">
@@ -113,30 +117,28 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 `data-url="http://url"`
 
-The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
+The url to share. The default is the value of `window.location.href`, the current window's url, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
 
 ##### Title
 
 `data-title="title"`
 
-The title of the content to share. This field is not always used by every service but it is recommended that it is defined.
+The title of the content to share. This field is not always used by every service but it is recommended that it is defined. The default is `Sharing: `.
 
 ##### Target
 
 `target="value"`
 
-This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/att_a_target.asp) and defines how the link will be opened by the browser (eg in a new window/tab). The possible relevant values for the attribute are:
+This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/att_a_target.asp) and tells the browser how the link should be opened (eg in a new window/tab). The possible relevant values for the attribute are:
 
 * `_blank` - open link in new window or tab
-* `_self` - open link in same window (default)-
-
----
+* `_self` - open link in same window (default)
 
 ###Twitter
 
 `data-service="twitter"`
 
-To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account.
+To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account, with a fully customisible message.
 
 ####Attributes
 
@@ -144,19 +146,19 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 `data-tweet-body="message"`
 
-The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, it will default to 'Sharing: '.
+The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute.
 
 ##### Via Username
 
 `data-via-username="username"`
 
-The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
+The Twitter username intended as the account who sourced the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
 
 ###Facebook (sharing)
 
 `data-service="facebook-share"`
 
-To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
+To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a new post dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their ['Sharing Best Practices' guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
 ####Attributes
 
@@ -166,7 +168,7 @@ To share content on Facebook, QuickShare links to the Facebook share endpoint, w
 
 `data-service="google-plus-share"`
 
-To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
+To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (thumbnail, etc) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
 ####Attributes
 
@@ -174,7 +176,7 @@ To share content on Google Plus, QuickShare links to the Google Plus Share endpo
 
 ###E-Mail
 
-`data-service="email"`
+`data-service="mailto"`
 
 To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. QuickShare uses the URI scheme `mailto`, which means the  tag will look like:
 
