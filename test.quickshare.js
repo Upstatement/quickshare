@@ -12,27 +12,37 @@
         url_title: "-ut",
         no_url_no_title: "-x",
         via: "-v",
-        tweet_body: "-tb"
+        tweet_body: "-tb",
+        mail_body: "-mb",
+        subject: "-s",
+        send_to: "-st",
+        multiple: "N",
+        blank: "B"
     };
     var d = {
         test_e: escape("http://www.test.com/"),
         localhost_e: escape("http://localhost:3000/qs_test.html"),
         fb_share: "https://www.facebook.com/sharer/sharer.php?u=",
         twitter: "https://twitter.com/intent/tweet?url=",
-        gp_share: "https://plus.google.com/share?url="
+        gp_share: "https://plus.google.com/share?url=",
+        email: "mailto:"
     };
     var e = {
         via: "&via=",
         tweet_body: "&text=",
         container: escape("container/"),
+        mail_body: "body=",
+        subject: "&subject=",
         fb_share: "facebook",
         gp_share: "google-plus",
-        twitter: "twitter"
+        twitter: "twitter",
+        email: "email"
     };
     var f = {
         fb_share: ".test-fbs",
         gp_share: ".test-gps",
-        twitter: ".test-tw"
+        twitter: ".test-tw",
+        email: ".test-em"
     };
     var g = function(b) {
         test(b.name, function() {

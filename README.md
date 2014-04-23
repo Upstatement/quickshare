@@ -108,17 +108,19 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 *The following attributes are used for all social media*
 
+#### URL
+
 `data-url="http://url"`
 
 The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
 
----
+#### Title
 
 `data-title="title"`
 
 The title of the content to share. This field is not always used by every service but it is recommended that it is defined.
 
----
+#### Target
 
 `target="value"`
 
@@ -137,17 +139,17 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 #####Attributes
 
+#### Tweet Body
+
 `data-tweet-body="message"`
 
 The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, it will default to 'Sharing: '.
 
----
+#### Via Username
 
 `data-via-username="username"`
 
 The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
-
----
 
 ###Facebook (sharing)
 
@@ -159,8 +161,6 @@ To share content on Facebook, **QuickShare** links to the Facebook share endpoin
 
 *no additional attributes*
 
----
-
 ###Google Plus (sharing)
 
 `data-service="google-plus-share"`
@@ -171,8 +171,6 @@ To share content on Google Plus, **QuickShare** links to the Google Plus Share e
 
 *no additional attributes*
 
----
-
 ###E-Mail
 
 `data-service="email"`
@@ -182,19 +180,21 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 ```html
 <a href="mailto:receiver@emailclient.com?subject=subject&body=message">
 ```
-#####Attributes
+####Attributes
+
+####Mail Body
 
 `data-mail-body="message"`
 
-The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute. If `data-title` is not defined, then it will default to the value of the `data-url` attribute.
+The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute.
 
----
+####Subject
 
 `data-subject="subject"`
 
-The subject header of the email.
+The subject header of the email. This defaults to the value of the `data-title` attribute
 
----
+####Send To
 
 `data-send-to="receiver@emailclient.com"`
 
@@ -202,4 +202,3 @@ The email address of the account to share to. To add multiple addresses, simply 
 
 `data-send-to="one@example.com,two@example.com"`
 
----

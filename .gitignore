@@ -25,5 +25,7 @@ build/Release
 node_modules
 
 #build scripts
-build.jquery.quickshare.js
-build/quickshare_concat.js
+jquery.quickshare.js
+build/quickshare.concat.js
+test/quickshare.concat.js
+test.quickshare.js

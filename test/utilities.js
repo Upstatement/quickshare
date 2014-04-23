@@ -34,7 +34,7 @@ var url_params = {
 	tweet_body: '&text=',
 	container: escape('container/'),
 	mail_body: 'body=',
-	subject: '&subject='
+	subject: '&subject=',
 	fb_share: 'facebook',
 	gp_share: 'google-plus',
 	twitter: 'twitter',
