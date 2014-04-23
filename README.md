@@ -50,7 +50,7 @@ $('body').quickShare();
 
 The jQuery quickShare() function does not require any parameters as all settings are configured through the appropriate markup defined in the HTML document.
 
-To define a link as a share link, add the class attribute `qs-link` to the link tag.
+To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-service` attribute (see the reference below for more details).
 
 Here's the simplest example
 
