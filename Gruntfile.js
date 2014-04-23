@@ -133,7 +133,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-qunit');
   grunt.loadNpmTasks('grunt-contrib-watch');
-  // grunt.loadNpmTasks('grunt-browserstack-tunnel');
   grunt.loadNpmTasks('grunt-express-server');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -141,7 +140,7 @@ module.exports = function(grunt) {
   grunt.registerTask('build', ['concat:build', 'uglify:build']);
 
   grunt.registerTask('testbuild', ['concat:test', 'uglify:test']);
-
+  grunt.registerTask('minify', ['uglify:compress']);
   grunt.registerTask('test', ['testbuild', 'build','jshint', 'express:test', 'qunit', 'watch:test']);
 
   grunt.registerTask('default', ['build','jshint', 'express:dev', 'watch:dev']);
