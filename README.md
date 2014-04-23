@@ -1,7 +1,7 @@
 QuickShare
 ==========
 
-QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content and **almost no javascript needing to be written**.
+QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content **without any JavaScript needing to be written**.
 
 Services Supported
 ------------------
@@ -14,7 +14,7 @@ Services Supported
 How to Use
 --------------
 
-The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating JavaScript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
 
 To use QuickShare, simply download the script and include it with your script tag **after** including jQuery
 
@@ -23,7 +23,7 @@ To use QuickShare, simply download the script and include it with your script ta
 <script src="jquery.quickshare.js"></script>
 ```
 
-Then in a `<script>` tag or in a separate javascript file include the lines
+Then in a `<script>` tag or in a separate JavaScript file include the lines
 
 ```javascript
 $(document).ready(function() {
@@ -31,7 +31,7 @@ $(document).ready(function() {
 });
 ```
 
-QuickShare goes through your HTML and adds or updates the `href` attribute to the correct share endpoint url. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above javascript snippet is the only javascript that is needed.
+QuickShare goes through your HTML and adds or updates the `href` attribute to the correct share endpoint URL. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above snippet is the only JavaScript that is needed.
 
 Implementation
 ---------
@@ -62,7 +62,7 @@ Here's the simplest example
 
 	Sharing: *current-url-of-the-page*
 
-If you want to share a specific url, you can define the `data-url` attribute on the link tag
+If you want to share a specific URL, you can define the `data-url` attribute on the link tag
 
 ```html
 <a class="qs-link" data-service="twitter" data-url="http://specific-url.com">Twitter</a>
@@ -71,7 +71,7 @@ If you want to share a specific url, you can define the `data-url` attribute on 
 Share Containers
 -----------------
 
-If you want to share a specific url with an array of different social media options, you can avoid duplicated data attribute tags by using a share container, using a parent HTML element with the class attribute `qs-container`.
+If you want to share a specific URL with an array of different social media options, you can avoid duplicated data attribute tags by using a share container, using a parent HTML element with the class attribute `qs-container`.
 
 Here's a simple example
 
@@ -117,7 +117,7 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 `data-url="http://url"`
 
-The url to share. The default is the value of `window.location.href`, the current window's url, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
+The url to share. The default is the value of `window.location.href`, the current window's URL, although it is highly recommended to override this value as it is better to have a descriptive, permanent URL used when sharing on social media.
 
 ##### Title
 
@@ -158,7 +158,7 @@ The Twitter username intended as the account who sourced the content. Will appen
 
 `data-service="facebook-share"`
 
-To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a new post dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their ['Sharing Best Practices' guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
+To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a new post dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared URL. To learn how to optimize for Facebook's Open Graph, visit their ['Sharing Best Practices' guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
 ####Attributes
 
@@ -168,7 +168,7 @@ To share content on Facebook, QuickShare links to the Facebook share endpoint, w
 
 `data-service="google-plus-share"`
 
-To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (thumbnail, etc) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
+To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (thumbnail, etc) attached to the post based on the shared URL, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
 ####Attributes
 
@@ -247,11 +247,11 @@ Note in order for QuickShare to work, any replacement jQuery library would requi
 
 ####QuickShare
 
-If you do not intend to use all of the social media plug-ins available through QuickShare, a really simple way of reducing the size and clutter of the library is to remove the unnecessary code for unused social plug-ins. In order to do this, first you will need to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own javascript file in the `build/services` directory.
+If you do not intend to use all of the social media plug-ins available through QuickShare, a really simple way of reducing the size and clutter of the library is to remove the unnecessary code for unused social plug-ins. In order to do this, first you will need to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own JavaScript file in the `build/services` directory.
 
 Go in to the Gruntfile and look for the lines:
 
-```javascript
+```JavaScript
 concat: {
       options: {
         separator: ';\n'
@@ -265,7 +265,7 @@ concat: {
 
 Edit the line beginning with `src`. For example, if you only want to include Twitter, edit it to say
 
-```javascript
+```JavaScript
 src: ['build/utilities.js','build/services/twitter.js','build/quickshare.js']
 ```
 
