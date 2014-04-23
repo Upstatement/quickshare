@@ -10,14 +10,31 @@ module.exports = function(grunt) {
       },
       build : {
         src: ['build/utilities.js','build/services/*.js','build/quickshare.js'],
-        dest: 'build/quickshare_concat.js',
+        dest: 'build/quickshare.concat.js',
+        nonull: true
+      },
+      test : {
+        src: ['test/utilities.js','test/services/*.js'],
+        dest: 'test/quickshare.concat.js',
         nonull: true
       }
     },
     uglify: {
       build: {
         files: {
-          'build.jquery.quickshare.js': ['build/quickshare_concat.js']
+          'jquery.quickshare.js': ['build/quickshare.concat.js']
+        },
+        options: {
+          enclose: {
+            'jQuery' : '$'
+          },
+          beautify: true,
+          compress: false,
+        }
+      },
+      test: {
+        files: {
+          'test.quickshare.js': ['test/quickshare.concat.js']
         },
         options: {
           enclose: {
@@ -29,7 +46,7 @@ module.exports = function(grunt) {
       },
       compress: {
         files: {
-          'build.jquery.quickshare.min.js': ['build.jquery.quickshare.js']
+          'jquery.quickshare.min.js': ['jquery.quickshare.js']
         },
         options: {
           compress: true
@@ -41,7 +58,8 @@ module.exports = function(grunt) {
         options: {
           urls: [
             'http://localhost:3000/qs_test.html'
-          ]
+          ],
+          force: true
         }
       }
     },
@@ -58,19 +76,26 @@ module.exports = function(grunt) {
     //   },
     // },
     jshint: {
-      files: ['build/**/*.js','jquery.quickshare.js', 'quickshare-test.js'],
+      dev: {
+        src: ['build/**/*.js','jquery.quickshare.js'],
+      },
+      test: {
+        src: ['test/**/*.js','test.quickshare.js'],
+      },
       options: {
-        // options here to override JSHint defaults
-        nonstandard: true,
-        sub: true,
-        ignores: ['build/quickshare_concat.js'],
+        nonstandard: true, //allow escape
+        sub: true, //allow [] notation for objects
         globals: {
           jQuery: true,
           'console': true,
           'module': true,
           'document': true,
-          'window':true
-        }
+          'window':true,
+          'test': true,
+          'equal': true,
+          '$': true
+        },
+        ignores: ['**/*.concat.js']
       }
     },
     express: {
@@ -91,8 +116,14 @@ module.exports = function(grunt) {
       }
     },
     watch: {
-      files: ['<%= jshint.files %>'],
-      tasks: ['build','jshint', 'express:dev'],
+      dev: {
+        files: ['<%= jshint.dev.files %>'],
+        tasks: ['build','jshint', 'express:dev'],
+      },
+      test : {
+        files: ['<%= jshint.dev.src %>', '<%= jshint.test.src %>'],
+        tasks: ['testbuild', 'build','jshint', 'express:test', 'qunit'],
+      },
       options: {
         spawn: false
       }
@@ -109,8 +140,10 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', ['concat:build', 'uglify:build']);
 
-  grunt.registerTask('test', ['build','jshint', 'express:test', 'qunit', 'watch']);
+  grunt.registerTask('testbuild', ['concat:test', 'uglify:test']);
 
-  grunt.registerTask('default', ['build','jshint', 'express:dev', 'watch']);
+  grunt.registerTask('test', ['testbuild', 'build','jshint', 'express:test', 'qunit', 'watch:test']);
+
+  grunt.registerTask('default', ['build','jshint', 'express:dev', 'watch:dev']);
 
 };

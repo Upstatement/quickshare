@@ -1,118 +1,51 @@
-(function($) {
-
-	'use strict';
-
-    var _mightInclude = function(_name, _value) {
-        if (_value)
-            return _name + _value;
-        return '';
+(function(a) {
+    var b = function(a, b) {
+        if (b) return a + b;
+        return "";
     };
-
-    var _setNonEscapedDefault = function(_value,_default) {
-    	if(_value)
-    		return escape(_value);
-    	return _default;
+    var c = function(a, b) {
+        if (a) return escape(a);
+        return b;
     };
-
-
-    var _defaultParams = function($share_link) {
-    	var params = {},
-	    	$container = $share_link.parents('.qs-container'),
-	        container_url,
-	        container_title;
-
-	    if($container) {
-	    	container_url = $container.data('url');
-	        container_title = $container.data('title');
-	    }
-
-    	params.src_url = escape($share_link.data('url') || container_url || window.location.href);
-        params.title = escape($share_link.data('title') || container_title || 'Sharing: ');
-
-        return params;
-    };
-
-    var services_lib = {
-        'twitter': {
-            extractParams: function($share_link) {
-                var params = _defaultParams($share_link),
-                	tweet_body = $share_link.data('tweet-body'),
-                	via_username = $share_link.data('via-username');
-
-                params.tweet_body = _setNonEscapedDefault(tweet_body, params.title);
-                params.via_username = _setNonEscapedDefault(via_username, null);
-
-                return params;
-            },
-            makeUrl: function(params) {
-                var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude('&text=', params.tweet_body) + _mightInclude('&via=', params.via_username);
-                return href_url;
-            },
-            icon: 'twitter'
-        },
-        'facebook-share': {
-            extractParams: _defaultParams, //facebook scrapes info for sharing
-            makeUrl: function(params) {
-                var href_url = 'https://www.facebook.com/sharer/sharer.php?u=' + params.src_url;
-                return href_url;
-            },
-            icon: 'facebook'
-        },
-        'google-plus-share': {
-            extractParams: _defaultParams,
-            makeUrl: function(params) {
-            	var href_url = 'https://plus.google.com/share?url=' + params.src_url;
-            	return href_url;
-            },
-            icon: 'google-plus'
-        },
-        'email' : {
-        	extractParams: function($share_link) {
-                var params = _defaultParams($share_link),
-                	mail_body = $share_link.data('mail-body'),
-                	subject = $share_link.data('subject');
-
-                params.mail_body = _setNonEscapedDefault(mail_body, params.title + params.src_url);
-                params.subject = _setNonEscapedDefault(subject, params.title);
-
-                return params;
-            },
-        	makeUrl: function(params) {
-            	var href_url = 'mailto:?body=' + params.mail_body + _mightInclude('&subject=',params.subject);
-            	return href_url;
-            },
-            icon: 'envelope-o'
-        },
-        'default': {
-            extractParams: _defaultParams,
-            makeUrl: function(params) {
-                console.log('did not provide service to share to');
-                return null;
-            }
+    var d = function(a) {
+        var b = {}, c = a.parents(".qs-container"), d, e;
+        if (c) {
+            d = c.data("url");
+            e = c.data("title");
         }
+        b.src_url = escape(a.data("url") || d || window.location.href);
+        b.title = escape(a.data("title") || e || "Sharing: ");
+        return b;
     };
-
-    $.fn.quickShare = function(args) {
-
-
-        var $scope = $(this),
-            $qslinks = $scope.find('.qs-link');
-
-        $qslinks.each(function() {
-            var $share_link = $(this),
-                service_name = $share_link.data('service') || 'default',
-                icon = $share_link.children('i.qs-icon') || false,
-                service = services_lib[service_name],
-                params = service.extractParams($share_link),
-                href_url = service.makeUrl(params);
-            if (href_url)
-                $share_link.attr('href', href_url);
-            if(icon)
-            	icon.addClass('fa fa-' + service.icon);
-
+    var e = {};
+    e["facebook-share"] = {
+        extractParams: d,
+        makeUrl: function(a) {
+            var b = "https://www.facebook.com/sharer/sharer.php?u=" + a.src_url;
+            return b;
+        },
+        icon: "facebook"
+    };
+    e["twitter"] = {
+        extractParams: function(a) {
+            var b = d(a), e = a.data("tweet-body"), f = a.data("via-username");
+            b.tweet_body = c(e, b.title);
+            b.via_username = c(f, null);
+            return b;
+        },
+        makeUrl: function(a) {
+            var c = "https://twitter.com/intent/tweet?url=" + a.src_url + b("&text=", a.tweet_body) + b("&via=", a.via_username);
+            return c;
+        },
+        icon: "twitter"
+    };
+    a.fn.quickShare = function(b) {
+        var c = a(this), d = c.find(".qs-link");
+        d.each(function() {
+            var b = a(this), c = b.data("service") || "default", d = b.children("i.qs-icon") || false, f = e[c], g = f.extractParams(b), h = f.makeUrl(g);
+            if (h) b.attr("href", h);
+            if (d) d.addClass("fa fa-" + f.icon);
         });
-
         return true;
     };
-
 })(jQuery);
