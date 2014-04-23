@@ -48,7 +48,7 @@ If you want to contain QuickShare to look for links only in a specific part of t
 $('body').quickShare();
 ```
 
-The jQuery QuickShare function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
+The jQuery quickShare() function does not require any parameters as all settings are configured through the appropriate markup defined in the HTML document.
 
 To define a link as a share link, add the class attribute `qs-link` to the link tag.
 
@@ -146,13 +146,13 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 `data-tweet-body="message"`
 
-The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute.
+The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. The shared URL will follow directly after the tweet.
 
 ##### Via Username
 
 `data-via-username="username"`
 
-The Twitter username intended as the account who sourced the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username. This parameter is optional, therefore default is for it not to be included in the message.
+The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username after the user posts the tweet. This parameter is optional, default is for it not to be included in the message.
 
 ###Facebook (sharing)
 
@@ -195,13 +195,13 @@ The body of the email. This defaults to the value of the `data-title` attribute 
 
 `data-subject="subject"`
 
-The subject header of the email. This defaults to the value of the `data-title` attribute
+The subject header of the email. This defaults to the value of the `data-title` attribute.
 
 #####Send To
 
 `data-send-to="receiver@emailclient.com"`
 
-The email address of the account to share to. To add multiple addresses, simply have each address comma separated, such as in the example below.
+The email address of the account to which to send the email. To add multiple addresses, simply have each address comma separated, such as in the example below.
 
 `data-send-to="one@example.com,two@example.com"`
 
@@ -214,7 +214,7 @@ As an additional feature of QuickShare, there is direct integration with [Font A
 <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 ```
 
-For other or better ways to include Font-Awesome's stylesheets, check out their [installation guide](http://fortawesome.github.io/Font-Awesome/get-started/).
+For other or better ways to include Font-Awesome's stylesheets, check out their ['Get Started' guide](http://fortawesome.github.io/Font-Awesome/get-started/).
 
 In terms of QuickShare, the appropriate social media icon will appear if you add a child `<i>` element to your link tag, with the class attribute `qs-icon`.
 
@@ -261,6 +261,7 @@ concat: {
         dest: 'build/quickshare.concat.js',
         nonull: true
       },
+      ...
 ```
 
 Edit the line beginning with `src`. For example, if you only want to include Twitter, edit it to say
@@ -275,4 +276,4 @@ You can list each file independently, or look at the [reference](https://github.
 
 To rebuild the library, call `grunt build`. If you also want to minify the library, call `grunt minify` after building.
 
-*Don't forget to `npm install` if you have just cloned the repo (Hint: you will also need node and npm)*
+*Don't forget to `npm install` from within the QuickShare directory if you have just cloned the repo (Hint: you will also need node and npm)*
