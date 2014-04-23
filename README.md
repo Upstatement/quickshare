@@ -1,7 +1,7 @@
 QuickShare
 ==========
 
-**QuickShare** is a simple and quick JS library to share content through social media services with near full control on style and content with **almost no javascript needing to be written**.
+QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content with **almost no javascript needing to be written**.
 
 Services Supported
 ------------------
@@ -14,9 +14,9 @@ Services Supported
 How to Use
 --------------
 
-The goal of **QuickShare** is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
 
-To use **QuickShare**, simply download the script and include it with your script tag **after** including jQuery
+To use QuickShare, simply download the script and include it with your script tag **after** including jQuery
 
 ```html
 <script src="jquery.js"></script>
@@ -31,24 +31,24 @@ $(document).ready(function() {
 });
 ```
 
-**QuickShare** goes through your HTML and adds or updates the `href` attribute to the correct share endpoint url. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above javascript snippet is the only javascript that is needed.
+QuickShare goes through your HTML and adds or updates the `href` attribute to the correct share endpoint url. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above javascript snippet is the only javascript that is needed.
 
 Implementation
 ---------
 
-**QuickShare** is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
+QuickShare is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
 
 ```javascript
 $(document).quickShare();
 ```
 
-If you want to contain **QuickShare** to look for links only in a specific part of the HTML document, such as the body of the page, you can instead write
+If you want to contain QuickShare to look for links only in a specific part of the HTML document, such as the body of the page, you can instead write
 
 ```javascript
 $('body').quickShare();
 ```
 
-The jQuery **QuickShare** function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
+The jQuery QuickShare function does not require any parameters and all settings are configured through the appropriate markup defined in the HTML.
 
 Here's the simplest example
 
@@ -156,7 +156,7 @@ The Twitter username intended as the account who linked the content. Will append
 
 `data-service="facebook-share"`
 
-To share content on Facebook, **QuickShare** links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
+To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
 ####Attributes
 
@@ -166,7 +166,7 @@ To share content on Facebook, **QuickShare** links to the Facebook share endpoin
 
 `data-service="google-plus-share"`
 
-To share content on Google Plus, **QuickShare** links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
+To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
 ####Attributes
 
@@ -176,7 +176,7 @@ To share content on Google Plus, **QuickShare** links to the Google Plus Share e
 
 `data-service="email"`
 
-To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means the  tag will look like:
+To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. QuickShare uses the URI scheme `mailto`, which means the  tag will look like:
 
 ```html
 <a href="mailto:receiver@gmail.com?body=message&subject=subject">
@@ -210,11 +210,11 @@ Icons
 
 Slimming down
 -------------
-If performance is a big issue, there are several ways to reduce the overall size of **QuickShare** components.
+If performance is a big issue, there are several ways to reduce the overall size of QuickShare components.
 
 ####jQuery
 
-Instead of including all of jQuery, you could use another jQuery-like libraries (such as [Zepto](http://zeptojs.com/)). The only jQuery functions that are used by **QuickShare** are:
+Instead of including all of jQuery, you could use another jQuery-like libraries (such as [Zepto](http://zeptojs.com/)). The only jQuery functions that are used by QuickShare are:
 
 * [$()](https://api.jquery.com/jquery/)
 * [find()](https://api.jquery.com/find/)
@@ -223,11 +223,11 @@ Instead of including all of jQuery, you could use another jQuery-like libraries 
 * [attr()](https://api.jquery.com/attr/)
 * [data()](https://api.jquery.com/data/)
 
-Note in order for **QuickShare** to work, any replacement jQuery library would require the definition of these functions in an exposed variable called `jQuery`.
+Note in order for QuickShare to work, any replacement jQuery library would require the definition of these functions in an exposed variable called `jQuery`.
 
 ####QuickShare
 
-If you do not intend to use all of the social media plug-ins available through **QuickShare**, a really simple way of reducing the size and clutter of the library is to remove the unnecessary code for unused social plug-ins. In order to do this, first you will need to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own javascript file in the `build/services` directory.
+If you do not intend to use all of the social media plug-ins available through QuickShare, a really simple way of reducing the size and clutter of the library is to remove the unnecessary code for unused social plug-ins. In order to do this, first you will need to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own javascript file in the `build/services` directory.
 
 Go in to the Gruntfile and look for the lines:
 
