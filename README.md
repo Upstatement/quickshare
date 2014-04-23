@@ -251,7 +251,7 @@ Edit the line beginning with `src`. For example, if you only want to include Twi
 src: ['build/utilities.js','build/services/twitter.js','build/quickshare.js']
 ```
 
-You can list each file independently, or look at the [reference](https://github.com/gruntjs/grunt-contrib-concat) to use wildcards. Note that the files you wish to include **must be between** the `utilities.js` and `quickshare.js`.
+You can list each file independently, or look at the [reference](https://github.com/gruntjs/grunt-contrib-concat) to use wildcards. Note that the files you wish to include **must be between** the `utilities.js` and `quickshare.js` files.
 
 *If you do not wish to edit the Gruntfile, you could instead delete the plug-ins you **don't** need from the `build/services` folder*
 

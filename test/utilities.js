@@ -1,7 +1,11 @@
 var defaults = {
 	title: escape('Sharing: '),
 	username: escape('thetmkay'),
-	tweet_body: escape('This is my 1st sharing!!! : ')
+	tweet_body: escape('This is my 1st sharing!!! : '),
+	address: escape('thetmkay@gmail.com'),
+	multi_address: escape('thetmkay@gmail.com,george@upstatement.com,george.nishimura_1@outlook.com'),
+	subject: escape('subject header'),
+	mail_body: escape('mail body')
 };
 
 var tags = {
@@ -26,26 +30,26 @@ var urls = {
 	fb_share: 'https://www.facebook.com/sharer/sharer.php?u=',
 	twitter: 'https://twitter.com/intent/tweet?url=',
 	gp_share: 'https://plus.google.com/share?url=',
-	email: 'mailto:'
+	mailto: 'mailto:'
 };
 
 var url_params = {
 	via: '&via=',
 	tweet_body: '&text=',
 	container: escape('container/'),
-	mail_body: 'body=',
+	mail_body: '?body=',
 	subject: '&subject=',
 	fb_share: 'facebook',
 	gp_share: 'google-plus',
 	twitter: 'twitter',
-	email: 'email'
+	mailto: 'mailto'
 };
 
 var class_tags = {
 	fb_share: '.test-fbs',
 	gp_share: '.test-gps',
 	twitter: '.test-tw',
-	email: '.test-mt'
+	mailto: '.test-mt'
 };
 
 var _test = function(test_params) {
