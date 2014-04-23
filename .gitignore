@@ -29,3 +29,4 @@ jquery.quickshare.js
 build/quickshare.concat.js
 test/quickshare.concat.js
 test.quickshare.js
+jquery.quickshare.min.js
