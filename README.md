@@ -50,7 +50,7 @@ $('body').quickShare();
 
 The jQuery quickShare() function does not require any parameters as all settings are configured through the appropriate markup defined in the HTML document.
 
-To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-service` attribute (see the reference below for more details).
+To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-service` attribute (see the reference section for more details).
 
 Here's the simplest example
 
@@ -68,10 +68,12 @@ If you want to share a specific URL, you can define the `data-url` attribute on 
 <a class="qs-link" data-service="twitter" data-url="http://specific-url.com">Twitter</a>
 ```
 
+There are more customisible data attributes listed in the reference section, including social media dependent attributes.
+
 Share Containers
 -----------------
 
-If you want to share a specific URL with an array of different social media options, you can avoid duplicated data attribute tags by using a share container, using a parent HTML element with the class attribute `qs-container`.
+If you want to share a specific URL with an array of different social media options, you can avoid duplicated data attribute tags by using a share container, a parent HTML element with the class attribute `qs-container`.
 
 Here's a simple example
 
