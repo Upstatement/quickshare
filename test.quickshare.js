@@ -49,6 +49,7 @@
     var i = function(a) {
         module(a, h);
     };
+    module("email tests");
     i("facebook share tests");
     g({
         name: "fbs - no container + url + title",

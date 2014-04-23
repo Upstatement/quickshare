@@ -56,6 +56,8 @@ var _module = function(name) {
 	module(name, _test_setup);
 };
 ;
+module('email tests');
+;
 _module('facebook share tests');
 
 //without container
