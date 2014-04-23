@@ -208,7 +208,25 @@ The email address of the account to share to. To add multiple addresses, simply 
 Icons
 -----
 
-*to do*
+As an additional feature of QuickShare, there is direct integration with [Font Awesome's](http://fortawesome.github.io/Font-Awesome/) social media icons, so that you can easily add the icon to the link tag. In order to do this, you have to include Font-Awesome, which can be as simple as adding this tag to your `<head>` element of your HTML document.
+
+```html
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+```
+
+For other or better ways to include Font-Awesome's stylesheets, check out their [installation guide](http://fortawesome.github.io/Font-Awesome/get-started/).
+
+In terms of QuickShare, the appropriate social media icon will appear if you add a child `<i>` element to your link tag, with the class attribute `qs-icon`.
+
+Here's a simple example to get a share to Twitter link to include the icon
+
+```html
+<a class="qs-link" data-service="twitter">
+	<i class="qs-icon">
+	</i>
+	Twitter
+</a>
+```
 
 Slimming down
 -------------
