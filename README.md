@@ -14,9 +14,10 @@ Services Supported
 How to Use
 --------------
 
-The goal of **QuickShare** is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple link tags, with different levels of customisation available depending on the social media plug-in.
+The goal of **QuickShare** is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating Javascript APIs. It shares content using simple `<a>` link tags, with different levels of customisation available depending on the social media plug-in.
 
-To use **QuickShare**, simply download the script and include it with your script tag after including jQuery
+To use **QuickShare**, simply download the script and include it with your script tag **after** including jQuery
+
 ```html
 <script src="jquery.js"></script>
 <script src="jquery.quickshare.js"></script>
@@ -30,7 +31,7 @@ $(document).ready(function() {
 });
 ```
 
-**QuickShare** goes through your HTML and adds or updates the `href` attribute to the correct share endpoint. Technically, the user does not have to write anything outside of a HTML file to use all of its features, and the above javascript snippet is the only javascript that is needed.
+**QuickShare** goes through your HTML and adds or updates the `href` attribute to the correct share endpoint url. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above javascript snippet is the only javascript that is needed.
 
 Implementation
 ---------
@@ -178,7 +179,7 @@ To share content on Google Plus, **QuickShare** links to the Google Plus Share e
 To share through e-mail, **QuickShare** currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. **QuickShare** uses the URI scheme `mailto`, which means the  tag will look like:
 
 ```html
-<a href="mailto:receiver@emailclient.com?subject=subject&body=message">
+<a href="mailto:receiver@gmail.com?body=message&subject=subject">
 ```
 ####Attributes
 
@@ -186,7 +187,7 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 
 `data-mail-body="message"`
 
-The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute.
+The body of the email. This defaults to the value of the `data-title` attribute followed by a space, then the value of the `data-url` attribute.
 
 #####Subject
 
@@ -202,3 +203,54 @@ The email address of the account to share to. To add multiple addresses, simply 
 
 `data-send-to="one@example.com,two@example.com"`
 
+Icons
+-----
+
+Slimming down
+-------------
+If performance is a big issue, there are ways to reduce the size of **QuickShare**.
+
+####jQuery
+
+Instead of including all of jQuery, you could use another jQuery-like libraries (such as jQlite). The only jQuery functions that are used by **QuickShare** are:
+
+* $()
+* find()
+* children()
+* addClass()
+* attr()
+* data()
+
+*it would be somewhat trivial to remove some of these functions with others (eg replace data() with attr())*
+
+Note any replacement jQuery library would require the definition of these functions in order for **QuickShare** to work, and to expose a variable called `jQuery`.
+
+####QuickShare
+
+If you do not intend to use all of the social media plug-ins available through **QuickShare**, a really simple way of reducing the size and clutter of the library is to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own javascript file, therefore you could go in to the Gruntfile, and look for the lines:
+
+```javascript
+concat: {
+      options: {
+        separator: ';\n'
+      },
+      build : {
+        src: ['build/utilities.js','build/services/*.js','build/quickshare.js'],
+        dest: 'build/quickshare.concat.js',
+        nonull: true
+      },
+```
+
+Edit the line beginning with `src`. For example, if you only want to include Twitter, edit it to say
+
+```javascript
+src: ['build/utilities.js','build/services/twitter.js','build/quickshare.js']
+```
+
+You can list each file independently, or look at the [reference](https://github.com/gruntjs/grunt-contrib-concat) to use wildcards. Note that the files you wish to include **must be between** the `utilities.js` and `quickshare.js`.
+
+*If you do not wish to edit the Gruntfile, you could instead delete the plug-ins you don't need from the `build/services` folder*
+
+To rebuild the library, call `grunt build:dev`. If you also want to minify the library, call `grunt uglify:compress`.
+
+*Don't forget to `npm install` if you have just cloned the repo (Hint: you will also need node and npm)*
