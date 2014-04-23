@@ -108,19 +108,19 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 *The following attributes are used for all social media*
 
-#### URL
+##### URL
 
 `data-url="http://url"`
 
 The url to share. The default is `window.location.href`, the current window location, although it is highly recommended to override this value as it is better to have a descriptive, permanent url used when sharing on social media.
 
-#### Title
+##### Title
 
 `data-title="title"`
 
 The title of the content to share. This field is not always used by every service but it is recommended that it is defined.
 
-#### Target
+##### Target
 
 `target="value"`
 
@@ -137,15 +137,15 @@ This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/a
 
 To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account.
 
-#####Attributes
+####Attributes
 
-#### Tweet Body
+##### Tweet Body
 
 `data-tweet-body="message"`
 
 The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. If `data-title` is also not defined, it will default to 'Sharing: '.
 
-#### Via Username
+##### Via Username
 
 `data-via-username="username"`
 
@@ -157,7 +157,7 @@ The Twitter username intended as the account who linked the content. Will append
 
 To share content on Facebook, **QuickShare** links to the Facebook share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared url. To learn how to optimize for Facebook's Open Graph, visit their [Sharing Best Practices guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
-#####Attributes
+####Attributes
 
 *no additional attributes*
 
@@ -167,7 +167,7 @@ To share content on Facebook, **QuickShare** links to the Facebook share endpoin
 
 To share content on Google Plus, **QuickShare** links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (eg thumbnail) attached to the post based on the shared url, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
-#####Attributes
+####Attributes
 
 *no additional attributes*
 
@@ -182,19 +182,19 @@ To share through e-mail, **QuickShare** currently relies on a native mail client
 ```
 ####Attributes
 
-####Mail Body
+#####Mail Body
 
 `data-mail-body="message"`
 
 The body of the email. This defaults to the value of the `data-title` attribute followed by the value of the `data-url` attribute.
 
-####Subject
+#####Subject
 
 `data-subject="subject"`
 
 The subject header of the email. This defaults to the value of the `data-title` attribute
 
-####Send To
+#####Send To
 
 `data-send-to="receiver@emailclient.com"`
 
