@@ -7,7 +7,7 @@ $.fn.quickShare = function(args) {
         var $share_link = $(this),
             service_name = $share_link.data('service') || 'default',
             icon = $share_link.children('i.qs-icon') || false,
-            service = services_lib[service_name],
+            service = services_lib[service_name] || services_lib['default'],
             params = service.extractParams($share_link),
             href_url = service.makeUrl(params);
         if (href_url)

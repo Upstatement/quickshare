@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         files: {
-          'jquery.quickshare.js': ['build/quickshare.concat.js']
+          'dist/jquery.quickshare.js': ['build/quickshare.concat.js'],
         },
         options: {
           enclose: {
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: {
-          'test.quickshare.js': ['test/quickshare.concat.js']
+          'example/test.quickshare.js': ['test/quickshare.concat.js']
         },
         options: {
           enclose: {
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       },
       compress: {
         files: {
-          'jquery.quickshare.min.js': ['jquery.quickshare.js']
+          'dist/jquery.quickshare.min.js': ['dist/jquery.quickshare.js']
         },
         options: {
           compress: true

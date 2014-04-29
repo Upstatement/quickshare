@@ -4,9 +4,9 @@ var http = require('http'),
 	html_path;
 
 if(process.env.NODE_ENV === 'development') {
-	html_path = '/qs_demo.html';
+	html_path = '/example/qs_demo.html';
 } else if(process.env.NODE_ENV === 'test') {
-	html_path = '/qs_test.html';
+	html_path = '/example/qs_test.html';
 }
 
 app.use(express.static(__dirname));
