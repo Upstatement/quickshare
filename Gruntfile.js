@@ -104,13 +104,13 @@ module.exports = function(grunt) {
       },
       dev : {
         options: {
-          script: 'test_server.js',
+          script: 'server.js',
           node_env: 'development'
         }
       },
       test : {
         options: {
-          script: 'test_server.js',
+          script: 'server.js',
           node_env: 'test'
         }
       }
