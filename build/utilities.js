@@ -10,20 +10,43 @@ var _setNonEscapedDefault = function(_value,_default) {
 	return _default;
 };
 
+var _removeTrailingSlash = function(url) {
+    while(url.charAt(url.length-1) === '/') {
+        url = url.substr(0,url.length-1);
+    }
+    return url;
+};
+
+var _getData = function($elem, attr) {
+
+    var data_prefix = "qs-";
+    console.log($elem.data(data_prefix + attr));
+    return $elem.data(data_prefix + attr);
+};
 
 var _defaultParams = function($share_link) {
 	var params = {},
     	$container = $share_link.parents('.qs-container'),
         container_url,
-        container_title;
+        container_title,
+        container_suffix;
 
     if($container) {
-    	container_url = $container.data('url');
-        container_title = $container.data('title');
+    	container_url = _getData($container, 'url');
+        container_title = _getData($container, 'title');
+        container_suffix = _getData($container, 'suffix');
     }
 
-	params.src_url = escape($share_link.data('url') || container_url || window.location.href);
-    params.title = escape($share_link.data('title') || container_title || 'Sharing: ');
+    var suffix = _getData($share_link, 'suffix') || container_suffix || "",
+        src_url = _getData($share_link, 'url') || container_url || window.location.href,
+        title = _getData($share_link, 'title') || container_title || 'Sharing: ';
+
+    if(suffix)
+        src_url = _removeTrailingSlash(src_url) + suffix;
+
+
+    params.src_url = escape(src_url);
+    params.title = escape(title);
 
     return params;
 };

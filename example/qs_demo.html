@@ -5,35 +5,35 @@
 			<title>QuickShare Test</title>
 			<link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
 		</head>
-		<body class='qs-container' data-url="http://testurl.com">
-			<div class='qs-container' data-url='https://twitter.com'>
+		<body class='qs-container' data-qs-url="/testurl">
+			<div class='qs-container'>
 				<div>
-					<a class='qs-link' data-service='asfd' data-via-username="" target='_blank'>
+					<a class='qs-link' data-qs-service='twitter' data-qs-url="www.com" data-qs-via-username="" target='_blank' data-qs-suffix='suffix'>
 						<i class="qs-icon"></i>
 						twitter
 					</a>
 				</div>
 				<div>
-					<a class='qs-link' data-service='twitter' target='_blank' data-title="">
+					<a class='qs-link' data-qs-service='facebook-share' target='_blank' data-qs-title="">
 						<i class="qs-icon"></i>
 						facebook
 					</a>
 				</div>
 				<div>
-					<a class='qs-link' data-service='google-\-share' target='_blank'>
+					<a class='qs-link' data-qs-service='google-plus-share' target='_blank'>
 						<i class="qs-icon"></i>
 						googleplus
 					</a>
 				</div>
 				<div>
-					<a class='qs-link' data-service='mailto' data-subject="Check out this awesome link" data-mail-body="Awesome link http://www.upstatement.com" data-send-to="george@upstatement.com,thetmkay@gmail.com">
+					<a class='qs-link' data-qs-service='mailto' data-qs-subject="Check out this awesome link" data-qs-mail-body="Awesome link http://www.upstatement.com" data-qs-send-to="george@upstatement.com,thetmkay@gmail.com">
 						<i class="qs-icon"></i>
 						email
 					</a>
 				</div>
 			</div>
 			<script src="jquery.js"></script>
-			<script src="jquery.quickshare.js"></script>
+			<script src="../dist/jquery.quickshare.js"></script>
 			<script type="text/javascript">
 					$(document).quickShare();
 			</script>

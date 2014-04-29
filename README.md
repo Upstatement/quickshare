@@ -50,22 +50,22 @@ $('body').quickShare();
 
 The jQuery quickShare() function does not require any parameters as all settings are configured through the appropriate markup defined in the HTML document.
 
-To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-service` attribute (see the reference section for more details).
+To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-qs-service` attribute (see the reference section for more details).
 
 Here's the simplest example
 
 ```html
-<a class="qs-link" data-service="twitter">Twitter</a>
+<a class="qs-link" data-qs-service="twitter">Twitter</a>
 ```
 
 [Boom](https://twitter.com/intent/tweet?url=https%3A//github.com/Upstatement/quickshare&text=Sharing%3A%20). This will open up Twitter with a ready-to-publish tweet saying
 
 	Sharing: *current-url-of-the-page*
 
-If you want to share a specific URL, you can define the `data-url` attribute on the link tag
+If you want to share a specific URL, you can define the `data-qs-url` attribute on the link tag
 
 ```html
-<a class="qs-link" data-service="twitter" data-url="http://specific-url.com">Twitter</a>
+<a class="qs-link" data-qs-service="twitter" data-qs-url="http://specific-url.com">Twitter</a>
 ```
 
 There are more customisible data attributes listed in the reference section, including social media dependent attributes.
@@ -78,9 +78,9 @@ If you want to share a specific URL with an array of different social media opti
 Here's a simple example
 
 ```html
-<div class="qs-container" data-url="http://specific-url.com">
-	<a class="qs-link" data-service="twitter">Twitter</a>
-	<a class="qs-link" data-service="facebook-share">Facebook</a>
+<div class="qs-container" data-qs-url="http://specific-url.com">
+	<a class="qs-link" data-qs-service="twitter">Twitter</a>
+	<a class="qs-link" data-qs-service="facebook-share">Facebook</a>
 </div>
 ```
 
@@ -89,22 +89,22 @@ You can use multiple share containers on the same page, and even nested containe
 For example the following will share the link `http://share-url.com`
 
 ```html
-<div class="qs-container" data-url="http://container-url.com">
-	<a class="qs-link" data-service="twitter" data-url="http://share-url.com">Twitter</a>
+<div class="qs-container" data-qs-url="http://container-url.com">
+	<a class="qs-link" data-qs-service="twitter" data-qs-url="http://share-url.com">Twitter</a>
 </div>
 ```
 
 And the following will share the link `http://container-url.com`
 
 ```html
-<div class="qs-container" data-url="http://another-container-url.com">
-	<div class="qs-container" data-url="http://container-url.com">
-		<a class="qs-link" data-service="twitter">Twitter</a>
+<div class="qs-container" data-qs-url="http://another-container-url.com">
+	<div class="qs-container" data-qs-url="http://container-url.com">
+		<a class="qs-link" data-qs-service="twitter">Twitter</a>
 	</div>
 </div>
 ```
 
-Share containers currently only have two attributes: `data-url` and `data-title`
+Share containers currently only have two attributes: `data-qs-url` and `data-qs-title`
 
 Attributes Reference
 -------------------------------
@@ -117,13 +117,13 @@ Any customisation of the content that gets shared takes the form of data attribu
 
 ##### URL
 
-`data-url="http://url"`
+`data-qs-url="http://url"`
 
 The url to share. The default is the value of `window.location.href`, the current window's URL, although it is highly recommended to override this value as it is better to have a descriptive, permanent URL used when sharing on social media.
 
 ##### Title
 
-`data-title="title"`
+`data-qs-title="title"`
 
 The title of the content to share. This field is not always used by every service but it is recommended that it is defined. The default is `Sharing: `.
 
@@ -138,7 +138,7 @@ This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/a
 
 ###Twitter
 
-`data-service="twitter"`
+`data-qs-service="twitter"`
 
 To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account, with a fully customisible message.
 
@@ -146,19 +146,19 @@ To share content on Twitter, Twitter exposes an endpoint to compose a tweet usin
 
 ##### Tweet Body
 
-`data-tweet-body="message"`
+`data-qs-tweet-body="message"`
 
-The message you want to tweet. If not defined, it defaults to the value of the `data-title` attribute. The shared URL will follow directly after the tweet.
+The message you want to tweet. If not defined, it defaults to the value of the `data-qs-title` attribute. The shared URL will follow directly after the tweet.
 
 ##### Via Username
 
-`data-via-username="username"`
+`data-qs-via-username="username"`
 
 The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username after the user posts the tweet. This parameter is optional, default is for it not to be included in the message.
 
 ###Facebook (sharing)
 
-`data-service="facebook-share"`
+`data-qs-service="facebook-share"`
 
 To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a new post dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared URL. To learn how to optimize for Facebook's Open Graph, visit their ['Sharing Best Practices' guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
 
@@ -168,7 +168,7 @@ To share content on Facebook, QuickShare links to the Facebook share endpoint, w
 
 ###Google Plus (sharing)
 
-`data-service="google-plus-share"`
+`data-qs-service="google-plus-share"`
 
 To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (thumbnail, etc) attached to the post based on the shared URL, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
 
@@ -178,7 +178,7 @@ To share content on Google Plus, QuickShare links to the Google Plus Share endpo
 
 ###E-Mail
 
-`data-service="mailto"`
+`data-qs-service="mailto"`
 
 To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. QuickShare uses the URI scheme `mailto`, which means the  tag will look like:
 
@@ -189,23 +189,23 @@ To share through e-mail, QuickShare currently relies on a native mail client to 
 
 #####Mail Body
 
-`data-mail-body="message"`
+`data-qs-mail-body="message"`
 
-The body of the email. This defaults to the value of the `data-title` attribute followed by a space, then the value of the `data-url` attribute.
+The body of the email. This defaults to the value of the `data-qs-title` attribute followed by a space, then the value of the `data-qs-url` attribute.
 
 #####Subject
 
-`data-subject="subject"`
+`data-qs-subject="subject"`
 
-The subject header of the email. This defaults to the value of the `data-title` attribute.
+The subject header of the email. This defaults to the value of the `data-qs-title` attribute.
 
 #####Send To
 
-`data-send-to="receiver@emailclient.com"`
+`data-qs-send-to="receiver@emailclient.com"`
 
 The email address of the account to which to send the email. To add multiple addresses, simply have each address comma separated, such as in the example below.
 
-`data-send-to="one@example.com,two@example.com"`
+`data-qs-send-to="one@example.com,two@example.com"`
 
 Icons
 -----
@@ -223,7 +223,7 @@ In terms of QuickShare, the appropriate social media icon will appear if you add
 Here's a simple example to get a share to Twitter link to include the icon
 
 ```html
-<a class="qs-link" data-service="twitter">
+<a class="qs-link" data-qs-service="twitter">
 	<i class="qs-icon">
 	</i>
 	Twitter

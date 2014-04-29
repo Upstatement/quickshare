@@ -26,7 +26,8 @@ module.exports = function(grunt) {
         },
         options: {
           enclose: {
-            'jQuery' : '$'
+            'jQuery' : '$',
+            'window' : 'window'
           },
           beautify: true,
           compress: false,
