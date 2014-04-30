@@ -10,17 +10,23 @@ var _setNonEscapedDefault = function(_value,_default) {
 	return _default;
 };
 
-var _removeTrailingSlash = function(url) {
-    while(url.charAt(url.length-1) === '/') {
-        url = url.substr(0,url.length-1);
+var _formatUrl = function(url, has_suffix) {
+
+    if(!url.match(/http:\/\/*/g))
+        url = 'http://' + url;
+
+    if(has_suffix) {
+        while(url.charAt(url.length-1) === '/') {
+            url = url.substr(0,url.length-1);
+        }
     }
+
     return url;
 };
 
 var _getData = function($elem, attr) {
 
     var data_prefix = "qs-";
-    console.log($elem.data(data_prefix + attr));
     return $elem.data(data_prefix + attr);
 };
 
@@ -41,9 +47,12 @@ var _defaultParams = function($share_link) {
         src_url = _getData($share_link, 'url') || container_url || window.location.href,
         title = _getData($share_link, 'title') || container_title || 'Sharing: ';
 
-    if(suffix)
-        src_url = _removeTrailingSlash(src_url) + suffix;
-
+    if(suffix) {
+        src_url = _formatUrl(src_url, true) + suffix;
+    }
+    else {
+        src_url = _formatUrl(src_url, false);
+    }
 
     params.src_url = escape(src_url);
     params.title = escape(title);

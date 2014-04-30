@@ -16,11 +16,10 @@ $.fn.quickShare = function(args) {
         if(icon)
         	icon.addClass('fa fa-' + service.icon);
         if(count_id) {
-            service.findCount(function(count) {
-                $(count_id).val(count);
+            service.getCount(params.src_url, function(count) {
+                $(count_id).text(count);
             });
         }
-
     });
 
     return true;

@@ -4,5 +4,8 @@ services_lib['google-plus-share'] = {
     	var href_url = 'https://plus.google.com/share?url=' + params.src_url;
     	return href_url;
     },
+    getCount: function(url, callback) {
+
+    },
     icon: 'google-plus'
 };

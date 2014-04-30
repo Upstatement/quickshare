@@ -13,5 +13,15 @@ services_lib['twitter'] = {
         var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude('&text=', params.tweet_body) + _mightInclude('&via=', params.via_username);
         return href_url;
     },
+    getCount : function(url, callback) {
+        $.ajax({
+          url: "http://urls.api.twitter.com/1/urls/count.json?url=" + url,
+          success: function(data) {
+            callback(data.count);
+          },
+          dataType: 'jsonp',
+          crossDomain: true
+        });
+    },
     icon: 'twitter'
 };

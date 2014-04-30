@@ -7,15 +7,17 @@
         if (a) return escape(a);
         return b;
     };
-    var e = function(a) {
-        while (a.charAt(a.length - 1) === "/") {
-            a = a.substr(0, a.length - 1);
+    var e = function(a, b) {
+        if (!a.match(/http:\/\/*/g)) a = "http://" + a;
+        if (b) {
+            while (a.charAt(a.length - 1) === "/") {
+                a = a.substr(0, a.length - 1);
+            }
         }
         return a;
     };
     var f = function(a, b) {
         var c = "qs-";
-        console.log(a.data(c + b));
         return a.data(c + b);
     };
     var g = function(a) {
@@ -26,7 +28,11 @@
             i = f(d, "suffix");
         }
         var j = f(a, "suffix") || i || "", k = f(a, "url") || g || b.location.href, l = f(a, "title") || h || "Sharing: ";
-        if (j) k = e(k) + j;
+        if (j) {
+            k = e(k, true) + j;
+        } else {
+            k = e(k, false);
+        }
         c.src_url = escape(k);
         c.title = escape(l);
         return c;
@@ -45,6 +51,16 @@
             var b = "https://www.facebook.com/sharer/sharer.php?u=" + a.src_url;
             return b;
         },
+        getCount: function(b, c) {
+            a.ajax({
+                url: "https://api.facebook.com/method/links.getStats?urls=" + b + "&format=json",
+                success: function(a) {
+                    c(a[0].share_count);
+                },
+                dataType: "jsonp",
+                crossDomain: true
+            });
+        },
         icon: "facebook"
     };
     h["google-plus-share"] = {
@@ -53,6 +69,7 @@
             var b = "https://plus.google.com/share?url=" + a.src_url;
             return b;
         },
+        getCount: function(a, b) {},
         icon: "google-plus"
     };
     h["mailto"] = {
@@ -67,6 +84,7 @@
             var b = "mailto:" + a.send_to + c("?body=", a.mail_body) + c("&subject=", a.subject);
             return b;
         },
+        getCount: function(a, b) {},
         icon: "envelope-o"
     };
     h["twitter"] = {
@@ -80,6 +98,16 @@
             var b = "https://twitter.com/intent/tweet?url=" + a.src_url + c("&text=", a.tweet_body) + c("&via=", a.via_username);
             return b;
         },
+        getCount: function(b, c) {
+            a.ajax({
+                url: "http://urls.api.twitter.com/1/urls/count.json?url=" + b,
+                success: function(a) {
+                    c(a.count);
+                },
+                dataType: "jsonp",
+                crossDomain: true
+            });
+        },
         icon: "twitter"
     };
     a.fn.quickShare = function(b) {
@@ -89,8 +117,8 @@
             if (j) b.attr("href", j);
             if (e) e.addClass("fa fa-" + g.icon);
             if (d) {
-                g.findCount(function(b) {
-                    a(d).val(b);
+                g.getCount(i.src_url, function(b) {
+                    a(d).text(b);
                 });
             }
         });

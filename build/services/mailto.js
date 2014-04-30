@@ -15,5 +15,8 @@ services_lib['mailto'] = {
     	var href_url = 'mailto:' + params.send_to + _mightInclude('?body=',params.mail_body) + _mightInclude('&subject=',params.subject);
     	return href_url;
     },
+    getCount: function(url, callback) {
+
+    },
     icon: 'envelope-o'
 };

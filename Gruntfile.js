@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         separator: ';\n'
       },
       build : {
-        src: ['build/utilities.js','build/services/*.js','build/quickshare.js'],
+        src: ['build/utilities.js','build/services/*.js', 'build/quickshare.js'],
         dest: 'build/quickshare.concat.js',
         nonull: true
       },
