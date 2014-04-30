@@ -116,7 +116,7 @@ There is more specific details about implementation in the [Attributes Reference
 The corresponding data attribute takes the form `data-qs-count-selector="selector"`. If the attribute is specified, only then will it try and fetch the count value (meaning if you don't want it, there won't be any unnecessary data-fetching). The value passed in as `selector` is the CSS selector. This is used in the same way as it is used in jQuery, so they can take the form of
 
 * HTML elements `"p"`
-# Class selectors `".css-class"`
+* Class selectors `".css-class"`
 * ID selectors `"#css-id"`
 * pseudo classes etc - see the [jQuery guide](http://api.jquery.com/category/selectors/)
 
