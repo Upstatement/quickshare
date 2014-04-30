@@ -36,20 +36,6 @@ QuickShare goes through your HTML and adds or updates the `href` attribute to th
 Implementation
 ---------
 
-QuickShare is designed to convert links in to share buttons, and will only look at links within the scope given to it. For example, if the scope is the whole page, then you can use
-
-```javascript
-$(document).quickShare();
-```
-
-If you want to contain QuickShare to look for links only in a specific part of the HTML document, such as the body of the page, you can instead write
-
-```javascript
-$('body').quickShare();
-```
-
-The jQuery quickShare() function does not require any parameters as all settings are configured through the appropriate markup defined in the HTML document.
-
 To define a link as a share link, add the class attribute `qs-link` to the link tag with the appropriate `data-qs-service` attribute (see the reference section for more details).
 
 Here's the simplest example
@@ -68,7 +54,7 @@ If you want to share a specific URL, you can define the `data-qs-url` attribute 
 <a class="qs-link" data-qs-service="twitter" data-qs-url="http://specific-url.com">Twitter</a>
 ```
 
-There are more customisible data attributes listed in the reference section, including social media dependent attributes.
+There are more customisible data attributes listed in the [Service Attributes Reference](https://github.com/Upstatement/quickshare/wiki/Service-Attributes-Reference), including social media dependent attributes.
 
 Share Containers
 -----------------
@@ -106,106 +92,6 @@ And the following will share the link `http://container-url.com`
 
 Share containers currently only have two attributes: `data-qs-url` and `data-qs-title`
 
-Attributes Reference
--------------------------------
-
-Any customisation of the content that gets shared takes the form of data attributes on the link tag. The values of the attributes do not have to be percent-escaped.
-
-###Common
-
-*The following attributes are used for all social media*
-
-##### URL
-
-`data-qs-url="http://url"`
-
-The url to share. The default is the value of `window.location.href`, the current window's URL, although it is highly recommended to override this value as it is better to have a descriptive, permanent URL used when sharing on social media.
-
-##### Title
-
-`data-qs-title="title"`
-
-The title of the content to share. This field is not always used by every service but it is recommended that it is defined. The default is `Sharing: `.
-
-##### Target
-
-`target="value"`
-
-This is a link tag attribute as [defined by W3C](http://www.w3schools.com/tags/att_a_target.asp) and tells the browser how the link should be opened (eg in a new window/tab). The possible relevant values for the attribute are:
-
-* `_blank` - open link in new window or tab
-* `_self` - open link in same window (default)
-
-###Twitter
-
-`data-qs-service="twitter"`
-
-To share content on Twitter, Twitter exposes an endpoint to compose a tweet using the user's current logged-in account, with a fully customisible message.
-
-####Attributes
-
-##### Tweet Body
-
-`data-qs-tweet-body="message"`
-
-The message you want to tweet. If not defined, it defaults to the value of the `data-qs-title` attribute. The shared URL will follow directly after the tweet.
-
-##### Via Username
-
-`data-qs-via-username="username"`
-
-The Twitter username intended as the account who linked the content. Will append "via @*username*" to the end of the tweet. Twitter handles resolving the username after the user posts the tweet. This parameter is optional, default is for it not to be included in the message.
-
-###Facebook (sharing)
-
-`data-qs-service="facebook-share"`
-
-To share content on Facebook, QuickShare links to the Facebook share endpoint, which opens up a new post dialogue to share a link through the currently logged-in user's account. Facebook will automatically fill out the information (including thumbnail and blurb) using information gathered through its Open Graph web crawler, based on the shared URL. To learn how to optimize for Facebook's Open Graph, visit their ['Sharing Best Practices' guide](https://developers.facebook.com/docs/opengraph/howtos/maximizing-distribution-media-content/).
-
-####Attributes
-
-*no additional attributes*
-
-###Google Plus (sharing)
-
-`data-qs-service="google-plus-share"`
-
-To share content on Google Plus, QuickShare links to the Google Plus Share endpoint, which opens up a dialogue to share a link through the currently logged-in user's account. Google Plus will automatically fill out the snippet (thumbnail, etc) attached to the post based on the shared URL, using information gathered through its web crawler. To learn how to optimize for Google Plus's web crawler, visit their [snippet guide](https://developers.google.com/+/web/snippet/).
-
-####Attributes
-
-*no additional attributes*
-
-###E-Mail
-
-`data-qs-service="mailto"`
-
-To share through e-mail, QuickShare currently relies on a native mail client to handle the sending of the email. Therefore the link will simply open up the default mail client installed on the client device, with a customisable set of fields already filled out. QuickShare uses the URI scheme `mailto`, which means the  tag will look like:
-
-```html
-<a href="mailto:receiver@gmail.com?body=message&subject=subject">
-```
-####Attributes
-
-#####Mail Body
-
-`data-qs-mail-body="message"`
-
-The body of the email. This defaults to the value of the `data-qs-title` attribute followed by a space, then the value of the `data-qs-url` attribute.
-
-#####Subject
-
-`data-qs-subject="subject"`
-
-The subject header of the email. This defaults to the value of the `data-qs-title` attribute.
-
-#####Send To
-
-`data-qs-send-to="receiver@emailclient.com"`
-
-The email address of the account to which to send the email. To add multiple addresses, simply have each address comma separated, such as in the example below.
-
-`data-qs-send-to="one@example.com,two@example.com"`
 
 Icons
 -----
@@ -230,52 +116,8 @@ Here's a simple example to get a share to Twitter link to include the icon
 </a>
 ```
 
-Slimming down
--------------
-If performance is a big issue, there are several ways to reduce the overall size of QuickShare components.
+Anything else?
+--------------
 
-####jQuery
+Check out the [wiki](https://github.com/Upstatement/quickshare/wiki)!
 
-Instead of including all of jQuery, you could use another jQuery-like libraries (such as [Zepto](http://zeptojs.com/)). The only jQuery functions that are used by QuickShare are:
-
-* [$()](https://api.jquery.com/jquery/)
-* [find()](https://api.jquery.com/find/)
-* [children()](https://api.jquery.com/children/)
-* [addClass()](https://api.jquery.com/addclass/)
-* [attr()](https://api.jquery.com/attr/)
-* [data()](https://api.jquery.com/data/)
-
-Note in order for QuickShare to work, any replacement jQuery library would require the definition of these functions in an exposed variable called `jQuery`.
-
-####QuickShare
-
-If you do not intend to use all of the social media plug-ins available through QuickShare, a really simple way of reducing the size and clutter of the library is to remove the unnecessary code for unused social plug-ins. In order to do this, first you will need to download the project and edit the Gruntfile. The structure of the library is such that each social media plug-in is defined in its own JavaScript file in the `build/services` directory.
-
-Go in to the Gruntfile and look for the lines:
-
-```JavaScript
-concat: {
-      options: {
-        separator: ';\n'
-      },
-      build : {
-        src: ['build/utilities.js','build/services/*.js','build/quickshare.js'],
-        dest: 'build/quickshare.concat.js',
-        nonull: true
-      },
-      ...
-```
-
-Edit the line beginning with `src`. For example, if you only want to include Twitter, edit it to say
-
-```JavaScript
-src: ['build/utilities.js','build/services/twitter.js','build/quickshare.js']
-```
-
-You can list each file independently, or look at the [reference](https://github.com/gruntjs/grunt-contrib-concat) to use wildcards. Note that the files you wish to include **must be between** the `utilities.js` and `quickshare.js` files.
-
-*If you do not wish to edit the Gruntfile, you could instead delete the plug-ins you **don't** need from the `build/services` folder*
-
-To rebuild the library, call `grunt build`. If you also want to minify the library, call `grunt minify` after building.
-
-*Don't forget to `npm install` from within the QuickShare directory if you have just cloned the repo (Hint: you will also need node and npm)*
