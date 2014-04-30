@@ -16,7 +16,7 @@ How to Use
 
 The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating JavaScript APIs. It shares content using simple `<a>` anchor tags, with different levels of customisation available depending on the social media plug-in.
 
-To use QuickShare, simply download the script and include it with your script tag **after** including jQuery
+To use QuickShare, simply download the script `/dist/jquery.quickshare.js` (or for the minified version `/dist/jquery.quickshare.min.js`) and include it with your script tag **after** including jQuery
 
 ```html
 <script src="jquery.js"></script>
@@ -69,6 +69,8 @@ Here's a simple example
 	<a class="qs-link" data-qs-service="facebook-share">Facebook</a>
 </div>
 ```
+
+Both the Twitter and the Facebook share links will share the link `http://specific-url.com`.
 
 You can use multiple share containers on the same page, but the chain of command is closest to the link has preference. The anchor tag has ultimate authority and can override any of its container's settings.
 
