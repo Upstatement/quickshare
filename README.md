@@ -19,8 +19,8 @@ The goal of QuickShare is to have as much of the customisation and mark-up left 
 To use QuickShare, simply download the script `/dist/jquery.quickshare.js` (or for the minified version `/dist/jquery.quickshare.min.js`) and include it with your script tag **after** including jQuery
 
 ```html
-<script src="path_to_js_files/jquery.js"></script>
-<script src="path_to_js_files/jquery.quickshare.js"></script>
+<script src="path_to_directory/jquery.js"></script>
+<script src="path_to_directory/jquery.quickshare.js"></script>
 ```
 
 Then in a `<script>` tag or in a separate JavaScript file include the lines
@@ -145,6 +145,10 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 	Twitter
 </a>
 ```
+
+Version History
+--------------
+* 30/04/14 - 0.0.1
 
 Anything else?
 --------------
