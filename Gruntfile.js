@@ -9,20 +9,20 @@ module.exports = function(grunt) {
         separator: ';\n'
       },
       build : {
-        src: ['build/utilities.js','build/services/*.js', 'build/quickshare.js'],
-        dest: 'build/quickshare.concat.js',
+        src: ['src/build/utilities.js','src/build/services/*.js', 'src/build/quickshare.js'],
+        dest: 'src/build/quickshare.concat.js',
         nonull: true
       },
       test : {
-        src: ['test/utilities.js','test/services/*.js'],
-        dest: 'test/quickshare.concat.js',
+        src: ['src/test/utilities.js','src/test/services/*.js'],
+        dest: 'src/test/quickshare.concat.js',
         nonull: true
       }
     },
     uglify: {
       build: {
         files: {
-          'dist/jquery.quickshare.js': ['build/quickshare.concat.js'],
+          'dist/jquery.quickshare.js': ['src/build/quickshare.concat.js'],
         },
         options: {
           enclose: {
@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       },
       test: {
         files: {
-          'example/test.quickshare.js': ['test/quickshare.concat.js']
+          'test/test.quickshare.js': ['src/test/quickshare.concat.js']
         },
         options: {
           enclose: {
@@ -78,10 +78,10 @@ module.exports = function(grunt) {
     // },
     jshint: {
       dev: {
-        src: ['build/**/*.js','jquery.quickshare.js'],
+        src: ['src/build/**/*.js','jquery.quickshare.js'],
       },
       test: {
-        src: ['test/**/*.js','test.quickshare.js'],
+        src: ['src/test/**/*.js','test.quickshare.js'],
       },
       options: {
         nonstandard: true, //allow escape
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
           'equal': true,
           '$': true
         },
-        ignores: ['**/*.concat.js']
+        ignores: ['src/**/*.concat.js']
       }
     },
     express: {
