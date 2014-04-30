@@ -104,6 +104,26 @@ And the following will share the link `http://container-url.com`
 
 Share containers currently only have three attributes: `data-qs-url`, `data-qs-suffix` and `data-qs-title`
 
+###Count
+
+QuickShare also plugs into exisiting APIs to find out how many times a URL has been shared on a certain social media service. Not all social media services are supported, currently the list is
+
+* Twitter
+* Facebook (sharing)
+
+There is more specific details about implementation in the [Attributes Reference](https://github.com/Upstatement/quickshare/wiki/Service-Attributes-Reference) for each service, but what QuickShare will do is asynchronously fetch the count value, and put it in a HTML element of your choice.
+
+The corresponding data attribute takes the form `data-qs-count-selector="selector"`. If the attribute is specified, only then will it try and fetch the count value (meaning if you don't want it, there won't be any unnecessary data-fetching). The value passed in as `selector` is the CSS selector. This is used in the same way as it is used in jQuery, so they can take the form of
+
+* HTML elements `"p"`
+# Class selectors `".css-class"`
+* ID selectors `"#css-id"`
+* pseudo classes etc - see the [jQuery guide](http://api.jquery.com/category/selectors/)
+
+Always remember to be careful when specifying the selector - QuickShare could overwrite some other important value if it also has the same selector.
+
+The count value is passed in as the text of the specified HTML element - therefore it will not work on `<input>` elements.
+
 ###Icons
 
 As an additional feature of QuickShare, there is direct integration with [Font Awesome's](http://fortawesome.github.io/Font-Awesome/) social media icons, so that you can easily add the icon to the anchor tag. In order to do this, you have to include Font-Awesome, which can be as simple as adding this tag to your `<head>` element of your HTML document.
