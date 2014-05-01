@@ -1,0 +1,32 @@
+{
+  "name": "quickshare",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Upstatement/quickshare",
+  "authors": [
+    "thetmkay <george@upstatement.com>"
+  ],
+  "description": "Simple JS Library to convert links in to share links",
+  "main": "dist/quickshare.js",
+  "keywords": [
+    "share"
+  ],
+ "dependencies": {
+      "jquery": ">=1.10.2"
+  },
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    ".gitignore",
+    "src",
+    "example",
+    "Gruntfile.js",
+    "package.json",
+    "archive",
+    "lib",
+    "server.js",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
