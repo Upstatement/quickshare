@@ -110,9 +110,10 @@
         },
         icon: "twitter"
     };
-    a.fn.quickShare = function(b) {
-        var c = a(this), d = c.find(".qs-link");
-        d.each(function() {
+    b.quickShare = function(c) {
+        if (!c) c = b.document;
+        var d = a(c), e = d.find(".qs-link");
+        e.each(function() {
             var b = a(this), c = f(b, "service") || "default", d = f(b, "count-selector") || false, e = b.children("i.qs-icon") || false, g = h[c] || h["default"], i = g.extractParams(b), j = g.makeUrl(i);
             if (j) b.attr("href", j);
             if (e) e.addClass("fa fa-" + g.icon);
@@ -122,6 +123,5 @@
                 });
             }
         });
-        return true;
     };
 })(jQuery, window);

@@ -1,6 +1,9 @@
-$.fn.quickShare = function(args) {
+window.quickShare = function(scope) {
 
-    var $scope = $(this),
+    if(!scope)
+        scope = window.document;
+
+    var $scope = $(scope),
         $qslinks = $scope.find('.qs-link');
 
     $qslinks.each(function() {
@@ -21,6 +24,4 @@ $.fn.quickShare = function(args) {
             });
         }
     });
-
-    return true;
 };

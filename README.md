@@ -1,7 +1,7 @@
 QuickShare
 ==========
 
-QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content **without any JavaScript needing to be written**.
+QuickShare is a simple and quick JS library to share content through social media services with near full control on style and content **without any (real) JavaScript needing to be written**.
 
 Services Supported
 ------------------
@@ -26,9 +26,7 @@ To use QuickShare, simply download the script `/dist/jquery.quickshare.js` (or f
 Then in a `<script>` tag or in a separate JavaScript file include the lines
 
 ```javascript
-$(document).ready(function() {
-	 $(document).quickShare();
-});
+quickShare();
 ```
 
 QuickShare goes through your HTML and adds or updates the `href` attribute to the correct share endpoint URL. Technically, the user does not have to write anything outside of a HTML file to use all of its features as the above snippet is the only JavaScript that is needed.
@@ -115,9 +113,9 @@ There is more specific details about implementation in the [Attributes Reference
 
 The corresponding data attribute takes the form `data-qs-count-selector="selector"`. If the attribute is specified, only then will it try and fetch the count value (meaning if you don't want it, there won't be any unnecessary data-fetching). The value passed in as `selector` is the CSS selector. This is used in the same way as it is used in jQuery, so they can take the form of
 
-* HTML elements `"p"`
-* Class selectors `".css-class"`
-* ID selectors `"#css-id"`
+* HTML elements like `"p"`
+* Class selectors like `".css-class"`
+* ID selectors like `"#css-id"`
 * pseudo classes etc - see the [jQuery guide](http://api.jquery.com/category/selectors/)
 
 Always remember to be careful when specifying the selector - QuickShare could overwrite some other important value if it also has the same selector.
