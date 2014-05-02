@@ -5,7 +5,7 @@ services_lib['google-plus-share'] = {
     	return href_url;
     },
     getCount: function(url, callback) {
-
+    	callback(0);
     },
     icon: 'google-plus'
 };

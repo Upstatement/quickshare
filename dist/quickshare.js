@@ -18,6 +18,7 @@
     };
     var f = function(a, b) {
         var c = "qs-";
+        console.log(a.data(c + b));
         return a.data(c + b);
     };
     var g = function(a) {
@@ -55,7 +56,7 @@
             a.ajax({
                 url: "https://api.facebook.com/method/links.getStats?urls=" + b + "&format=json",
                 success: function(a) {
-                    c(a[0].share_count);
+                    if (a.length > 0) c(a[0].share_count); else c(0);
                 },
                 dataType: "jsonp",
                 crossDomain: true
@@ -69,8 +70,28 @@
             var b = "https://plus.google.com/share?url=" + a.src_url;
             return b;
         },
-        getCount: function(a, b) {},
+        getCount: function(a, b) {
+            b(0);
+        },
         icon: "google-plus"
+    };
+    h["hacker-news"] = {
+        extractParams: g,
+        makeUrl: function(a) {
+            var b = "http://news.ycombinator.com/submitlink?u=" + a.src_url + c("&t=", a.title);
+            return b;
+        },
+        getCount: function(b, c) {
+            a.ajax({
+                url: "https://hn.algolia.com/api/v1/search?query=%22" + b + "%22&tags=story&advancedSyntax=true&attributesToRetrieve=points,url",
+                success: function(a) {
+                    console.log(a);
+                    if (a.hits.length > 0) c(a.hits[0].points); else c(0);
+                },
+                crossDomain: true
+            });
+        },
+        icon: "external-link"
     };
     h["mailto"] = {
         extractParams: function(a) {
@@ -86,6 +107,24 @@
         },
         getCount: function(a, b) {},
         icon: "envelope-o"
+    };
+    h["reddit"] = {
+        extractParams: g,
+        makeUrl: function(a) {
+            var b = "http://www.reddit.com/submit?url=" + a.src_url + c("&title=", a.title);
+            return b;
+        },
+        getCount: function(b, c) {
+            a.ajax({
+                url: "http://buttons.reddit.com/button_info.json?url=" + b,
+                success: function(a) {
+                    console.log(a);
+                    if (a.data.children.length > 0) c(a.data.children[0].data.ups); else c(0);
+                },
+                crossDomain: true
+            });
+        },
+        icon: "external-link"
     };
     h["twitter"] = {
         extractParams: function(a) {

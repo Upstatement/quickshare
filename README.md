@@ -10,6 +10,8 @@ Services Supported
 * Facebook (sharing)
 * Google Plus (sharing)
 * Email (through native desktop mail client)
+* Reddit
+* Hacker News
 
 How to Use
 ----------
@@ -124,6 +126,8 @@ The count value is passed in as the text of the specified HTML element - therefo
 
 ###Icons
 
+*Note: Font Awesome Icons are not supported yet for Hacker News and Reddit*
+
 As an additional feature of QuickShare, there is direct integration with [Font Awesome's](http://fortawesome.github.io/Font-Awesome/) social media icons, so that you can easily add the icon to the anchor tag. In order to do this, you have to include Font-Awesome, which can be as simple as adding this tag to your `<head>` element of your HTML document.
 
 ```html
@@ -146,6 +150,8 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 02/05/14 - 1.1.0 - Added Support for Hacker News and Reddit
+* 01/05/14 - 1.0.1 - Bower Release
 * 30/04/14 - 0.0.1
 
 Anything else?

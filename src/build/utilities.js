@@ -27,6 +27,7 @@ var _formatUrl = function(url, has_suffix) {
 var _getData = function($elem, attr) {
 
     var data_prefix = "qs-";
+    console.log($elem.data(data_prefix + attr));
     return $elem.data(data_prefix + attr);
 };
 

@@ -8,7 +8,10 @@ services_lib['facebook-share'] = {
         $.ajax({
           url: "https://api.facebook.com/method/links.getStats?urls=" + url + "&format=json",
           success: function(data) {
-            callback(data[0].share_count);
+            if(data.length > 0)
+              callback(data[0].share_count);
+            else
+              callback(0);
           },
           dataType: 'jsonp',
           crossDomain: true
