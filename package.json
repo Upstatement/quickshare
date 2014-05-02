@@ -1,6 +1,6 @@
 {
   "name": "quickshare",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A quick and simple way to implement social plugins",
   "main": "server.js",
   "scripts": {
