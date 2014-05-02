@@ -13,8 +13,6 @@
  "dependencies": {
       "jquery": ">=1.10.2"
   },
-  "license": "MIT",
-  "private": true,
   "ignore": [
     ".gitignore",
     "src",
