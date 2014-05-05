@@ -18,16 +18,16 @@
     };
     var f = function(a, b) {
         var c = "qs-";
-        return a.data(c + b);
+        if (a) return a.data(c + b);
+        return false;
     };
-    var g = function(a) {
-        var c = {}, d = a.parents(".qs-container"), g, h, i;
-        if (d) {
-            g = f(d, "url");
-            h = f(d, "title");
-            i = f(d, "suffix");
-        }
-        var j = f(a, "suffix") || i || "", k = f(a, "url") || g || b.location.href, l = f(a, "title") || h || "Sharing: ";
+    var g = function(a, b) {
+        var c = a.parents(".qs-container[data-qs-" + b + "]");
+        if (c) return f(c, b); else return false;
+    };
+    var h = function(a) {
+        var c = {}, d = g(a, "url"), h = g(a, "title"), i = g(a, "suffix");
+        var j = f(a, "suffix") || i || "", k = f(a, "url") || d || b.location.href, l = f(a, "title") || h || "Sharing: ";
         if (j) {
             k = e(k, true) + j;
         } else {
@@ -37,16 +37,16 @@
         c.title = escape(l);
         return c;
     };
-    var h = {};
-    h["default"] = {
-        extractParams: g,
+    var i = {};
+    i["default"] = {
+        extractParams: h,
         makeUrl: function(a) {
             console.error("did not provide service to share to");
             return null;
         }
     };
-    h["facebook-share"] = {
-        extractParams: g,
+    i["facebook-share"] = {
+        extractParams: h,
         makeUrl: function(a) {
             var b = "https://www.facebook.com/sharer/sharer.php?u=" + a.src_url;
             return b;
@@ -63,8 +63,8 @@
         },
         icon: "facebook"
     };
-    h["google-plus-share"] = {
-        extractParams: g,
+    i["google-plus-share"] = {
+        extractParams: h,
         makeUrl: function(a) {
             var b = "https://plus.google.com/share?url=" + a.src_url;
             return b;
@@ -74,8 +74,8 @@
         },
         icon: "google-plus"
     };
-    h["hacker-news"] = {
-        extractParams: g,
+    i["hacker-news"] = {
+        extractParams: h,
         makeUrl: function(a) {
             var b = "http://news.ycombinator.com/submitlink?u=" + a.src_url + c("&t=", a.title);
             return b;
@@ -91,12 +91,12 @@
         },
         icon: "external-link"
     };
-    h["mailto"] = {
+    i["mailto"] = {
         extractParams: function(a) {
-            var b = g(a), c = f(a, "mail-body"), e = f(a, "subject"), h = f(a, "send-to");
+            var b = h(a), c = f(a, "mail-body"), e = f(a, "subject"), g = f(a, "send-to");
             b.mail_body = d(c, b.title + escape(" ") + b.src_url);
             b.subject = d(e, b.title);
-            b.send_to = escape(h || "");
+            b.send_to = escape(g || "");
             return b;
         },
         makeUrl: function(a) {
@@ -106,8 +106,8 @@
         getCount: function(a, b) {},
         icon: "envelope-o"
     };
-    h["reddit"] = {
-        extractParams: g,
+    i["reddit"] = {
+        extractParams: h,
         makeUrl: function(a) {
             var b = "http://www.reddit.com/submit?url=" + a.src_url + c("&title=", a.title);
             return b;
@@ -123,9 +123,9 @@
         },
         icon: "external-link"
     };
-    h["twitter"] = {
+    i["twitter"] = {
         extractParams: function(a) {
-            var b = g(a), c = f(a, "tweet-body"), e = f(a, "via-username");
+            var b = h(a), c = f(a, "tweet-body"), e = f(a, "via-username");
             b.tweet_body = d(c, b.title);
             b.via_username = d(e, null);
             return b;
@@ -150,11 +150,11 @@
         if (!c) c = b.document;
         var d = a(c), e = d.find(".qs-link");
         e.each(function() {
-            var b = a(this), c = f(b, "service") || "default", d = f(b, "count-selector") || false, e = b.children("i.qs-icon") || false, g = h[c] || h["default"], i = g.extractParams(b), j = g.makeUrl(i);
+            var b = a(this), c = f(b, "service") || "default", d = f(b, "count-selector") || false, e = b.children("i.qs-icon") || false, g = i[c] || i["default"], h = g.extractParams(b), j = g.makeUrl(h);
             if (j) b.attr("href", j);
             if (e) e.addClass("fa fa-" + g.icon);
             if (d) {
-                g.getCount(i.src_url, function(b) {
+                g.getCount(h.src_url, function(b) {
                     a(d).text(b);
                 });
             }

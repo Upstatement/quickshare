@@ -27,21 +27,25 @@ var _formatUrl = function(url, has_suffix) {
 var _getData = function($elem, attr) {
 
     var data_prefix = "qs-";
-    return $elem.data(data_prefix + attr);
+    if($elem)
+        return $elem.data(data_prefix + attr);
+    return false;
+};
+
+//TODO: turn combine _getData and _getContainer
+var _getContainerData = function($share_link, data_attr) {
+    var $container = $share_link.parents('.qs-container[data-qs-'+data_attr+']');
+    if($container)
+        return _getData($container, data_attr);
+    else
+        return false;
 };
 
 var _defaultParams = function($share_link) {
 	var params = {},
-    	$container = $share_link.parents('.qs-container'),
-        container_url,
-        container_title,
-        container_suffix;
-
-    if($container) {
-    	container_url = _getData($container, 'url');
-        container_title = _getData($container, 'title');
-        container_suffix = _getData($container, 'suffix');
-    }
+    	container_url = _getContainerData($share_link, 'url'),
+        container_title = _getContainerData($share_link, 'title'),
+        container_suffix = _getContainerData($share_link, 'suffix');
 
     var suffix = _getData($share_link, 'suffix') || container_suffix || "",
         src_url = _getData($share_link, 'url') || container_url || window.location.href,
