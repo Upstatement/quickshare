@@ -29,7 +29,7 @@ To install QuickShare, simply download the script `/dist/quickshare.js` (or for 
 
 ### Installation (Bower)
 
-QuickShare is now registered with Bower! [Bower](http://bower.io/) is a package management tool which makes it easier to install and keep up to date your project dependencies (like third party libraries such as QuickShare).
+QuickShare is now registered with Bower! [Bower](http://bower.io/) is a package management tool which makes it easier to install and keep up to date your project dependencies (aka third party libraries such as QuickShare).
 
 To install Bower, run
 
