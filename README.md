@@ -18,14 +18,51 @@ How to Use
 
 The goal of QuickShare is to have as much of the customisation and mark-up left in the HTML, free to manipulate without navigating JavaScript APIs. It shares content using simple `<a>` anchor tags, with different levels of customisation available depending on the social media plug-in.
 
-To use QuickShare, simply download the script `/dist/jquery.quickshare.js` (or for the minified version `/dist/jquery.quickshare.min.js`) and include it with your script tag **after** including jQuery
+### Installation (Copy & Paste)
+
+To install QuickShare, simply download the script `/dist/quickshare.js` (or for the minified version `/dist/quickshare.min.js`) from this repository, copy it to an appropriate directory and include it with your script tag **after** including jQuery
 
 ```html
 <script src="path_to_directory/jquery.js"></script>
 <script src="path_to_directory/jquery.quickshare.js"></script>
 ```
 
-Then in a `<script>` tag or in a separate JavaScript file include the lines
+### Installation (Bower)
+
+QuickShare is now registered with Bower! [Bower]() is a package management tool which makes it easier to install and keep up to date your project dependencies (like third party libraries such as QuickShare).
+
+To install Bower, run
+
+```sh
+npm install -g bower
+```
+
+If you don't have a `bower.json`, which makes it really easy to manage your Bower dependencies, run
+
+```sh
+bower init
+```
+
+And answer the questions when prompted.
+
+To install QuickShare with Bower, use the command
+
+```sh
+bower install --save QuickShare
+```
+
+This should create a folder called `bower_components` (if you don't like this directory, you can use a [.bowerrc](https://github.com/bower/bower#custom-install-directory) to define your own directory to install the package in to), with the `quickshare.js` file located in the `QuickShare/dist` directory (It will also download jQuery, if you didn't have it already installed).
+
+Then, include it with your script tag **after** including jQuery
+
+```html
+<script src="path_to_bower_directory/bower_components/jquery/dist/jquery.js"></script>
+<script src="path_to_bower_directory/bower_components/QuickShare/dist/quickshare.js"></script>
+```
+
+### Running QuickShare on your website
+
+To actually use QuickShare, once you've included the file, in a `<script>` tag or in a separate JavaScript file include the lines
 
 ```javascript
 quickShare();
