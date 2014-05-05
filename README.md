@@ -129,11 +129,11 @@ And the following will share the link `http://container-url.com`
 </div>
 ```
 
-**Note:** in the current implementation, reading from 'grandparent' containers (or multiple nested containers), is not supported. As in the following will not share `http://container-url.com`:
+In the current implementation, when filling out an attribute, QuickShare looks for the closest parent container with that attribute defined. This means support for nested share containers. In the example below, the link will share the url `http://container-url.com` with the title `Example Title`.
 
 ```html
-<div class="qs-container" data-qs-url="http://container-url.com">
-	<div class="qs-container">
+<div class="qs-container" data-qs-url="http://container-url.com" data-qs-title="Unused Title">
+	<div class="qs-container" data-qs-title="Example Title">
 		<a class="qs-link" data-qs-service="twitter">Twitter</a>
 	</div>
 </div>
