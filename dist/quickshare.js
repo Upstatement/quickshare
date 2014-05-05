@@ -18,7 +18,6 @@
     };
     var f = function(a, b) {
         var c = "qs-";
-        console.log(a.data(c + b));
         return a.data(c + b);
     };
     var g = function(a) {
@@ -85,7 +84,6 @@
             a.ajax({
                 url: "https://hn.algolia.com/api/v1/search?query=%22" + b + "%22&tags=story&advancedSyntax=true&attributesToRetrieve=points,url",
                 success: function(a) {
-                    console.log(a);
                     if (a.hits.length > 0) c(a.hits[0].points); else c(0);
                 },
                 crossDomain: true
@@ -118,7 +116,6 @@
             a.ajax({
                 url: "http://buttons.reddit.com/button_info.json?url=" + b,
                 success: function(a) {
-                    console.log(a);
                     if (a.data.children.length > 0) c(a.data.children[0].data.ups); else c(0);
                 },
                 crossDomain: true

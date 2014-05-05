@@ -8,7 +8,6 @@ services_lib['hacker-news'] = {
         $.ajax({
           url: "https://hn.algolia.com/api/v1/search?query=%22"+url+"%22&tags=story&advancedSyntax=true&attributesToRetrieve=points,url",
           success: function(data) {
-            console.log(data);
             if(data.hits.length > 0)
               callback(data.hits[0].points);
             else

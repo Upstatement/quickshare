@@ -8,7 +8,6 @@ services_lib['reddit'] = {
         $.ajax({
           url: "http://buttons.reddit.com/button_info.json?url=" + url,
           success: function(data) {
-            console.log(data);
             if(data.data.children.length > 0)
               callback(data.data.children[0].data.ups);
             else
