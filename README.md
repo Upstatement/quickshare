@@ -129,7 +129,9 @@ And the following will share the link `http://container-url.com`
 </div>
 ```
 
-In the current implementation, when filling out an attribute, QuickShare looks for the closest parent container with that attribute defined. This means support for nested share containers. In the example below, the link will share the url `http://container-url.com` with the title `Example Title`.
+QuickShare supports nested share containers. When trying to find out the value of a customisable field, QuickShare looks for the closest parent container with that data attribute defined.
+
+In the example below, the link will share the url `http://container-url.com` with the title `Example Title`, even though they are defined on different container elements:
 
 ```html
 <div class="qs-container" data-qs-url="http://container-url.com" data-qs-title="Unused Title">
@@ -189,6 +191,7 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 05/05/14 - 1.1.2 - Fixed Nested Containers
 * 05/05/14 - 1.1.1 - Remove debug statements
 * 02/05/14 - 1.1.0 - Added Support for Hacker News and Reddit
 * 01/05/14 - 1.0.1 - Bower Release
