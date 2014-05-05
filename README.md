@@ -147,6 +147,8 @@ QuickShare also plugs into exisiting APIs to find out how many times a URL has b
 
 * Twitter
 * Facebook (sharing)
+* Reddit (upvotes)
+* Hacker News (points)
 
 There is more specific details about implementation in the [Attributes Reference](https://github.com/Upstatement/quickshare/wiki/Service-Attributes-Reference) for each service, but what QuickShare will do is asynchronously fetch the count value, and put it in a HTML element of your choice.
 
@@ -187,6 +189,7 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 05/05/14 - 1.1.1 - Remove debug statements
 * 02/05/14 - 1.1.0 - Added Support for Hacker News and Reddit
 * 01/05/14 - 1.0.1 - Bower Release
 * 30/04/14 - 0.0.1
