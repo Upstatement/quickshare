@@ -91,6 +91,27 @@
         },
         icon: "external-link"
     };
+    i["linkedin"] = {
+        extractParams: function(a) {
+            var b = h(a), c = f(a, "summary");
+            source = f(a, "source");
+            if (c.length < 256) {
+                b.summary = d(c, null);
+            }
+            if (source.length < 200) {
+                b.source = d(source, null);
+            }
+            if (b.title > 200) {
+                b.title = "Share on LinkedIn";
+            }
+            return b;
+        },
+        makeUrl: function(a) {
+            var b = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + c("&title=", a.title) + c("&summary=", a.summary) + c("&source=", a.source);
+            return b;
+        },
+        icon: "linkedin"
+    };
     i["mailto"] = {
         extractParams: function(a) {
             var b = h(a), c = f(a, "mail-body"), e = f(a, "subject"), g = f(a, "send-to");

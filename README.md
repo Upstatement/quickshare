@@ -12,6 +12,7 @@ Services Supported
 * Email (through native desktop mail client)
 * Reddit
 * Hacker News
+* LinkedIn
 
 How to Use
 ----------
