@@ -192,6 +192,7 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 05/06/14 - 1.2.0 - Added LinkedIn Support
 * 05/05/14 - 1.1.2 - Fixed Nested Containers
 * 05/05/14 - 1.1.1 - Remove debug statements
 * 02/05/14 - 1.1.0 - Added Support for Hacker News and Reddit
