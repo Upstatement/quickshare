@@ -4,13 +4,13 @@ services_lib['linkedin'] = {
           summary = _getData($share_link, 'summary');
         	source = _getData($share_link, 'source');
 
-        if(summary.length < 256) {
+        if(summary && summary.length < 256) {
           params.summary = _setNonEscapedDefault(summary, null);
         }
-        if(source.length < 200) {
+        if(source && source.length < 200) {
           params.source = _setNonEscapedDefault(source, null);
         }
-        if(params.title > 200) {
+        if(params.title && params.title.length > 200) {
           params.title = "Share on LinkedIn";
         }
 
