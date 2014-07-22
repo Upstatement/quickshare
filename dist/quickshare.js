@@ -95,13 +95,13 @@
         extractParams: function(a) {
             var b = h(a), c = f(a, "summary");
             source = f(a, "source");
-            if (c.length < 256) {
+            if (c && c.length < 256) {
                 b.summary = d(c, null);
             }
-            if (source.length < 200) {
+            if (source && source.length < 200) {
                 b.source = d(source, null);
             }
-            if (b.title > 200) {
+            if (b.title && b.title.length > 200) {
                 b.title = "Share on LinkedIn";
             }
             return b;
