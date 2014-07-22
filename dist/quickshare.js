@@ -69,8 +69,29 @@
             var b = "https://plus.google.com/share?url=" + a.src_url;
             return b;
         },
-        getCount: function(a, b) {
-            b(0);
+        getCount: function(b, c) {
+            a.ajax({
+                url: "https://clients6.google.com/rpc",
+                success: function(a) {
+                    console.log(a);
+                },
+                crossDomain: true,
+                datatype: "jsonp",
+                body: [ {
+                    method: "pos.plusones.get",
+                    id: "p",
+                    params: {
+                        nolog: true,
+                        id: b,
+                        source: "widget",
+                        userId: "@viewer",
+                        groupId: "@self"
+                    },
+                    jsonrpc: "2.0",
+                    key: "p",
+                    apiVersion: "v1"
+                } ]
+            });
         },
         icon: "google-plus"
     };
@@ -109,6 +130,9 @@
         makeUrl: function(a) {
             var b = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + c("&title=", a.title) + c("&summary=", a.summary) + c("&source=", a.source);
             return b;
+        },
+        getCount: function(a, b) {
+            b(0);
         },
         icon: "linkedin"
     };

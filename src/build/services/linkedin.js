@@ -20,15 +20,16 @@ services_lib['linkedin'] = {
         var href_url = 'http://www.linkedin.com/shareArticle?mini=true&url=' + params.src_url + _mightInclude('&title=', params.title) + _mightInclude('&summary=', params.summary)+ _mightInclude('&source=', params.source);
         return href_url;
     },
-    // getCount : function(url, callback) {
-    //     $.ajax({
-    //       url: "http://urls.api.twitter.com/1/urls/count.json?url=" + url,
-    //       success: function(data) {
-    //         callback(data.count);
-    //       },
-    //       dataType: 'jsonp',
-    //       crossDomain: true
-    //     });
-    // },
+    getCount : function(url, callback) {
+        callback(0);
+        // $.ajax({
+        //   url: "http://urls.api.twitter.com/1/urls/count.json?url=" + url,
+        //   success: function(data) {
+        //     callback(data.count);
+        //   },
+        //   dataType: 'jsonp',
+        //   crossDomain: true
+        // });
+    },
     icon: 'linkedin'
 };
