@@ -151,6 +151,13 @@
         getCount: function(a, b) {},
         icon: "envelope-o"
     };
+    i["pinterest"] = {
+        extractParams: h,
+        makeUrl: function(a) {
+            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url;
+            return b;
+        },
+    };
     i["reddit"] = {
         extractParams: h,
         makeUrl: function(a) {
