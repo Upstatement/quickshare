@@ -156,7 +156,7 @@
     i["pinterest"] = {
         extractParams: h,
         makeUrl: function(a) {
-            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + a.image;
+            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image;
             return b;
         }
     };
