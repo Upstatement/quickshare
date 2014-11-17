@@ -27,7 +27,8 @@
     };
     var h = function(a) {
         var c = {}, d = g(a, "url"), h = g(a, "title"), i = g(a, "suffix");
-        var j = f(a, "suffix") || i || "", k = f(a, "url") || d || b.location.href, l = f(a, "title") || h || "Sharing: ";
+        container_image = g(a, "image");
+        var j = f(a, "suffix") || i || "", k = f(a, "url") || d || b.location.href, l = f(a, "title") || h || "Sharing: ", m = f(a, "image") || container_image || "";
         if (j) {
             k = e(k, true) + j;
         } else {
@@ -35,6 +36,7 @@
         }
         c.src_url = escape(k);
         c.title = escape(l);
+        c.image = escape(m);
         return c;
     };
     var i = {};
@@ -154,9 +156,9 @@
     i["pinterest"] = {
         extractParams: h,
         makeUrl: function(a) {
-            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url;
+            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + a.image;
             return b;
-        },
+        }
     };
     i["reddit"] = {
         extractParams: h,

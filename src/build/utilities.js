@@ -46,10 +46,12 @@ var _defaultParams = function($share_link) {
     	container_url = _getContainerData($share_link, 'url'),
         container_title = _getContainerData($share_link, 'title'),
         container_suffix = _getContainerData($share_link, 'suffix');
+        container_image = _getContainerData($share_link, 'image');
 
     var suffix = _getData($share_link, 'suffix') || container_suffix || "",
         src_url = _getData($share_link, 'url') || container_url || window.location.href,
-        title = _getData($share_link, 'title') || container_title || 'Sharing: ';
+        title = _getData($share_link, 'title') || container_title || 'Sharing: ',
+        image = _getData($share_link, 'image') || container_image || "";
 
     if(suffix) {
         src_url = _formatUrl(src_url, true) + suffix;
@@ -60,6 +62,7 @@ var _defaultParams = function($share_link) {
 
     params.src_url = escape(src_url);
     params.title = escape(title);
+    params.image = escape(image);
 
     return params;
 };
