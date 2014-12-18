@@ -53,7 +53,7 @@ var _defaultParams = function($share_link) {
         src_url = _getData($share_link, 'url') || container_url || window.location.href,
         title = _getData($share_link, 'title') || container_title || 'Sharing: ',
         image = _getData($share_link, 'image') || container_image || "";
-        image = _getData($share_link, 'description') || container_description || "";
+        description = _getData($share_link, 'description') || container_description || "";
 
     if(suffix) {
         src_url = _formatUrl(src_url, true) + suffix;
