@@ -28,7 +28,9 @@
     var h = function(a) {
         var c = {}, d = g(a, "url"), h = g(a, "title"), i = g(a, "suffix");
         container_image = g(a, "image");
+        container_description = g(a, "description");
         var j = f(a, "suffix") || i || "", k = f(a, "url") || d || b.location.href, l = f(a, "title") || h || "Sharing: ", m = f(a, "image") || container_image || "";
+        m = f(a, "description") || container_description || "";
         if (j) {
             k = e(k, true) + j;
         } else {
@@ -156,7 +158,7 @@
     i["pinterest"] = {
         extractParams: h,
         makeUrl: function(a) {
-            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image;
+            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image + "&description=" + a.description;
             return b;
         }
     };

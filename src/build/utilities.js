@@ -47,11 +47,13 @@ var _defaultParams = function($share_link) {
         container_title = _getContainerData($share_link, 'title'),
         container_suffix = _getContainerData($share_link, 'suffix');
         container_image = _getContainerData($share_link, 'image');
+        container_description = _getContainerData($share_link, 'description');
 
     var suffix = _getData($share_link, 'suffix') || container_suffix || "",
         src_url = _getData($share_link, 'url') || container_url || window.location.href,
         title = _getData($share_link, 'title') || container_title || 'Sharing: ',
         image = _getData($share_link, 'image') || container_image || "";
+        image = _getData($share_link, 'description') || container_description || "";
 
     if(suffix) {
         src_url = _formatUrl(src_url, true) + suffix;
