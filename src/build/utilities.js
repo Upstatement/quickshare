@@ -65,6 +65,7 @@ var _defaultParams = function($share_link) {
     params.src_url = escape(src_url);
     params.title = escape(title);
     params.image = escape(image);
+    params.description = escape(description);
 
     return params;
 };

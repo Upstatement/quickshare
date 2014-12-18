@@ -39,6 +39,7 @@
         c.src_url = escape(k);
         c.title = escape(l);
         c.image = escape(m);
+        c.description = escape(description);
         return c;
     };
     var i = {};
