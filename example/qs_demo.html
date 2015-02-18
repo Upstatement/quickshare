@@ -5,7 +5,7 @@
 			<title>QuickShare Test</title>
 			<link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
 		</head>
-		<body class='qs-container' data-qs-suffix="/testurl" data-qs-title="super test title">
+		<body class='qs-container' data-qs-title="super test title">
 			<div class='qs-container' data-qs-title="test title">
 				<div>
 					<a class='qs-link' data-qs-service='linkedin' data-qs-url="i.imgur.com/WhVALCK.jpg" target='_blank'data-qs-source="Wired Magazine" data-qs-summary="a picture i cannot recall">
@@ -31,12 +31,29 @@
 						email
 					</a>
 				</div>
+				<div>
+					<a class='qs-link' data-qs-service='pinterest' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge/" data-qs-description="Check out this awesome link" data-qs-image="http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg">
+						<i class="qs-icon"></i>
+						pinterest
+					</a>
+				</div>
+				<div>
+					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+						<i class="qs-icon"></i>
+						facebook
+					</a>
+				</div>
+				<div>
+					<a class='qs-link' data-qs-service='twitter' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+						<i class="qs-icon"></i>
+						twitter
+					</a>
+				</div>
 				<p id="best">
 				</p>
 			</div>
-			<div data-qs-url="http://georgenishimura.com/blog/post/lorem-ipsum" data-qs-title="lorem ipsum dolor sit amet" ng-show="title" class="qs-container"><a data-qs-service="twitter" class="qs-link" href="https://twitter.com/intent/tweet?url=http%3A//georgenishimura.com/blog/post/lorem-ipsum&amp;text=Sharing%3A%20"><i class="qs-icon fa-2x fa fa-twitter"></i></a><a data-qs-service="facebook-share" class="qs-link" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//georgenishimura.com/blog/post/lorem-ipsum"><i class="qs-icon fa-2x fa fa-facebook"></i></a></div>
 			<script src="../lib/jquery.js"></script>
-			<script src="../dist/quickshare.js"></script>
+			<script src="../dist/quickshare.min.js"></script>
 			<script type="text/javascript">
 					quickShare();
 			</script>
