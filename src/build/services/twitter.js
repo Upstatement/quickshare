@@ -11,6 +11,7 @@ services_lib['twitter'] = {
     },
     makeUrl: function(params) {
         var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude('&text=', params.tweet_body) + _mightInclude('&via=', params.via_username);
+        href_url = "javascript:window.open('" + href_url + "','mywin','width=620,height=350');";
         return href_url;
     },
     getCount : function(url, callback) {
