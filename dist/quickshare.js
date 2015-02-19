@@ -116,7 +116,7 @@
                 crossDomain: true
             });
         },
-        icon: "external-link"
+        icon: "hacker-news"
     };
     i["linkedin"] = {
         extractParams: function(a) {
@@ -163,7 +163,8 @@
         makeUrl: function(a) {
             var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image + "&description=" + a.description;
             return b;
-        }
+        },
+        icon: "pinterest-p"
     };
     i["reddit"] = {
         extractParams: h,
