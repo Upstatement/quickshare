@@ -16,5 +16,5 @@ services_lib['hacker-news'] = {
           crossDomain: true
         });
     },
-    icon: 'external-link'
+    icon: 'hacker-news'
 };

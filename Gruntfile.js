@@ -138,7 +138,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('build', ['concat:build', 'uglify:build']);
+  grunt.registerTask('build', ['concat:build', 'uglify:build', 'uglify:compress']);
 
   grunt.registerTask('testbuild', ['concat:test', 'uglify:test']);
   grunt.registerTask('minify', ['uglify:compress']);

@@ -1,61 +1,119 @@
 <!doctype html>
-	<html>
-		<head>
-			<meta charset="utf-8">
-			<title>QuickShare Test</title>
-			<link rel='stylesheet' href='//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css'>
-		</head>
-		<body class='qs-container' data-qs-title="super test title">
-			<div class='qs-container' data-qs-title="test title">
-				<div>
-					<a class='qs-link' data-qs-service='linkedin' data-qs-url="i.imgur.com/WhVALCK.jpg" target='_blank'data-qs-source="Wired Magazine" data-qs-summary="a picture i cannot recall">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>QuickShare Demo</title>
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="qs_demo_style.css">
+	</head>
+	<body class='qs-container' data-qs-title="super test title">
+		<header>
+    	<h1 class="primary-h">QuickShare <i class="thin">Demo</i></h1>
+    </header>
+
+		<div class="implementation-container">
+	    <h2 class="secondary-h">'Kitchen Sink' Implementation</h2>
+	    <div class='qs-container demo' data-qs-title="Check out this link:" data-qs-url="http://nytimes.com">
+				<div class="ks-link">
+					<a class='qs-link' data-qs-service='linkedin' data-qs-url="http://i.imgur.com/WhVALCK.jpg" target='_blank'data-qs-source="Wired Magazine" data-qs-summary="a picture i cannot recall">
 						<i class="qs-icon"></i>
-						linkedin
+						<p>linkedin</p>
 					</a>
 				</div>
-				<div>
-					<a class='qs-link' data-qs-service='google-plus-share' data-qs-count-selector="#best"  target='_blank' data-qs-url="gizmodo.com/how-steve-wozniak-wrote-basic-for-the-original-apple-fr-1570573636/all" data-qs-title="Steve Wozzy">
+				<div class="ks-link">
+					<a class='qs-link' data-qs-service='hacker-news' data-qs-count-selector="#best"  target='_blank' data-qs-url="gizmodo.com/how-steve-wozniak-wrote-basic-for-the-original-apple-fr-1570573636/all" data-qs-title="Steve Wozzy" data-qs-count-selector=".hn-share-count">
 						<i class="qs-icon"></i>
-						hn
+						<p>hacker news</p>
 					</a>
 				</div>
-				<div>
+				<div class="ks-link">
 					<a class='qs-link' data-qs-service='google-plus-share' target='_blank'>
 						<i class="qs-icon"></i>
-						googleplus
+						<p>googleplus</p>
 					</a>
 				</div>
-				<div>
+				<div class="ks-link">
 					<a class='qs-link' data-qs-service='mailto' data-qs-subject="Check out this awesome link" data-qs-mail-body="Awesome link http://www.upstatement.com" data-qs-send-to="george@upstatement.com,thetmkay@gmail.com">
 						<i class="qs-icon"></i>
-						email
+						<p>email</p>
 					</a>
 				</div>
-				<div>
+				<div class="ks-link">
 					<a class='qs-link' data-qs-service='pinterest' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge/" data-qs-description="Check out this awesome link" data-qs-image="http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg">
 						<i class="qs-icon"></i>
-						pinterest
+						<p>pinterest</p>
 					</a>
 				</div>
-				<div>
-					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+				<div class="ks-link">
+					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="http://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html" data-qs-count-selector=".facebook-share-count">
 						<i class="qs-icon"></i>
-						facebook
+						<p>facebook</p><span class="facebook-share-count count"></span>
 					</a>
 				</div>
-				<div>
-					<a class='qs-link' data-qs-service='twitter' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+				<div class="ks-link">
+					<a class='qs-link' data-qs-service='twitter' data-qs-url="http://www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html" data-qs-count-selector=".twitter-share-count">
 						<i class="qs-icon"></i>
-						twitter
+						<p>twitter</p><span class="twitter-share-count count"></span>
 					</a>
 				</div>
-				<p id="best">
-				</p>
+				<div class="ks-link">
+					<a class='qs-link' data-qs-service='reddit' data-qs-url="http://www.wired.com/2015/02/hacker-claims-feds-hit-44-felonies-refused-fbi-spy/" data-qs-count-selector=".reddit-share-count">
+						<i class="qs-icon"></i>
+						<p>reddit</p><span class="reddit-share-count count"></span>
+					</a>
+				</div>
 			</div>
-			<script src="../lib/jquery.js"></script>
-			<script src="../dist/quickshare.min.js"></script>
-			<script type="text/javascript">
-					quickShare();
-			</script>
-		</body>
-	</html>
+	  </div>
+
+		<div class="implementation-container">
+	    <h2 class="secondary-h">Minimal Implementation</h1>
+			<div class='qs-container demo' data-qs-title="test title" data-qs-url="http://nytimes.com">
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='linkedin' data-qs-url="http://i.imgur.com/WhVALCK.jpg" target='_blank'data-qs-source="Wired Magazine" data-qs-summary="a picture i cannot recall">
+						<p>linkedin</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='hacker-news' data-qs-count-selector="#best"  target='_blank' data-qs-url="gizmodo.com/how-steve-wozniak-wrote-basic-for-the-original-apple-fr-1570573636/all" data-qs-title="Steve Wozzy">
+						<p>hacker news</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='google-plus-share' target='_blank'>
+						<p>googleplus</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='mailto' data-qs-subject="Check out this awesome link" data-qs-mail-body="Awesome link http://www.upstatement.com" data-qs-send-to="george@upstatement.com,thetmkay@gmail.com">
+						<p>email</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='pinterest' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge/" data-qs-description="Check out this awesome link" data-qs-image="http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg">
+						<p>pinterest</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge"
+						<p>facebook</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='twitter' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+						<p>twitter</p>
+					</a>
+				</div>
+				<div class="min-link">
+					<a class='qs-link' data-qs-service='reddit' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge">
+						<p>reddit</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<script src="../lib/jquery.js"></script>
+		<script src="../dist/quickshare.min.js"></script>
+		<script type="text/javascript">
+			quickShare();
+		</script>
+	</body>
+</html>
