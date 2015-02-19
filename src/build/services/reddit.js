@@ -16,5 +16,5 @@ services_lib['reddit'] = {
           crossDomain: true
         });
     },
-    icon: 'external-link'
+    icon: 'reddit'
 };

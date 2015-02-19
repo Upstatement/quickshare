@@ -181,7 +181,7 @@
                 crossDomain: true
             });
         },
-        icon: "external-link"
+        icon: "reddit"
     };
     i["twitter"] = {
         extractParams: function(a) {
