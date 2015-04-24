@@ -13,9 +13,7 @@ var _setNonEscapedDefault = function(_value,_default) {
 var _formatUrl = function(url, has_suffix) {
 
     if(url.indexOf("http:") === -1 && url.indexOf("https:") === -1) {
-        console.log(url);
         url = 'http://' + url;
-        console.log(url);
     }
 
     if(has_suffix) {

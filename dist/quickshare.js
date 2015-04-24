@@ -9,9 +9,7 @@
     };
     var e = function(a, b) {
         if (a.indexOf("http:") === -1 && a.indexOf("https:") === -1) {
-            console.log(a);
             a = "http://" + a;
-            console.log(a);
         }
         if (b) {
             while (a.charAt(a.length - 1) === "/") {
