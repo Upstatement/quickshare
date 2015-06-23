@@ -50,7 +50,7 @@ module.exports = function(grunt) {
           'dist/quickshare.min.js': ['dist/quickshare.js']
         },
         options: {
-          compress: true
+          compress: {}
         }
       }
     },
