@@ -56,7 +56,7 @@
         extractParams: h,
         makeUrl: function(a) {
             var b = "https://www.facebook.com/sharer/sharer.php?u=" + a.src_url;
-            b = "javascript:window.open('" + b + "','mywin','width=620,height=350');";
+            b = "javascript:window.open('" + b + "','myFacebookWin','width=620,height=350');";
             return b;
         },
         getCount: function(b, c) {
@@ -137,7 +137,7 @@
         },
         makeUrl: function(a) {
             var b = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + c("&title=", a.title) + c("&summary=", a.summary) + c("&source=", a.source);
-            b = "javascript:window.open('" + b + "','mywin','width=620,height=350');";
+            b = "javascript:window.open('" + b + "','myLinkedinWin','width=620,height=350');";
             return b;
         },
         getCount: function(a, b) {
@@ -194,7 +194,7 @@
         },
         makeUrl: function(a) {
             var b = "https://twitter.com/intent/tweet?url=" + a.src_url + c("&text=", a.tweet_body) + c("&via=", a.via_username);
-            b = "javascript:window.open('" + b + "','mywin','width=620,height=350');";
+            b = "javascript:window.open('" + b + "','myTwitterWin','width=620,height=350');";
             return b;
         },
         getCount: function(b, c) {
