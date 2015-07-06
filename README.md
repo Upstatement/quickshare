@@ -192,6 +192,7 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 07/06/15 - 1.3.3 - Added window fix for IE9
 * 02/16/15 - 1.3.0 - Added sizes to
 * 05/06/14 - 1.2.0 - Added LinkedIn Support
 * 05/05/14 - 1.1.2 - Fixed Nested Containers
