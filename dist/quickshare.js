@@ -188,13 +188,20 @@
     i["twitter"] = {
         extractParams: function(a) {
             var b = h(a), c = f(a, "tweet-body"), e = f(a, "via-username");
-            b.tweet_body = d(c, b.title);
+            if (c) {
+                b.tweet_body = d(c, b.title);
+            } else {
+                b.tweet_body = encodeURIComponent(unescape(b.title));
+                if (b.tweet_body.indexOf("'")) {
+                    b.tweet_body = b.tweet_body.replace(/'/g, "%27");
+                }
+            }
             b.via_username = d(e, null);
             return b;
         },
         makeUrl: function(a) {
             var b = "https://twitter.com/intent/tweet?url=" + a.src_url + c("&text=", a.tweet_body) + c("&via=", a.via_username);
-            b = "javascript:window.open('" + b + "','myTwitterWin','width=620,height=350'); void(0)";
+            b = "javascript:window.open('" + escape(b) + "','myTwitterWin','width=620,height=350'); void(0)";
             return b;
         },
         getCount: function(b, c) {
