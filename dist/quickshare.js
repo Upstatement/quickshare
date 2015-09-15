@@ -169,7 +169,11 @@
         icon: "pinterest-p"
     };
     i["reddit"] = {
-        extractParams: h,
+        extractParams: function(a) {
+            var b = h(a);
+            b.title = encodeURIComponent(unescape(b.title));
+            return b;
+        },
         makeUrl: function(a) {
             var b = "http://www.reddit.com/submit?url=" + a.src_url + c("&title=", a.title);
             return b;

@@ -1,5 +1,9 @@
 services_lib['reddit'] = {
-    extractParams: _defaultParams,
+    extractParams: function($share_link) {
+        var params = _defaultParams($share_link);
+        params.title = encodeURIComponent(unescape(params.title));
+        return params;
+    },
     makeUrl: function(params) {
         var href_url = 'http://www.reddit.com/submit?url=' +  params.src_url + _mightInclude('&title=', params.title);
         return href_url;
