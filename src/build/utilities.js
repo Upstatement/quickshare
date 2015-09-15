@@ -4,9 +4,21 @@ var _mightInclude = function(_name, _value) {
     return '';
 };
 
+var _rawUrlEncode = function(_value) {
+    _value = (_value + '').toString();
+    
+    return encodeURIComponent(_value)
+    .replace(/!/g, '%21')
+    .replace(/'/g, '%27')
+    .replace(/\(/g, '%28')
+    .replace(/\)/g, '%29')
+    .replace(/\*/g, '%2A')
+    .replace(/%20/g, '+');
+};
+
 var _setNonEscapedDefault = function(_value,_default) {
 	if(_value)
-		return escape(_value);
+		return _rawUrlEncode(_value);
 	return _default;
 };
 
@@ -63,10 +75,10 @@ var _defaultParams = function($share_link) {
         src_url = _formatUrl(src_url, false);
     }
 
-    params.src_url = escape(src_url);
-    params.title = escape(title);
-    params.image = escape(image);
-    params.description = escape(description);
+    params.src_url = encodeURIComponent(src_url);
+    params.title = encodeURIComponent(title);
+    params.image = encodeURIComponent(image);
+    params.description = encodeURIComponent(description);
 
     return params;
 };
