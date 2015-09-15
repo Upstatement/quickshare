@@ -194,16 +194,13 @@
     };
     k["twitter"] = {
         extractParams: function(a) {
-            var b = j(a), c = h(a, "tweet-body"), d = h(a, "via-username");
+            var b = j(a), c = h(a, "tweet-body"), g = h(a, "via-username");
             if (c) {
                 b.tweet_body = f(c, b.title);
             } else {
-                b.tweet_body = encodeURIComponent(decodeURIComponent(b.title));
-                if (b.tweet_body.indexOf("'")) {
-                    b.tweet_body = b.tweet_body.replace(/'/g, "%27");
-                }
+                b.tweet_body = d(e(b.title));
             }
-            b.via_username = f(d, null);
+            b.via_username = f(g, null);
             return b;
         },
         makeUrl: function(a) {

@@ -7,10 +7,7 @@ services_lib['twitter'] = {
         if(tweet_body) {
          params.tweet_body = _setNonEscapedDefault(tweet_body, params.title);
         } else {
-          params.tweet_body = encodeURIComponent(decodeURIComponent(params.title));
-          if(params.tweet_body.indexOf("'")) {
-            params.tweet_body = params.tweet_body.replace(/'/g, "%27");
-          }
+          params.tweet_body = _rawUrlEncode(_rawUrlDecode(params.title));
         }
 
         params.via_username = _setNonEscapedDefault(via_username, null);
