@@ -16,6 +16,11 @@ var _rawUrlEncode = function(_value) {
     .replace(/%20/g, '+');
 };
 
+var _rawUrlDecode = function(_value) {
+    return decodeURIComponent(_value)
+    .replace(/\+/g, '%20');
+}
+
 var _setNonEscapedDefault = function(_value,_default) {
 	if(_value)
 		return _rawUrlEncode(_value);
