@@ -1,12 +1,12 @@
 (function(a) {
     var b = {
-        title: escape("Sharing: "),
-        username: escape("thetmkay"),
-        tweet_body: escape("This is my 1st sharing!!! : "),
-        address: escape("thetmkay@gmail.com"),
-        multi_address: escape("thetmkay@gmail.com,george@upstatement.com,george.nishimura_1@outlook.com"),
-        subject: escape("subject header"),
-        mail_body: escape("mail body")
+        title: encodeURIComponent("Sharing: "),
+        username: encodeURIComponent("thetmkay"),
+        tweet_body: k("This is my 1st sharing!!! : "),
+        address: "thetmkay@gmail.com",
+        multi_address: "thetmkay@gmail.com,george@upstatement.com,george.nishimura_1@outlook.com",
+        subject: encodeURIComponent("subject header"),
+        mail_body: encodeURIComponent("mail body")
     };
     var c = {
         container: "-c",
@@ -24,8 +24,8 @@
         blank: "B"
     };
     var d = {
-        test_e: escape("http://www.test.com/"),
-        localhost_e: escape("http://localhost:3000/qs_test.html"),
+        test_e: encodeURIComponent("http://www.test.com/"),
+        localhost_e: encodeURIComponent("http://localhost:3000/test/qs_test.html"),
         fb_share: "https://www.facebook.com/sharer/sharer.php?u=",
         twitter: "https://twitter.com/intent/tweet?url=",
         gp_share: "https://plus.google.com/share?url=",
@@ -34,7 +34,7 @@
     var e = {
         via: "&via=",
         tweet_body: "&text=",
-        container: escape("container/"),
+        container: encodeURIComponent("container/"),
         mail_body: "?body=",
         subject: "&subject=",
         fb_share: "facebook",
@@ -48,275 +48,290 @@
         twitter: ".test-tw",
         mailto: ".test-mt"
     };
-    var g = function(b) {
+    var g = {
+        fb: "','myFacebookWin',",
+        twitter: "','myTwitterWin',",
+        linkedin: "', 'myLinkedinWin',",
+        dimensions: "'width=620,height=350'",
+        open: "javascript:window.open('",
+        close: "); void(0)"
+    };
+    var h = function(b) {
         test(b.name, function() {
             var c = a(b.class_tag);
             c.trigger("click");
             equal(c.attr("href"), b.expected_url);
         });
     };
-    var h = {
+    var i = {
         setup: function() {
-            a(document).quickShare();
+            quickShare();
         }
     };
-    var i = function(a) {
-        module(a, h);
+    var j = function(a) {
+        module(a, i);
     };
-    i("facebook share tests");
-    g({
+    function k(a) {
+        a = (a + "").toString();
+        return encodeURIComponent(a).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/" "/g, "%20");
+    }
+    function l(a) {
+        return decodeURIComponent(a).replace(/%20/g, " ");
+    }
+    j("facebook share tests");
+    h({
         name: "fbs - no container + url + title",
         class_tag: f.fb_share + c.no_container + c.url_title,
-        expected_url: d.fb_share + d.test_e + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.fb_share + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - no container + url + no title",
         class_tag: f.fb_share + c.no_container + c.url,
-        expected_url: d.fb_share + d.test_e + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.fb_share + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - no container + no url + no title",
         class_tag: f.fb_share + c.no_container + c.no_url_no_title,
-        expected_url: d.fb_share + d.localhost_e
+        expected_url: g.open + d.fb_share + d.localhost_e + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - no container + no url + title",
         class_tag: f.fb_share + c.no_container + c.title,
-        expected_url: d.fb_share + d.localhost_e
+        expected_url: g.open + d.fb_share + d.localhost_e + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - container + url + title",
         class_tag: f.fb_share + c.container + c.url_title,
-        expected_url: d.fb_share + d.test_e + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.fb_share + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - container + url + no title",
         class_tag: f.fb_share + c.container + c.url,
-        expected_url: d.fb_share + d.test_e + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.fb_share + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - container + no url + no title",
         class_tag: f.fb_share + c.container + c.no_url_no_title,
-        expected_url: d.fb_share + d.test_e + e.container + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.container + e.fb_share + g.fb + g.dimensions + g.close
     });
-    g({
+    h({
         name: "fbs - container + no url + title",
         class_tag: f.fb_share + c.container + c.title,
-        expected_url: d.fb_share + d.test_e + e.container + e.fb_share
+        expected_url: g.open + d.fb_share + d.test_e + e.container + e.fb_share + g.fb + g.dimensions + g.close
     });
-    i("google-plus-share tests");
-    g({
+    j("google-plus-share tests");
+    h({
         name: "gps - no container + url + title",
         class_tag: f.gp_share + c.no_container + c.url_title,
         expected_url: d.gp_share + d.test_e + e.gp_share
     });
-    g({
+    h({
         name: "gps - no container + url + no title",
         class_tag: f.gp_share + c.no_container + c.url,
         expected_url: d.gp_share + d.test_e + e.gp_share
     });
-    g({
+    h({
         name: "gps - no container + no url + no title",
         class_tag: f.gp_share + c.no_container + c.no_url_no_title,
         expected_url: d.gp_share + d.localhost_e
     });
-    g({
+    h({
         name: "gps - no container + no url + title",
         class_tag: f.gp_share + c.no_container + c.title,
         expected_url: d.gp_share + d.localhost_e
     });
-    g({
+    h({
         name: "gps - container + url + title",
         class_tag: f.gp_share + c.container + c.url_title,
         expected_url: d.gp_share + d.test_e + e.gp_share
     });
-    g({
+    h({
         name: "gps - container + url + no title",
         class_tag: f.gp_share + c.container + c.url,
         expected_url: d.gp_share + d.test_e + e.gp_share
     });
-    g({
+    h({
         name: "gps - container + no url + no title",
         class_tag: f.gp_share + c.container + c.no_url_no_title,
         expected_url: d.gp_share + d.test_e + e.container + e.gp_share
     });
-    g({
+    h({
         name: "gps - container + no url + title",
         class_tag: f.gp_share + c.container + c.title,
         expected_url: d.gp_share + d.test_e + e.container + e.gp_share
     });
-    i("mailto tests");
-    var j = escape("mt title"), k = j + escape(" container"), l = j + escape(" ") + d.test_e, m = b.title + escape(" ") + d.localhost_e, n = b.title + escape(" ") + d.test_e, o = j + escape(" ") + d.localhost_e;
-    g({
+    j("mailto tests");
+    var m = encodeURIComponent("mt title"), n = m + encodeURIComponent(" container"), o = b.mail_body + encodeURIComponent(" ") + d.test_e + e.mailto, p = m + escape(" ") + d.test_e, q = b.title + escape(" ") + d.localhost_e, r = b.title + escape(" ") + d.test_e, s = m + escape(" ") + d.localhost_e;
+    h({
         name: "mt - no container + url + title",
         class_tag: f.mailto + c.no_container + c.url_title,
-        expected_url: d.mailto + e.mail_body + j + escape(" ") + d.test_e + e.mailto + e.subject + j
+        expected_url: d.mailto + e.mail_body + m + encodeURIComponent(" ") + d.test_e + e.mailto + e.subject + m
     });
-    g({
+    h({
         name: "mt - no container + url + no title",
         class_tag: f.mailto + c.no_container + c.url,
-        expected_url: d.mailto + e.mail_body + b.title + escape(" ") + d.test_e + e.mailto + e.subject + b.title
+        expected_url: d.mailto + e.mail_body + b.title + encodeURIComponent(" ") + d.test_e + e.mailto + e.subject + b.title
     });
-    g({
+    h({
         name: "mt - no container + no url + no title",
         class_tag: f.mailto + c.no_container + c.no_url_no_title,
         expected_url: d.mailto + e.mail_body + b.title + escape(" ") + d.localhost_e + e.subject + b.title
     });
-    g({
+    h({
         name: "mt - no container + no url + title",
         class_tag: f.mailto + c.no_container + c.title,
-        expected_url: d.mailto + e.mail_body + j + escape(" ") + d.localhost_e + e.subject + j
+        expected_url: d.mailto + e.mail_body + m + escape(" ") + d.localhost_e + e.subject + m
     });
-    g({
+    h({
         name: "mt - no container + url + title + mail_body + subject",
         class_tag: f.mailto + c.no_container + c.url_title + c.mail_body + c.subject,
-        expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - no container + url + no title + mail_body + subject",
         class_tag: f.mailto + c.no_container + c.url + c.mail_body + c.subject,
-        expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - no container + no url + title + mail_body + subject",
         class_tag: f.mailto + c.no_container + c.title + c.mail_body + c.subject,
         expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - no container + no url + no title + mail_body + subject",
         class_tag: f.mailto + c.no_container + c.no_url_no_title + c.mail_body + c.subject,
         expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - no container + url + title + mail_body + subject + send_to(single)",
         class_tag: f.mailto + c.no_container + c.url_title + c.mail_body + c.subject + c.send_to,
-        expected_url: d.mailto + b.address + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + b.address + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - no container + url + title + mail_body + subject + send_to(multiple)",
         class_tag: f.mailto + c.no_container + c.url_title + c.mail_body + c.subject + c.send_to + c.multiple,
-        expected_url: d.mailto + b.multi_address + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + b.multi_address + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + url + title",
         class_tag: f.mailto + c.container + c.url_title,
-        expected_url: d.mailto + e.mail_body + j + escape(" ") + d.test_e + e.mailto + e.subject + j
+        expected_url: d.mailto + e.mail_body + m + escape(" ") + d.test_e + e.mailto + e.subject + m
     });
-    g({
+    h({
         name: "mt - container + url + no title",
         class_tag: f.mailto + c.container + c.url,
-        expected_url: d.mailto + e.mail_body + k + escape(" ") + d.test_e + e.mailto + e.subject + k
+        expected_url: d.mailto + e.mail_body + n + escape(" ") + d.test_e + e.mailto + e.subject + n
     });
-    g({
+    h({
         name: "mt - container + no url + no title",
         class_tag: f.mailto + c.container + c.no_url_no_title,
-        expected_url: d.mailto + e.mail_body + k + escape(" ") + d.test_e + e.container + e.mailto + e.subject + k
+        expected_url: d.mailto + e.mail_body + n + escape(" ") + d.test_e + e.container + e.mailto + e.subject + n
     });
-    g({
+    h({
         name: "mt - container + no url + title",
         class_tag: f.mailto + c.container + c.title,
-        expected_url: d.mailto + e.mail_body + j + escape(" ") + d.test_e + e.container + e.mailto + e.subject + j
+        expected_url: d.mailto + e.mail_body + m + escape(" ") + d.test_e + e.container + e.mailto + e.subject + m
     });
-    g({
+    h({
         name: "mt - container + url + title + subject + mail_body",
         class_tag: f.mailto + c.container + c.url_title + c.mail_body + c.subject,
-        expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + url + no title + subject + mail_body",
         class_tag: f.mailto + c.container + c.url + c.mail_body + c.subject,
-        expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + no url + title + subject + mail_body",
         class_tag: f.mailto + c.container + c.title + c.mail_body + c.subject,
         expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + no url + no title + subject +  mail_body",
         class_tag: f.mailto + c.container + c.no_url_no_title + c.mail_body + c.subject,
         expected_url: d.mailto + e.mail_body + b.mail_body + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + url + title + mail_body + subject + send_to(single)",
         class_tag: f.mailto + c.container + c.url_title + c.mail_body + c.subject + c.send_to,
-        expected_url: d.mailto + b.address + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + b.address + e.mail_body + o + e.subject + b.subject
     });
-    g({
+    h({
         name: "mt - container + url + title + mail_body + subject + send_to(multiple)",
         class_tag: f.mailto + c.container + c.url_title + c.mail_body + c.subject + c.send_to + c.multiple,
-        expected_url: d.mailto + b.multi_address + e.mail_body + b.mail_body + e.subject + b.subject
+        expected_url: d.mailto + b.multi_address + e.mail_body + o + e.subject + b.subject
     });
-    i("twitter tests");
-    var p = escape("tw no container"), q = escape("tw with container");
-    g({
+    j("twitter tests");
+    var t = encodeURIComponent("tw no container"), u = encodeURIComponent("tw with container"), v = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + t), w = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + u), x = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.title), y = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body), z = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + t + e.via + b.username), A = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + u + e.via + b.username);
+    h({
         name: "tw - no container + url + title",
         class_tag: f.twitter + c.no_container + c.url_title,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + p
+        expected_url: g.open + v + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - no container + url + no title",
         class_tag: f.twitter + c.no_container + c.url,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + b.title
+        expected_url: g.open + x + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - no container + url + title + tweet_body",
         class_tag: f.twitter + c.no_container + c.url_title + c.tweet_body,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body
+        expected_url: g.open + y + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - no container + url + no title + tweet_body",
         class_tag: f.twitter + c.no_container + c.url + c.tweet_body,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body
+        expected_url: g.open + y + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - no container + url + title + via",
         class_tag: f.twitter + c.no_container + c.url_title + c.via,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + p + e.via + b.username
+        expected_url: g.open + z + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - no container + no url + no title",
         class_tag: f.twitter + c.no_container + c.no_url_no_title,
         expected_url: d.twitter + d.localhost_e + e.tweet_body + b.title
     });
-    g({
+    h({
         name: "tw - no container + no url + title",
         class_tag: f.twitter + c.no_container + c.title,
-        expected_url: d.twitter + d.localhost_e + e.tweet_body + p
+        expected_url: d.twitter + d.localhost_e + e.tweet_body + t
     });
-    g({
+    h({
         name: "tw - container + url + title",
         class_tag: f.twitter + c.container + c.url_title,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + q
+        expected_url: g.open + w + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - container + url + no title",
         class_tag: f.twitter + c.container + c.url,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + q
+        expected_url: g.open + w + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - container + url + title + tweet_body",
         class_tag: f.twitter + c.container + c.url_title + c.tweet_body,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body
+        expected_url: g.open + y + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - container + url + no title + tweet_body",
         class_tag: f.twitter + c.container + c.url + c.tweet_body,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body
+        expected_url: g.open + y + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - container + url + title + via",
         class_tag: f.twitter + c.container + c.url_title + c.via,
-        expected_url: d.twitter + d.test_e + e.twitter + e.tweet_body + q + e.via + b.username
+        expected_url: g.open + A + g.twitter + g.dimensions + g.close
     });
-    g({
+    h({
         name: "tw - container + no url + no title",
         class_tag: f.twitter + c.container + c.no_url_no_title,
-        expected_url: d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + q
+        expected_url: d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + u
     });
-    g({
+    h({
         name: "tw - container + no url + title",
         class_tag: f.twitter + c.container + c.title,
-        expected_url: d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + q
+        expected_url: d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + u
     });
 })(jQuery);

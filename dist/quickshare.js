@@ -5,10 +5,10 @@
     };
     var d = function(a) {
         a = (a + "").toString();
-        return encodeURIComponent(a).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/%20/g, "+");
+        return encodeURIComponent(a).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/" "/g, "%20");
     };
     var e = function(a) {
-        return decodeURIComponent(a).replace(/\+/g, "%20");
+        return decodeURIComponent(a).replace(/%20/g, " ");
     };
     var f = function(a, b) {
         if (a) return d(a);
@@ -154,10 +154,15 @@
     };
     k["mailto"] = {
         extractParams: function(a) {
-            var b = j(a), c = h(a, "mail-body"), d = h(a, "subject"), g = h(a, "send-to");
-            b.mail_body = e(f(c + " " + b.src_url, b.title + " " + b.src_url));
-            b.subject = e(f(d, b.title));
-            b.send_to = g || "";
+            var b = j(a), c = h(a, "mail-body");
+            subject = h(a, "subject"), send_to = h(a, "send-to");
+            if (c) {
+                b.mail_body = encodeURIComponent(c + " ") + b.src_url;
+            } else {
+                b.mail_body = b.title + encodeURIComponent(" ") + b.src_url;
+            }
+            b.subject = f(subject, b.title);
+            b.send_to = send_to || "";
             return b;
         },
         makeUrl: function(a) {

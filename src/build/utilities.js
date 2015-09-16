@@ -13,13 +13,13 @@ var _rawUrlEncode = function(_value) {
     .replace(/\(/g, '%28')
     .replace(/\)/g, '%29')
     .replace(/\*/g, '%2A')
-    .replace(/%20/g, '+');
+    .replace(/" "/g, '%20');
 };
 
 var _rawUrlDecode = function(_value) {
     return decodeURIComponent(_value)
-    .replace(/\+/g, '%20');
-}
+    .replace(/%20/g, ' ');
+};
 
 var _setNonEscapedDefault = function(_value,_default) {
 	if(_value)
