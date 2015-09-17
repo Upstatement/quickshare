@@ -19,6 +19,8 @@ var tags = {
 	tweet_body: "-tb",
 	mail_body: "-mb",
 	subject: "-s",
+	summary: "-sm",
+	source: "-so",
 	send_to: "-st",
 	multiple: "N",
 	blank: "B"
@@ -30,7 +32,8 @@ var urls = {
 	fb_share: "https://www.facebook.com/sharer/sharer.php?u=",
 	twitter: "https://twitter.com/intent/tweet?url=",
 	gp_share: "https://plus.google.com/share?url=",
-	mailto: "mailto:"
+	mailto: "mailto:",
+	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url="
 };
 
 var url_params = {
@@ -39,23 +42,28 @@ var url_params = {
 	container: encodeURIComponent("container/"),
 	mail_body: "?body=",
 	subject: "&subject=",
+	title: "&title=",
+	summary: "&summary=",
+	source: "&source=",
 	fb_share: "facebook",
 	gp_share: "google-plus",
 	twitter: "twitter",
-	mailto: "mailto"
+	mailto: "mailto",
+	linkedin: "linkedin"
 };
 
 var class_tags = {
 	fb_share: ".test-fbs",
 	gp_share: ".test-gps",
 	twitter: ".test-tw",
-	mailto: ".test-mt"
+	mailto: ".test-mt",
+	linkedin: ".test-li"
 };
 
 var windowData = {
 	fb: "','myFacebookWin',",
 	twitter: "','myTwitterWin',",
-	linkedin: "', 'myLinkedinWin',",
+	linkedin: "','myLinkedinWin',",
 	dimensions: "'width=620,height=350'",
 	open: "javascript:window.open('",
 	close: "); void(0)"
