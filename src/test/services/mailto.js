@@ -5,7 +5,8 @@ _module('mailto tests');
 var mailto_default_title = encodeURIComponent("mt title"),
 	mailto_default_title_container = mailto_default_title + encodeURIComponent(" container"),
 	mailto_default_mail_body = defaults.mail_body + encodeURIComponent(" ") + urls.test_e + url_params.mailto,
-
+	mailto_mail_body_no_url = defaults.mail_body + encodeURIComponent(" ") + urls.localhost_e,
+	mailto_mail_body_no_url_w = defaults.mail_body + encodeURIComponent(" ") + urls.test_e + url_params.container + url_params.mailto;
 //without container
 
 _test({
@@ -47,13 +48,13 @@ _test({
 _test({
 	name: "mt - no container + no url + title + mail_body + subject",
 	class_tag: class_tags.mailto + tags.no_container + tags.title + tags.mail_body + tags.subject,
-	expected_url: urls.mailto + url_params.mail_body + defaults.mail_body + url_params.subject + defaults.subject
+	expected_url: urls.mailto + url_params.mail_body + mailto_mail_body_no_url + url_params.subject + defaults.subject
 });
 
 _test({
 	name: "mt - no container + no url + no title + mail_body + subject",
 	class_tag: class_tags.mailto + tags.no_container + tags.no_url_no_title + tags.mail_body + tags.subject,
-	expected_url: urls.mailto + url_params.mail_body + defaults.mail_body + url_params.subject + defaults.subject
+	expected_url: urls.mailto + url_params.mail_body + mailto_mail_body_no_url + url_params.subject + defaults.subject
 });
 
 _test({
@@ -109,13 +110,13 @@ _test({
 _test({
 	name: "mt - container + no url + title + subject + mail_body",
 	class_tag: class_tags.mailto + tags.container + tags.title +  tags.mail_body + tags.subject,
-	expected_url: urls.mailto + url_params.mail_body + defaults.mail_body + url_params.subject + defaults.subject
+	expected_url: urls.mailto + url_params.mail_body + mailto_mail_body_no_url_w + url_params.subject + defaults.subject
 });
 
 _test({
 	name: "mt - container + no url + no title + subject +  mail_body",
 	class_tag: class_tags.mailto + tags.container + tags.no_url_no_title + tags.mail_body + tags.subject,
-	expected_url: urls.mailto + url_params.mail_body + defaults.mail_body + url_params.subject + defaults.subject
+	expected_url: urls.mailto + url_params.mail_body + mailto_mail_body_no_url_w + url_params.subject + defaults.subject
 });
 
 _test({

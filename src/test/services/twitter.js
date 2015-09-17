@@ -8,6 +8,9 @@ var twitter_no_container_title = encodeURIComponent('tw no container'),
 	encodedURL_default_tweet_body = encodeURIComponent(urls.twitter + urls.test_e + url_params.twitter + url_params.tweet_body + defaults.tweet_body),
 	encodedURL_via = encodeURIComponent(urls.twitter + urls.test_e + url_params.twitter + url_params.tweet_body + twitter_no_container_title + url_params.via + defaults.username),
 	encodedURL_via_w = encodeURIComponent(urls.twitter + urls.test_e + url_params.twitter + url_params.tweet_body + twitter_with_container_title + url_params.via + defaults.username);
+	encodedURL_no_url_no_title = encodeURIComponent(urls.twitter + urls.localhost_e + url_params.tweet_body + defaults.title );
+	encodedURL_no_url_no_title_w = encodeURIComponent(urls.twitter + urls.test_e + url_params.container + url_params.twitter + url_params.tweet_body + twitter_with_container_title );
+	encodedURL_no_url = encodeURIComponent(urls.twitter + urls.localhost_e + url_params.tweet_body + twitter_no_container_title );
 
 _test({
 		name: 'tw - no container + url + title',
@@ -42,13 +45,13 @@ _test({
 _test({
 		name: 'tw - no container + no url + no title',
 		class_tag: class_tags.twitter + tags.no_container + tags.no_url_no_title,
-		expected_url: urls.twitter + urls.localhost_e + url_params.tweet_body + defaults.title
+		expected_url: windowData.open + encodedURL_no_url_no_title + windowData.twitter + windowData.dimensions + windowData.close
 });
 
 _test({
 		name: 'tw - no container + no url + title',
 		class_tag: class_tags.twitter + tags.no_container + tags.title,
-		expected_url: urls.twitter + urls.localhost_e + url_params.tweet_body + twitter_no_container_title
+		expected_url: windowData.open + encodedURL_no_url + windowData.twitter + windowData.dimensions + windowData.close
 });
 
 //with container
@@ -86,11 +89,11 @@ _test({
 _test({
 		name: 'tw - container + no url + no title',
 		class_tag: class_tags.twitter + tags.container + tags.no_url_no_title,
-		expected_url: urls.twitter + urls.test_e + url_params.container + url_params.twitter + url_params.tweet_body + twitter_with_container_title
+		expected_url: windowData.open + encodedURL_no_url_no_title_w + windowData.twitter + windowData.dimensions + windowData.close
 });
 
 _test({
 		name: 'tw - container + no url + title',
 		class_tag: class_tags.twitter + tags.container + tags.title,
-		expected_url: urls.twitter + urls.test_e + url_params.container + url_params.twitter + url_params.tweet_body + twitter_with_container_title
+		expected_url: windowData.open + encodedURL_no_url_no_title_w + windowData.twitter + windowData.dimensions + windowData.close
 });

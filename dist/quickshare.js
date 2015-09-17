@@ -144,7 +144,7 @@
         },
         makeUrl: function(a) {
             var b = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + c("&title=", a.title) + c("&summary=", a.summary) + c("&source=", a.source);
-            b = "javascript:window.open('" + b + "','myLinkedinWin','width=620,height=350'); void(0)";
+            b = "javascript:window.open('" + encodeURIComponent(b) + "','myLinkedinWin','width=620,height=350'); void(0)";
             return b;
         },
         getCount: function(a, b) {
