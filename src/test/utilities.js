@@ -33,7 +33,8 @@ var urls = {
 	twitter: "https://twitter.com/intent/tweet?url=",
 	gp_share: "https://plus.google.com/share?url=",
 	mailto: "mailto:",
-	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url="
+	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url=",
+	hackernews: "http://news.ycombinator.com/submitlink?u="	
 };
 
 var url_params = {
@@ -43,13 +44,15 @@ var url_params = {
 	mail_body: "?body=",
 	subject: "&subject=",
 	title: "&title=",
+	hnTitle: "&t=",
 	summary: "&summary=",
 	source: "&source=",
 	fb_share: "facebook",
 	gp_share: "google-plus",
 	twitter: "twitter",
 	mailto: "mailto",
-	linkedin: "linkedin"
+	linkedin: "linkedin",
+	hackernews: "hacker-news"
 };
 
 var class_tags = {
@@ -57,7 +60,8 @@ var class_tags = {
 	gp_share: ".test-gps",
 	twitter: ".test-tw",
 	mailto: ".test-mt",
-	linkedin: ".test-li"
+	linkedin: ".test-li",
+	hackernews: ".test-hn"
 };
 
 var windowData = {
