@@ -154,15 +154,14 @@
     };
     k["mailto"] = {
         extractParams: function(a) {
-            var b = j(a), c = h(a, "mail-body");
-            subject = h(a, "subject"), send_to = h(a, "send-to");
+            var b = j(a), c = h(a, "mail-body"), d = h(a, "subject"), e = h(a, "send-to");
             if (c) {
                 b.mail_body = encodeURIComponent(c + " ") + b.src_url;
             } else {
                 b.mail_body = b.title + encodeURIComponent(" ") + b.src_url;
             }
-            b.subject = f(subject, b.title);
-            b.send_to = send_to || "";
+            b.subject = f(d, b.title);
+            b.send_to = e || "";
             return b;
         },
         makeUrl: function(a) {

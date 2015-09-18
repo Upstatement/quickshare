@@ -1,7 +1,7 @@
 services_lib['mailto'] = {
 	extractParams: function($share_link) {
         var params = _defaultParams($share_link),
-        	mail_body = _getData($share_link,'mail-body')
+        	mail_body = _getData($share_link,'mail-body'),
         	subject = _getData($share_link,'subject'),
             send_to = _getData($share_link,'send-to');
 

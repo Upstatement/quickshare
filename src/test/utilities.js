@@ -111,9 +111,9 @@ function _rawUrlEncode(_value) {
     .replace(/\)/g, '%29')
     .replace(/\*/g, '%2A')
     .replace(/" "/g, '%20');
-};
+}
 
 function _rawUrlDecode(_value) {
     return decodeURIComponent(_value)
     .replace(/%20/g, ' ');
-};
+}
