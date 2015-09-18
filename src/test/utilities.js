@@ -37,7 +37,8 @@ var urls = {
 	mailto: "mailto:",
 	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url=",
 	hackernews: "http://news.ycombinator.com/submitlink?u=",
-	pinterest: "http://www.pinterest.com/pin/create/button/?url="
+	pinterest: "http://www.pinterest.com/pin/create/button/?url=",
+	reddit: "http://www.reddit.com/submit?url="
 };
 
 var url_params = {
@@ -58,7 +59,8 @@ var url_params = {
 	mailto: "mailto",
 	linkedin: "linkedin",
 	hackernews: "hacker-news",
-	pinterest: "pinterest"
+	pinterest: "pinterest",
+	reddit: "reddit"
 };
 
 var class_tags = {
@@ -68,7 +70,8 @@ var class_tags = {
 	mailto: ".test-mt",
 	linkedin: ".test-li",
 	hackernews: ".test-hn",
-	pinterest: ".test-p"
+	pinterest: ".test-p",
+	reddit: ".test-r"
 };
 
 var windowData = {
