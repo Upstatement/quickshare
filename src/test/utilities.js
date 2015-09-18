@@ -23,7 +23,9 @@ var tags = {
 	source: "-so",
 	send_to: "-st",
 	multiple: "N",
-	blank: "B"
+	blank: "B",
+	description: "-d",
+	media: "-m"
 };
 
 var urls = {
@@ -34,7 +36,8 @@ var urls = {
 	gp_share: "https://plus.google.com/share?url=",
 	mailto: "mailto:",
 	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url=",
-	hackernews: "http://news.ycombinator.com/submitlink?u="	
+	hackernews: "http://news.ycombinator.com/submitlink?u=",
+	pinterest: "http://www.pinterest.com/pin/create/button/?url="
 };
 
 var url_params = {
@@ -42,6 +45,8 @@ var url_params = {
 	tweet_body: "&text=",
 	container: encodeURIComponent("container/"),
 	mail_body: "?body=",
+	description: "&description=",
+	media: "&media=",
 	subject: "&subject=",
 	title: "&title=",
 	hnTitle: "&t=",
@@ -52,7 +57,8 @@ var url_params = {
 	twitter: "twitter",
 	mailto: "mailto",
 	linkedin: "linkedin",
-	hackernews: "hacker-news"
+	hackernews: "hacker-news",
+	pinterest: "pinterest"
 };
 
 var class_tags = {
@@ -61,7 +67,8 @@ var class_tags = {
 	twitter: ".test-tw",
 	mailto: ".test-mt",
 	linkedin: ".test-li",
-	hackernews: ".test-hn"
+	hackernews: ".test-hn",
+	pinterest: ".test-p"
 };
 
 var windowData = {

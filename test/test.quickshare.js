@@ -23,7 +23,9 @@
         source: "-so",
         send_to: "-st",
         multiple: "N",
-        blank: "B"
+        blank: "B",
+        description: "-d",
+        media: "-m"
     };
     var d = {
         test_e: encodeURIComponent("http://www.test.com/"),
@@ -33,13 +35,16 @@
         gp_share: "https://plus.google.com/share?url=",
         mailto: "mailto:",
         linkedin: "http://www.linkedin.com/shareArticle?mini=true&url=",
-        hackernews: "http://news.ycombinator.com/submitlink?u="
+        hackernews: "http://news.ycombinator.com/submitlink?u=",
+        pinterest: "http://www.pinterest.com/pin/create/button/?url="
     };
     var e = {
         via: "&via=",
         tweet_body: "&text=",
         container: encodeURIComponent("container/"),
         mail_body: "?body=",
+        description: "&description=",
+        media: "&media=",
         subject: "&subject=",
         title: "&title=",
         hnTitle: "&t=",
@@ -50,7 +55,8 @@
         twitter: "twitter",
         mailto: "mailto",
         linkedin: "linkedin",
-        hackernews: "hacker-news"
+        hackernews: "hacker-news",
+        pinterest: "pinterest"
     };
     var f = {
         fb_share: ".test-fbs",
@@ -58,7 +64,8 @@
         twitter: ".test-tw",
         mailto: ".test-mt",
         linkedin: ".test-li",
-        hackernews: ".test-hn"
+        hackernews: ".test-hn",
+        pinterest: ".test-p"
     };
     var g = {
         fb: "','myFacebookWin',",
@@ -358,32 +365,59 @@
         class_tag: f.mailto + c.container + c.url_title + c.mail_body + c.subject + c.send_to + c.multiple,
         expected_url: d.mailto + b.multi_address + e.mail_body + B + e.subject + b.subject
     });
+    j("pinterest tests");
+    var E = encodeURIComponent("http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg"), F = encodeURIComponent("Pinterest description"), G = encodeURIComponent("Pinterest description container");
+    h({
+        name: "P - no container + url + media + description",
+        class_tag: f.pinterest + c.no_container + c.url + c.media + c.description,
+        expected_url: d.pinterest + d.test_e + e.pinterest + e.media + E + e.description + F
+    });
+    h({
+        name: "P - no container + no url + media + description",
+        class_tag: f.pinterest + c.no_container + c.media + c.description,
+        expected_url: d.pinterest + d.localhost_e + e.media + E + e.description + F
+    });
+    h({
+        name: "P - container + url + media + description",
+        class_tag: f.pinterest + c.container + c.url + c.media + c.description,
+        expected_url: d.pinterest + d.test_e + e.pinterest + e.media + E + e.description + F
+    });
+    h({
+        name: "P - container + no url + media + description",
+        class_tag: f.pinterest + c.container + c.media + c.description,
+        expected_url: d.pinterest + d.test_e + e.container + e.pinterest + e.media + E + e.description + F
+    });
+    h({
+        name: "P - container + no url + no media + no description",
+        class_tag: f.pinterest + c.container,
+        expected_url: d.pinterest + d.test_e + e.container + e.pinterest + e.media + E + e.description + G
+    });
     j("twitter tests");
-    var E = encodeURIComponent("tw no container"), F = encodeURIComponent("tw with container"), G = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + E), H = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + F), I = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.title), J = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body), K = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + E + e.via + b.username), L = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + F + e.via + b.username), v = encodeURIComponent(d.twitter + d.localhost_e + e.tweet_body + b.title), w = encodeURIComponent(d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + F), M = encodeURIComponent(d.twitter + d.localhost_e + e.tweet_body + E);
+    var H = encodeURIComponent("tw no container"), I = encodeURIComponent("tw with container"), J = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + H), K = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + I), L = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.title), M = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + b.tweet_body), N = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + H + e.via + b.username), O = encodeURIComponent(d.twitter + d.test_e + e.twitter + e.tweet_body + I + e.via + b.username), v = encodeURIComponent(d.twitter + d.localhost_e + e.tweet_body + b.title), w = encodeURIComponent(d.twitter + d.test_e + e.container + e.twitter + e.tweet_body + I), P = encodeURIComponent(d.twitter + d.localhost_e + e.tweet_body + H);
     h({
         name: "tw - no container + url + title",
         class_tag: f.twitter + c.no_container + c.url_title,
-        expected_url: g.open + G + g.twitter + g.dimensions + g.close
+        expected_url: g.open + J + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - no container + url + no title",
         class_tag: f.twitter + c.no_container + c.url,
-        expected_url: g.open + I + g.twitter + g.dimensions + g.close
+        expected_url: g.open + L + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - no container + url + title + tweet_body",
         class_tag: f.twitter + c.no_container + c.url_title + c.tweet_body,
-        expected_url: g.open + J + g.twitter + g.dimensions + g.close
+        expected_url: g.open + M + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - no container + url + no title + tweet_body",
         class_tag: f.twitter + c.no_container + c.url + c.tweet_body,
-        expected_url: g.open + J + g.twitter + g.dimensions + g.close
+        expected_url: g.open + M + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - no container + url + title + via",
         class_tag: f.twitter + c.no_container + c.url_title + c.via,
-        expected_url: g.open + K + g.twitter + g.dimensions + g.close
+        expected_url: g.open + N + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - no container + no url + no title",
@@ -393,32 +427,32 @@
     h({
         name: "tw - no container + no url + title",
         class_tag: f.twitter + c.no_container + c.title,
-        expected_url: g.open + M + g.twitter + g.dimensions + g.close
+        expected_url: g.open + P + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + url + title",
         class_tag: f.twitter + c.container + c.url_title,
-        expected_url: g.open + H + g.twitter + g.dimensions + g.close
+        expected_url: g.open + K + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + url + no title",
         class_tag: f.twitter + c.container + c.url,
-        expected_url: g.open + H + g.twitter + g.dimensions + g.close
+        expected_url: g.open + K + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + url + title + tweet_body",
         class_tag: f.twitter + c.container + c.url_title + c.tweet_body,
-        expected_url: g.open + J + g.twitter + g.dimensions + g.close
+        expected_url: g.open + M + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + url + no title + tweet_body",
         class_tag: f.twitter + c.container + c.url + c.tweet_body,
-        expected_url: g.open + J + g.twitter + g.dimensions + g.close
+        expected_url: g.open + M + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + url + title + via",
         class_tag: f.twitter + c.container + c.url_title + c.via,
-        expected_url: g.open + L + g.twitter + g.dimensions + g.close
+        expected_url: g.open + O + g.twitter + g.dimensions + g.close
     });
     h({
         name: "tw - container + no url + no title",
