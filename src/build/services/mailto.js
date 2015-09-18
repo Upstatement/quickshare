@@ -5,8 +5,12 @@ services_lib['mailto'] = {
         	subject = _getData($share_link,'subject'),
             send_to = _getData($share_link,'send-to');
 
-        params.mail_body = _rawUrlDecode(_setNonEscapedDefault(mail_body + ' ' + params.src_url, params.title + ' ' + params.src_url));
-        params.subject = _rawUrlDecode(_setNonEscapedDefault(subject, params.title));
+        if (mail_body){
+            params.mail_body = encodeURIComponent(mail_body + " ") + params.src_url;
+        } else {
+            params.mail_body = params.title + encodeURIComponent(" ") + params.src_url;
+        }
+        params.subject = _setNonEscapedDefault(subject, params.title);
         params.send_to = send_to || '';
 
         return params;

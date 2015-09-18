@@ -5,10 +5,10 @@
     };
     var d = function(a) {
         a = (a + "").toString();
-        return encodeURIComponent(a).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/%20/g, "+");
+        return encodeURIComponent(a).replace(/!/g, "%21").replace(/'/g, "%27").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/" "/g, "%20");
     };
     var e = function(a) {
-        return decodeURIComponent(a).replace(/\+/g, "%20");
+        return decodeURIComponent(a).replace(/%20/g, " ");
     };
     var f = function(a, b) {
         if (a) return d(a);
@@ -144,7 +144,7 @@
         },
         makeUrl: function(a) {
             var b = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + c("&title=", a.title) + c("&summary=", a.summary) + c("&source=", a.source);
-            b = "javascript:window.open('" + b + "','myLinkedinWin','width=620,height=350'); void(0)";
+            b = "javascript:window.open('" + encodeURIComponent(b) + "','myLinkedinWin','width=620,height=350'); void(0)";
             return b;
         },
         getCount: function(a, b) {
@@ -154,10 +154,14 @@
     };
     k["mailto"] = {
         extractParams: function(a) {
-            var b = j(a), c = h(a, "mail-body"), d = h(a, "subject"), g = h(a, "send-to");
-            b.mail_body = e(f(c + " " + b.src_url, b.title + " " + b.src_url));
-            b.subject = e(f(d, b.title));
-            b.send_to = g || "";
+            var b = j(a), c = h(a, "mail-body"), d = h(a, "subject"), e = h(a, "send-to");
+            if (c) {
+                b.mail_body = encodeURIComponent(c + " ") + b.src_url;
+            } else {
+                b.mail_body = b.title + encodeURIComponent(" ") + b.src_url;
+            }
+            b.subject = f(d, b.title);
+            b.send_to = e || "";
             return b;
         },
         makeUrl: function(a) {
