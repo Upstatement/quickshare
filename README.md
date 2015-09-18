@@ -13,6 +13,7 @@ Services Supported
 * Reddit
 * Hacker News
 * LinkedIn
+* Pinterest
 
 How to Use
 ----------
@@ -192,6 +193,8 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 09/15/15 - 1.3.5 - Encoding fixes
+* 08/03/15 - 1.3.4 - Twitter character escaping
 * 07/06/15 - 1.3.3 - Added window fix for IE9
 * 02/16/15 - 1.3.0 - Added sizes to
 * 05/06/14 - 1.2.0 - Added LinkedIn Support
