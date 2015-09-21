@@ -193,6 +193,8 @@ Here's a simple example to get a share to Twitter anchor to include the icon
 
 Version History
 --------------
+* 09/21/15 - 1.3.7 - Code cleanup
+* 09/18/15 - 1.3.6 - Test revisions
 * 09/15/15 - 1.3.5 - Encoding fixes
 * 08/03/15 - 1.3.4 - Twitter character escaping
 * 07/06/15 - 1.3.3 - Added window fix for IE9
