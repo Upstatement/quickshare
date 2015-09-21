@@ -1,11 +1,12 @@
 {
   "name": "quickshare",
-  "version": "1.2.3",
+  "version": "1.3.7",
   "homepage": "https://github.com/Upstatement/quickshare",
   "authors": [
-    "thetmkay <george@upstatement.com>"
+    "thetmkay <george@upstatement.com>",
+    "Emma Gardner <emma.gardner@upstatement.com>"
   ],
-  "description": "Simple JS Library to convert links in to share links",
+  "description": "Simple JS Library to convert links into share links",
   "main": "dist/quickshare.js",
   "keywords": [
     "share"
