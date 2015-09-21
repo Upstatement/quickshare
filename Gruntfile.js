@@ -1,5 +1,3 @@
-// var config = require('./config');
-
 module.exports = function(grunt) {
 
   grunt.initConfig({
@@ -64,18 +62,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    // browserstackTunnel: {
-    //   options: {
-    //     accessKey: config.browserstack_key
-    //   },
-    //   localhost: {
-    //     options: {
-    //       port: 3000,
-    //       hostname: 'localhost',
-    //       sslFlag: 0
-    //     }
-    //   },
-    // },
     jshint: {
       dev: {
         src: ['src/build/**/*.js','quickshare.js'],
