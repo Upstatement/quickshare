@@ -45,12 +45,10 @@ var _formatUrl = function(url, has_suffix) {
 var _getData = function(el, attr) {
     var data_prefix = "data-qs-";
     
-    if(el)
+    if ( el )
         return el.getAttribute(data_prefix + attr);
     return false;
 };
-
-/*** Refactored without jQuery ***/
 
 var _addClass = function( el, className ) {
     if ( !el )
