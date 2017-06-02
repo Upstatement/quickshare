@@ -149,7 +149,6 @@ Share containers currently only have three attributes: `data-qs-url`, `data-qs-s
 
 QuickShare also plugs into exisiting APIs to find out how many times a URL has been shared on a certain social media service. Not all social media services are supported, currently the list is
 
-* Twitter
 * Facebook (sharing)
 * Reddit (upvotes)
 * Hacker News (points)
