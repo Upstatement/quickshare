@@ -24,7 +24,6 @@ module.exports = function(grunt) {
         },
         options: {
           enclose: {
-            'jQuery' : '$',
             'window' : 'window',
           },
           beautify: true,
@@ -36,9 +35,6 @@ module.exports = function(grunt) {
           'test/test.quickshare.js': ['src/test/quickshare.concat.js']
         },
         options: {
-          enclose: {
-            'jQuery' : '$'
-          },
           beautify: true,
           compress: false,
         }
