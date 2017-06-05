@@ -98,31 +98,7 @@
             var b = "https://plus.google.com/share?url=" + a.src_url;
             return b;
         },
-        getCount: function(a, b) {
-            $.ajax({
-                url: "https://clients6.google.com/rpc",
-                success: function(a) {
-                    console.log(a);
-                },
-                crossDomain: true,
-                datatype: "jsonp",
-                body: [ {
-                    method: "pos.plusones.get",
-                    id: "p",
-                    params: {
-                        nolog: true,
-                        id: a,
-                        source: "widget",
-                        userId: "@viewer",
-                        groupId: "@self"
-                    },
-                    jsonrpc: "2.0",
-                    key: "p",
-                    apiVersion: "v1"
-                } ]
-            });
-        },
-        icon: "google-plus"
+        icon: "google-plus-square"
     };
     m["hacker-news"] = {
         extractParams: l,
