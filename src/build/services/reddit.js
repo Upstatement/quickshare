@@ -1,8 +1,7 @@
 services_lib['reddit'] = {
     extractParams: _defaultParams,
     makeUrl: function(params) {
-        var href_url = 'http://www.reddit.com/submit?url=' +  params.src_url + _mightInclude('&title=', params.title);
-        return href_url;
+        return 'http://www.reddit.com/submit?url=' +  params.src_url + _mightInclude('&title=', params.title);
     },
     getCount : function(url, callback) {
         var request = new XMLHttpRequest();

@@ -87,24 +87,21 @@
         extractParams: l,
         makeUrl: function(a) {
             var b = "https://www.facebook.com/sharer/sharer.php?u=" + a.src_url;
-            b = "javascript:window.open('" + b + "','myFacebookWin','width=620,height=350'); void(0)";
-            return b;
+            return "javascript:window.open('" + b + "','myFacebookWin','width=620,height=350'); void(0)";
         },
         icon: "facebook-square"
     };
     m["google-plus-share"] = {
         extractParams: l,
         makeUrl: function(a) {
-            var b = "https://plus.google.com/share?url=" + a.src_url;
-            return b;
+            return "https://plus.google.com/share?url=" + a.src_url;
         },
         icon: "google-plus-square"
     };
     m["hacker-news"] = {
         extractParams: l,
         makeUrl: function(a) {
-            var c = "http://news.ycombinator.com/submitlink?u=" + a.src_url + b("&t=", a.title);
-            return c;
+            return "http://news.ycombinator.com/submitlink?u=" + a.src_url + b("&t=", a.title);
         },
         getCount: function(a, b) {
             var c = new XMLHttpRequest();
@@ -128,8 +125,8 @@
     };
     m["linkedin"] = {
         extractParams: function(a) {
-            var b = l(a), c = g(a, "summary");
-            source = g(a, "source");
+            var b = l(a), c = a.dataset.qsSummary || null;
+            source = a.dataset.qsSource || null;
             if (c && c.length < 256) {
                 b.summary = e(c, null);
             }
@@ -142,42 +139,35 @@
             return b;
         },
         makeUrl: function(a) {
-            var c = "http://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + b("&title=", a.title) + b("&summary=", a.summary) + b("&source=", a.source);
-            c = "javascript:window.open('" + encodeURIComponent(c) + "','myLinkedinWin','width=620,height=350'); void(0)";
-            return c;
-        },
-        getCount: function(a, b) {
-            b(0);
+            var c = "https://www.linkedin.com/shareArticle?mini=true&url=" + a.src_url + b("&title=", a.title) + b("&summary=", a.summary) + b("&source=", a.source);
+            return "javascript:window.open('" + encodeURIComponent(c) + "','myLinkedinWin','width=620,height=350'); void(0)";
         },
         icon: "linkedin"
     };
     m["mailto"] = {
         extractParams: function(a) {
-            var b = l(a), c = a.dataset.mailBody || null, d = a.dataset.subject || null, f = a.dataset.sendTo || null;
+            var b = l(a), c = a.dataset.qsMailBody || null, d = a.dataset.qsSubject || null, f = a.dataset.qsSendTo || null;
             b.mail_body = c ? encodeURIComponent(c + " ") + b.src_url : b.title + encodeURIComponent(" ") + b.src_url;
             b.subject = e(d, b.title);
             b.send_to = f || "";
             return b;
         },
         makeUrl: function(a) {
-            var c = "mailto:" + a.send_to + b("?body=", a.mail_body) + b("&subject=", a.subject);
-            return c;
+            return "mailto:" + a.send_to + b("?body=", a.mail_body) + b("&subject=", a.subject);
         },
         icon: "envelope"
     };
     m["pinterest"] = {
         extractParams: l,
         makeUrl: function(a) {
-            var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image + "&description=" + a.description;
-            return b;
+            return "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image + "&description=" + a.description;
         },
         icon: "pinterest-square"
     };
     m["reddit"] = {
         extractParams: l,
         makeUrl: function(a) {
-            var c = "http://www.reddit.com/submit?url=" + a.src_url + b("&title=", a.title);
-            return c;
+            return "http://www.reddit.com/submit?url=" + a.src_url + b("&title=", a.title);
         },
         getCount: function(a, b) {
             var c = new XMLHttpRequest();
@@ -201,19 +191,14 @@
     };
     m["twitter"] = {
         extractParams: function(a) {
-            var b = l(a), f = a.dataset.qsTweetBody, g = a.dataset.qsViaUsername;
-            if (f) {
-                b.tweet_body = e(f, b.title);
-            } else {
-                b.tweet_body = c(d(b.title));
-            }
+            var b = l(a), f = a.dataset.qsTweetBody || null, g = a.dataset.qsViaUsername || null;
+            b.tweet_body = f ? e(f, b.title) : c(d(b.title));
             b.via_username = e(g, null);
             return b;
         },
         makeUrl: function(a) {
             var c = "https://twitter.com/intent/tweet?url=" + a.src_url + b("&text=", a.tweet_body) + b("&via=", a.via_username);
-            c = "javascript:window.open('" + encodeURIComponent(c) + "','myTwitterWin','width=620,height=350'); void(0)";
-            return c;
+            return "javascript:window.open('" + encodeURIComponent(c) + "','myTwitterWin','width=620,height=350'); void(0)";
         },
         icon: "twitter-square"
     };

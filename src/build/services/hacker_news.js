@@ -1,8 +1,7 @@
 services_lib['hacker-news'] = {
     extractParams: _defaultParams,
     makeUrl: function(params) {
-        var href_url = 'http://news.ycombinator.com/submitlink?u=' + params.src_url + _mightInclude('&t=', params.title);
-        return href_url;
+        return 'http://news.ycombinator.com/submitlink?u=' + params.src_url + _mightInclude('&t=', params.title);
     },
     getCount : function(url, callback) {
         var request = new XMLHttpRequest();
