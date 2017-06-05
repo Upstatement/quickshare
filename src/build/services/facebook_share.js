@@ -5,5 +5,5 @@ services_lib['facebook-share'] = {
         href_url = "javascript:window.open('" + href_url + "','myFacebookWin','width=620,height=350'); void(0)";
         return href_url;
     },
-    icon: 'facebook'
+    icon: 'facebook-square'
 };

@@ -26,5 +26,5 @@ services_lib['reddit'] = {
 
         request.send();
     },
-    icon: 'reddit'
+    icon: 'reddit-square'
 };

@@ -90,7 +90,7 @@
             b = "javascript:window.open('" + b + "','myFacebookWin','width=620,height=350'); void(0)";
             return b;
         },
-        icon: "facebook"
+        icon: "facebook-square"
     };
     m["google-plus-share"] = {
         extractParams: l,
@@ -168,12 +168,8 @@
     };
     m["mailto"] = {
         extractParams: function(a) {
-            var b = l(a), c = g(a, "mail-body"), d = g(a, "subject"), f = g(a, "send-to");
-            if (c) {
-                b.mail_body = encodeURIComponent(c + " ") + b.src_url;
-            } else {
-                b.mail_body = b.title + encodeURIComponent(" ") + b.src_url;
-            }
+            var b = l(a), c = a.dataset.mailBody || null, d = a.dataset.subject || null, f = a.dataset.sendTo || null;
+            b.mail_body = c ? encodeURIComponent(c + " ") + b.src_url : b.title + encodeURIComponent(" ") + b.src_url;
             b.subject = e(d, b.title);
             b.send_to = f || "";
             return b;
@@ -182,8 +178,7 @@
             var c = "mailto:" + a.send_to + b("?body=", a.mail_body) + b("&subject=", a.subject);
             return c;
         },
-        getCount: function(a, b) {},
-        icon: "envelope-o"
+        icon: "envelope"
     };
     m["pinterest"] = {
         extractParams: l,
@@ -191,7 +186,7 @@
             var b = "http://www.pinterest.com/pin/create/button/?url=" + a.src_url + "&media=" + a.image + "&description=" + a.description;
             return b;
         },
-        icon: "pinterest-p"
+        icon: "pinterest-square"
     };
     m["reddit"] = {
         extractParams: l,
@@ -205,21 +200,19 @@
             c.onload = function() {
                 var a = JSON.parse(c.responseText);
                 if (c.status >= 200 && c.status < 400) {
-                    console.log("SUCCESS", a);
                     if (a.data.children.length > 0) {
                         b(a.data.children[0].data.ups);
                     }
                 } else {
-                    console.log("SUCCESS False", a);
                     b(0);
                 }
             };
             c.onerror = function(a) {
-                console.log("ERROR", a);
+                console.log("Quickshare getCount error: ", a);
             };
             c.send();
         },
-        icon: "reddit"
+        icon: "reddit-square"
     };
     m["twitter"] = {
         extractParams: function(a) {
@@ -237,7 +230,7 @@
             c = "javascript:window.open('" + encodeURIComponent(c) + "','myTwitterWin','width=620,height=350'); void(0)";
             return c;
         },
-        icon: "twitter"
+        icon: "twitter-square"
     };
     a.quickShare = function(b) {
         if (!b) b = a.document;
@@ -253,7 +246,6 @@
                 if (g.getCount) {
                     g.getCount(i.src_url, function(a) {
                         var c = b.querySelector(e);
-                        console.log(c);
                         if (c) c.innerHTML = a;
                     });
                 }

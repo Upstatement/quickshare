@@ -19,5 +19,5 @@ services_lib['twitter'] = {
         href_url = "javascript:window.open('" + encodeURIComponent(href_url) + "','myTwitterWin','width=620,height=350'); void(0)";
         return href_url;
     },
-    icon: 'twitter'
+    icon: 'twitter-square'
 };

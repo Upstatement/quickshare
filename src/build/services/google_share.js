@@ -28,5 +28,5 @@ services_lib['google-plus-share'] = {
 			}]
         });
     },
-    icon: 'google-plus'
+    icon: 'google-plus-square'
 };
