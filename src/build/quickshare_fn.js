@@ -25,9 +25,9 @@ window.quickShare = function(scope) {
             if ( service.getCount ) {
                 service.getCount(params.src_url, function(count) {
                     var count_el = scope.querySelector(count_selector);
-                    
+                    console.log(count_el);
                     if ( count_el )
-                        count_el.innerHTML(count);
+                        count_el.innerHTML = count;
                 });
             }
         }

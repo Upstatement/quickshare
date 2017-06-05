@@ -90,16 +90,6 @@
             b = "javascript:window.open('" + b + "','myFacebookWin','width=620,height=350'); void(0)";
             return b;
         },
-        getCount: function(a, b) {
-            $.ajax({
-                url: "https://api.facebook.com/method/links.getStats?urls=" + a + "&format=json",
-                success: function(a) {
-                    if (a.length > 0) b(a[0].share_count); else b(0);
-                },
-                dataType: "jsonp",
-                crossDomain: true
-            });
-        },
         icon: "facebook"
     };
     m["google-plus-share"] = {
@@ -252,7 +242,8 @@
                 if (g.getCount) {
                     g.getCount(i.src_url, function(a) {
                         var c = b.querySelector(e);
-                        if (c) c.innerHTML(a);
+                        console.log(c);
+                        if (c) c.innerHTML = a;
                     });
                 }
             }
