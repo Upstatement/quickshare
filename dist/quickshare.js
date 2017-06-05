@@ -200,13 +200,24 @@
             return c;
         },
         getCount: function(a, b) {
-            $.ajax({
-                url: "http://buttons.reddit.com/button_info.json?url=" + a,
-                success: function(a) {
-                    if (a.data.children.length > 0) b(a.data.children[0].data.ups); else b(0);
-                },
-                crossDomain: true
-            });
+            var c = new XMLHttpRequest();
+            c.open("GET", "http://buttons.reddit.com/button_info.json?url=" + a, true);
+            c.onload = function() {
+                var a = JSON.parse(c.responseText);
+                if (c.status >= 200 && c.status < 400) {
+                    console.log("SUCCESS", a);
+                    if (a.data.children.length > 0) {
+                        b(a.data.children[0].data.ups);
+                    }
+                } else {
+                    console.log("SUCCESS False", a);
+                    b(0);
+                }
+            };
+            c.onerror = function(a) {
+                console.log("ERROR", a);
+            };
+            c.send();
         },
         icon: "reddit"
     };
