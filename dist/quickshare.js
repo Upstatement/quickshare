@@ -107,13 +107,22 @@
             return c;
         },
         getCount: function(a, b) {
-            $.ajax({
-                url: "https://hn.algolia.com/api/v1/search?query=%22" + a + "%22&tags=story&advancedSyntax=true&attributesToRetrieve=points,url",
-                success: function(a) {
-                    if (a.hits.length > 0) b(a.hits[0].points); else b(0);
-                },
-                crossDomain: true
-            });
+            var c = new XMLHttpRequest();
+            c.open("GET", "https://hn.algolia.com/api/v1/search?query=%22" + a, true);
+            c.onload = function() {
+                var a = JSON.parse(c.responseText);
+                if (c.status >= 200 && c.status < 400) {
+                    if (a.hits.length > 0) {
+                        b(a.hits[0].points);
+                    }
+                } else {
+                    b(0);
+                }
+            };
+            c.onerror = function(a) {
+                console.log("Quickshare getCount error: ", a);
+            };
+            c.send();
         },
         icon: "hacker-news"
     };

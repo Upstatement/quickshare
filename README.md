@@ -172,7 +172,7 @@ The count value is passed in as the text of the specified HTML element - therefo
 As an additional feature of QuickShare, there is direct integration with [Font Awesome's](http://fortawesome.github.io/Font-Awesome/) social media icons, so that you can easily add the icon to the anchor tag. In order to do this, you have to include Font-Awesome, which can be as simple as adding this tag to your `<head>` element of your HTML document.
 
 ```html
-<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
 ```
 
 For other or better ways to include Font-Awesome's stylesheets, check out their ['Get Started' guide](http://fortawesome.github.io/Font-Awesome/get-started/).
