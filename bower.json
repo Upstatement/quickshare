@@ -11,9 +11,6 @@
   "keywords": [
     "share"
   ],
- "dependencies": {
-      "jquery": ">=1.9.1"
-  },
   "ignore": [
     ".gitignore",
     "src",
