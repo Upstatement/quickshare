@@ -7,7 +7,7 @@
     "Emma Gardner <emma.gardner@upstatement.com>"
   ],
   "description": "Simple JS Library to convert links into share links",
-  "main": "dist/quickshare.js",
+  "main": "quickshare.js",
   "keywords": [
     "share"
   ],

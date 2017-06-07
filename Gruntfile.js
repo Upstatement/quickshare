@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     uglify: {
       build: {
         files: {
-          'dist/quickshare.js': ['src/build/quickshare.concat.js'],
+          'quickshare.js': ['src/build/quickshare.concat.js'],
         },
         options: {
           enclose: {
@@ -41,7 +41,7 @@ module.exports = function(grunt) {
       },
       compress: {
         files: {
-          'dist/quickshare.min.js': ['dist/quickshare.js']
+          'quickshare.min.js': ['quickshare.js']
         },
         options: {
           compress: {}
@@ -54,6 +54,7 @@ module.exports = function(grunt) {
           urls: [
             'http://localhost:3000/qs_test.html'
           ],
+          console: true,
           force: true
         }
       }
@@ -69,14 +70,12 @@ module.exports = function(grunt) {
         nonstandard: true, //allow escape
         sub: true, //allow [] notation for objects
         globals: {
-          jQuery: true,
           'console': true,
           'module': true,
           'document': true,
           'window':true,
           'test': true,
-          'equal': true,
-          '$': true
+          'equal': true
         },
         ignores: ['src/**/*.concat.js']
       }
@@ -87,13 +86,13 @@ module.exports = function(grunt) {
       },
       dev : {
         options: {
-          script: 'server.js',
-          node_env: 'development'
+          script: './demo/server.js',
+          node_env: 'dev'
         }
       },
       test : {
         options: {
-          script: 'server.js',
+          script: './demo/server.js',
           node_env: 'test'
         }
       }

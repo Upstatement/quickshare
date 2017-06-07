@@ -55,7 +55,7 @@ var _addClass = function( el, className ) {
         return;
 
     if ( el.classList )
-        el.classList.add( className )
+        el.classList.add( className );
     else if ( !PGACommon.hasClass( el, className ) )
         el.className += " " + className;
  };
@@ -74,7 +74,7 @@ var _getParents = function( el, className ) {
     while ( el.parentNode ) {
         el = el.parentNode;
         
-        if ( el.className != undefined ) {
+        if ( el.className !== undefined ) {
           if ( _hasClass(el, className ) ) {
            
             els.push(el);
@@ -90,7 +90,7 @@ var _getContainerData = function(share_link, data_attr) {
     for (var i = 0; i < containers.length; i++) {
         var attr = containers[i].getAttribute("data-qs-" + data_attr);
         
-        if ( attr != '' && attr ) {
+        if ( attr !== '' && attr ) {
             return attr;
         }
     }

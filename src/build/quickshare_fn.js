@@ -1,8 +1,9 @@
-window.quickShare = function(scope) {
+window.quickShare = function (scope) {
 
     if(!scope)
-        scope   = window.document;
-        qslinks = scope.querySelectorAll('.qs-link');
+        scope = window.document;
+
+    var qslinks = scope.querySelectorAll('.qs-link');
 
     [].forEach.call(qslinks, function(link) {
         var share_link     = link,

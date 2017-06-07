@@ -18,7 +18,7 @@ services_lib['linkedin'] = {
     },
     makeUrl: function(params) {
         var href_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + params.src_url + _mightInclude('&title=', params.title) + _mightInclude('&summary=', params.summary)+ _mightInclude('&source=', params.source);
-        return "javascript:window.open('" + encodeURIComponent(href_url) + "','myLinkedinWin','width=620,height=350'); void(0)";
+        return "javascript:window.open('" + encodeURIComponent(href_url) + "','myLinkedinWin','width=620,height=350');void(0)";
     },
     icon: 'linkedin'
 };
