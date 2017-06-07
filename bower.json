@@ -14,12 +14,11 @@
   "ignore": [
     ".gitignore",
     "src",
-    "example",
+    "demo",
     "Gruntfile.js",
     "package.json",
     "archive",
     "lib",
-    "server.js",
     "node_modules",
     "bower_components",
     "test",
