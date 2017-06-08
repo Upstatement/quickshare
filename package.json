@@ -1,7 +1,7 @@
 {
   "name": "quickshare",
   "version": "2.0.0",
-  "description": "A quick and simple way to implement social plugins",
+  "description": "A quick and simple way to implement social sharing plugins",
   "main": "./quickshare.js",
   "scripts": {
     "start": "NODE_ENV=dev node ./demo/server.js" 

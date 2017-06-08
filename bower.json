@@ -6,7 +6,7 @@
     "thetmkay <george@upstatement.com>",
     "Emma Gardner <emma.gardner@upstatement.com>"
   ],
-  "description": "Simple JS Library to convert links into share links",
+  "description": "A simple JavaScript library to implement social sharing plugins",
   "main": "quickshare.js",
   "keywords": [
     "share"
