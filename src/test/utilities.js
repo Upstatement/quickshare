@@ -30,15 +30,15 @@ var tags = {
 
 var urls = {
 	test_e: encodeURIComponent("http://www.test.com/"),
-	localhost_e: encodeURIComponent("http://localhost:3000/test/qs_test.html"),
+	localhost_e: encodeURIComponent("http://localhost:3000/qs_test.html"),
 	fb_share: "https://www.facebook.com/sharer/sharer.php?u=",
 	twitter: "https://twitter.com/intent/tweet?url=",
 	gp_share: "https://plus.google.com/share?url=",
 	mailto: "mailto:",
-	linkedin: "http://www.linkedin.com/shareArticle?mini=true&url=",
-	hackernews: "http://news.ycombinator.com/submitlink?u=",
-	pinterest: "http://www.pinterest.com/pin/create/button/?url=",
-	reddit: "http://www.reddit.com/submit?url="
+	linkedin: "https://www.linkedin.com/shareArticle?mini=true&url=",
+	hackernews: "https://news.ycombinator.com/submitlink?u=",
+	pinterest: "https://www.pinterest.com/pin/create/button/?url=",
+	reddit: "https://www.reddit.com/submit?url="
 };
 
 var url_params = {
@@ -80,14 +80,30 @@ var windowData = {
 	linkedin: "','myLinkedinWin',",
 	dimensions: "'width=620,height=350'",
 	open: "javascript:window.open('",
-	close: "); void(0)"
+	close: ");void(0)"
 };
 
 var _test = function(test_params) {
-	test(test_params.name, function() {
-		var $link = $(test_params.class_tag);
-		$link.trigger('click');
-		equal($link.attr('href'), test_params.expected_url);
+	QUnit.test(test_params.name, function(assert) {
+		var link = document.querySelector(test_params.class_tag);
+		var evt;
+
+		try {
+		    // Chrome, Safari, Firefox
+		    evt = new MouseEvent('click', {
+	            'view': window,
+	            'bubbles': true,
+	            'cancelable': true
+	        });
+		} catch (e) {
+			// PhantomJS
+			evt = document.createEvent('MouseEvent');
+			evt.initEvent('click', true, false);
+		}
+
+		link.dispatchEvent(evt);
+
+		assert.equal(link.href, test_params.expected_url);
 	});
 };
 
@@ -98,7 +114,7 @@ var _test_setup = {
 };
 
 var _module = function(name) {
-	module(name, _test_setup);
+	QUnit.module(name, _test_setup);
 };
 
 function _rawUrlEncode(_value) {

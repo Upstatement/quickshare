@@ -3,27 +3,26 @@
 	<head>
 		<meta charset="utf-8">
 		<title>QuickShare Demo</title>
-		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="qs_demo_style.css">
 	</head>
 	<body class='qs-container' data-qs-title="super test title">
 		<header>
     	<h1 class="primary-h">QuickShare <i class="thin">Demo</i></h1>
     </header>
-
 		<div class="implementation-container">
 	    <h2 class="secondary-h">'Kitchen Sink' Implementation</h2>
 	    <div class='qs-container demo' data-qs-title="Check out this link:" data-qs-url="http://nytimes.com">
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='linkedin' data-qs-url="https://lattice-engines.com/blog/predictive-lead-score-best-practices" data-qs-source="Wired Magazine" data-qs-summary="You have a predictive lead score, what's next?">
+					<a class='qs-link' data-qs-service='linkedin' data-qs-url="https://www.upstatement.com/" data-qs-source="Upstatement" data-qs-summary="A thoughtful creative studio that imagines & builds exceptional digital experiences" target='_blank'>
 						<i class="qs-icon"></i>
 						<p>linkedin</p>
 					</a>
 				</div>
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='hacker-news' data-qs-count-selector="#best"  target='_blank' data-qs-url="gizmodo.com/how-steve-wozniak-wrote-basic-for-the-original-apple-fr-1570573636/all" data-qs-title="Steve Wozzy's code for apple" data-qs-count-selector=".hn-share-count" target='_blank'>
+					<a class='qs-link' data-qs-service='hacker-news' target='_blank' data-qs-url="https://www.bloomberg.com/news/articles/2017-06-05/wsj-ends-google-users-free-ride-then-fades-in-search-results" data-qs-title="Steve Wozzy's code for apple" data-qs-count-selector=".hn-share-count" target='_blank'>
 						<i class="qs-icon"></i>
-						<p>hacker news</p>
+						<p>hacker news</p><span class="hn-share-count count"></span>
 					</a>
 				</div>
 				<div class="ks-link">
@@ -33,27 +32,27 @@
 					</a>
 				</div>
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='mailto' data-qs-subject="Awesome Link of the Day" data-qs-mail-body="Check out this link. It's Awesome!" data-qs-url="http://www.upstatement.com" data-qs-send-to="george@upstatement.com,thetmkay@gmail.com">
+					<a class='qs-link' data-qs-service='mailto' data-qs-subject="Crime Reporters Spend Their Nights Racing to Murder Scenes. Sometimes the Stories Follow Them Home." data-qs-mail-body="Crime Reporters Spend Their Nights Racing to Murder Scenes. Sometimes the Stories Follow Them Home." data-qs-url="http://www.thetrace.org/2015/11/metro-homicide-reporters-crime-scene/" data-qs-send-to="george@upstatement.com,thetmkay@gmail.com">
 						<i class="qs-icon"></i>
 						<p>email</p>
 					</a>
 				</div>
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='pinterest' data-qs-url="http://kotaku.com/the-story-behind-street-fighters-greatest-moment-1731364088" data-qs-description="Street Fighter!!!" data-qs-image="http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg" target='_blank'>
+					<a class='qs-link' data-qs-service='pinterest' data-qs-url="https://www.upstatement.com/currents/" data-qs-description="Upstatement Currents" data-qs-image="http://loremflickr.com/320/240/dog" target='_blank'>
 						<i class="qs-icon"></i>
 						<p>pinterest</p>
 					</a>
 				</div>
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="www.nytimes.com/interactive/2015/02/17/upshot/what-do-people-actually-order-at-chipotle.html" data-qs-count-selector=".facebook-share-count">
+					<a class='qs-link' data-qs-service='facebook-share' data-qs-url="http://www.thetrace.org/2015/11/metro-homicide-reporters-crime-scene/">
 						<i class="qs-icon"></i>
-						<p>facebook</p><span class="facebook-share-count count"></span>
+						<p>facebook</p>
 					</a>
 				</div>
 				<div class="ks-link">
-					<a class='qs-link' data-qs-service='twitter' data-qs-url="http://build.thetrace.dev/2015/06/08/new-state-bills-expand-legal-assault-on-local-gun-safety-rules/" data-qs-count-selector=".twitter-share-count" data-qs-title="New State Bills Expand 'Legal' Assault on Local Gun Safety Rules!">
+					<a class='qs-link' data-qs-service='twitter' data-qs-url="https://www.thetrace.org/2017/06/chicago-violence-interrupter-cure-violence/" data-qs-title="Crime Reporters Spend Their Nights Racing to Murder Scenes. Sometimes the Stories Follow Them Home.">
 						<i class="qs-icon"></i>
-						<p>twitter</p><span class="twitter-share-count count"></span>
+						<p>twitter</p>
 					</a>
 				</div>
 				<div class="ks-link">
@@ -66,15 +65,15 @@
 	  </div>
 
 		<div class="implementation-container">
-	    <h2 class="secondary-h">Minimal Implementation</h1>
+	    	<h2 class="secondary-h">Minimal Implementation</h2>
 			<div class='qs-container demo' data-qs-title="test title" data-qs-url="http://nytimes.com">
 				<div class="min-link">
-					<a class='qs-link' data-qs-service='linkedin' data-qs-url="http://i.imgur.com/WhVALCK.jpg" data-qs-source="Wired Magazine" data-qs-summary="a picture i cannot recall">
+					<a class='qs-link' data-qs-service='linkedin' data-qs-url="https://www.upstatement.com/" data-qs-source="Upstatement" data-qs-summary="A thoughtful creative studio that imagines & builds exceptional digital experiences">
 						<p>linkedin</p>
 					</a>
 				</div>
 				<div class="min-link">
-					<a class='qs-link' data-qs-service='hacker-news' data-qs-count-selector="#best"  target='_blank' data-qs-url="gizmodo.com/how-steve-wozniak-wrote-basic-for-the-original-apple-fr-1570573636/all" data-qs-title="Steve Wozzy">
+					<a class='qs-link' data-qs-service='hacker-news' data-qs-count-selector="#best"  target='_blank' data-qs-url="https://www.bloomberg.com/news/articles/2017-06-05/wsj-ends-google-users-free-ride-then-fades-in-search-results" data-qs-title="Steve Wozzy">
 						<p>hacker news</p>
 					</a>
 				</div>
@@ -89,7 +88,7 @@
 					</a>
 				</div>
 				<div class="min-link">
-					<a class='qs-link' data-qs-service='pinterest' data-qs-url="http://www.wired.com/2015/02/apple-watch-doesnt-anything-special-huge/" data-qs-description="Check out this awesome link" data-qs-image="http://cdn.upstatement.com/wp-content/uploads/2013/08/stevens-book.jpg">
+					<a class='qs-link' data-qs-service='pinterest' data-qs-url="https://www.upstatement.com/about/" data-qs-description="Check out this awesome link" data-qs-image="http://loremflickr.com/320/240/dog">
 						<p>pinterest</p>
 					</a>
 				</div>
@@ -110,11 +109,13 @@
 				</div>
 			</div>
 		</div>
-		<script src="../lib/jquery.js"></script>
-		<script src="../dist/quickshare.js"></script>
+		
+		
+		<script src="../quickshare.js"></script>
 		<script type="text/javascript">
 			quickShare();
 		</script>
+		<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 	</body>
 </html>
 
