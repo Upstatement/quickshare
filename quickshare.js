@@ -108,7 +108,7 @@ services_lib["facebook-share"] = {
         var t = "https://www.facebook.com/sharer/sharer.php?u=" + e.src_url;
         return "javascript:window.open('" + t + "','myFacebookWin','width=620,height=350');void(0)";
     },
-    icon: "facebook-square"
+    icon: "facebook"
 };
 
 services_lib["google-plus-share"] = {
@@ -116,7 +116,7 @@ services_lib["google-plus-share"] = {
     makeUrl: function(e) {
         return "https://plus.google.com/share?url=" + e.src_url;
     },
-    icon: "google-plus-square"
+    icon: "google-plus"
 };
 
 services_lib["hacker-news"] = {
@@ -186,7 +186,7 @@ services_lib["pinterest"] = {
     makeUrl: function(e) {
         return "https://www.pinterest.com/pin/create/button/?url=" + e.src_url + "&media=" + e.image + "&description=" + e.description;
     },
-    icon: "pinterest-square"
+    icon: "pinterest-p"
 };
 
 services_lib["reddit"] = {
@@ -212,7 +212,7 @@ services_lib["reddit"] = {
         };
         r.send();
     },
-    icon: "reddit-square"
+    icon: "reddit-alien"
 };
 
 services_lib["twitter"] = {
@@ -226,7 +226,7 @@ services_lib["twitter"] = {
         var t = "https://twitter.com/intent/tweet?url=" + e.src_url + _mightInclude("&text=", e.tweet_body) + _mightInclude("&via=", e.via_username);
         return "javascript:window.open('" + encodeURIComponent(t) + "','myTwitterWin','width=620,height=350');void(0)";
     },
-    icon: "twitter-square"
+    icon: "twitter"
 };
 
 window.quickShare = function(e) {

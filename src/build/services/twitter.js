@@ -13,5 +13,5 @@ services_lib['twitter'] = {
         var href_url = 'https://twitter.com/intent/tweet?url=' + params.src_url + _mightInclude('&text=', params.tweet_body) + _mightInclude('&via=', params.via_username);
         return "javascript:window.open('" + encodeURIComponent(href_url) + "','myTwitterWin','width=620,height=350');void(0)";
     },
-    icon: 'twitter-square'
+    icon: 'twitter'
 };

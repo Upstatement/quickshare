@@ -3,5 +3,5 @@ services_lib['google-plus-share'] = {
     makeUrl: function(params) {
     	return 'https://plus.google.com/share?url=' + params.src_url;
     },
-    icon: 'google-plus-square'
+    icon: 'google-plus'
 };
