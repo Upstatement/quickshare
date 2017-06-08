@@ -29,9 +29,15 @@ var _formatUrl = function(e, t) {
     return e;
 };
 
+var _camelCasify = function(e) {
+    return e.replace(/-([a-z])/g, function(e) {
+        return e[1].toUpperCase();
+    });
+};
+
 var _getData = function(e, t) {
-    var r = "data-qs-";
-    if (e) return e.getAttribute(r + t);
+    var r = _camelCasify("qs-" + t);
+    if (e) return e.dataset[r];
     return false;
 };
 
@@ -60,9 +66,10 @@ var _getParents = function(e, t) {
 var _getContainerData = function(e, t) {
     var r = _getParents(e, "qs-container");
     for (var a = 0; a < r.length; a++) {
-        var n = r[a].getAttribute("data-qs-" + t);
-        if (n !== "" && n) {
-            return n;
+        var n = _camelCasify("qs-" + t);
+        var i = r[a].dataset[n];
+        if (i !== "" && i) {
+            return i;
         }
     }
 };

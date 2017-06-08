@@ -1,5 +1,5 @@
 var _mightInclude = function(_name, _value) {
-    if (_value)
+    if ( _value )
         return _name + _value;
     return '';
 };
@@ -17,23 +17,22 @@ var _rawUrlEncode = function(_value) {
 };
 
 var _rawUrlDecode = function(_value) {
-    return decodeURIComponent(_value)
-    .replace(/%20/g, ' ');
+    return decodeURIComponent(_value).replace(/%20/g, ' ');
 };
 
 var _setNonEscapedDefault = function(_value,_default) {
-	if(_value)
+	if ( _value )
 		return _rawUrlEncode(_value);
 	return _default;
 };
 
 var _formatUrl = function(url, has_suffix) {
 
-    if(url.indexOf("http:") === -1 && url.indexOf("https:") === -1) {
+    if ( url.indexOf("http:") === -1 && url.indexOf("https:") === -1 ) {
         url = 'http://' + url;
     }
 
-    if(has_suffix) {
+    if ( has_suffix ) {
         while(url.charAt(url.length-1) === '/') {
             url = url.substr(0,url.length-1);
         }
@@ -42,11 +41,17 @@ var _formatUrl = function(url, has_suffix) {
     return url;
 };
 
+var _camelCasify = function(str) {
+    return str.replace( /-([a-z])/g, function(g) { 
+        return g[1].toUpperCase(); 
+    });
+}
+
 var _getData = function(el, attr) {
-    var data_prefix = "data-qs-";
-    
+    var camelCasedAttr = _camelCasify("qs-" + attr);
+
     if ( el )
-        return el.getAttribute(data_prefix + attr);
+        return el.dataset[camelCasedAttr];
     return false;
 };
 
@@ -87,11 +92,12 @@ var _getParents = function( el, className ) {
 var _getContainerData = function(share_link, data_attr) {
     var containers = _getParents(share_link, 'qs-container');
 
-    for (var i = 0; i < containers.length; i++) {
-        var attr = containers[i].getAttribute("data-qs-" + data_attr);
+    for ( var i = 0; i < containers.length; i++ ) {
+        var camelCasedAttr = _camelCasify("qs-" + data_attr);
+        var attrVal        = containers[i].dataset[camelCasedAttr];
         
-        if ( attr !== '' && attr ) {
-            return attr;
+        if ( attrVal !== '' && attrVal ) {
+            return attrVal;
         }
     }
 };
@@ -110,7 +116,7 @@ var _defaultParams = function(share_link) {
         image       = _getData(share_link, 'image') || container_image || "";
         description = _getData(share_link, 'description') || container_description || "";
 
-    if(suffix) {
+    if ( suffix ) {
         src_url = _formatUrl(src_url, true) + suffix;
     }
     else {
